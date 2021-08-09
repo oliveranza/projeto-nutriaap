@@ -6,7 +6,6 @@
     justify-content: center;
     height: 100vh;
     width: 100%;
-    color: #999999;
 }
 
 .login-right{
@@ -25,7 +24,8 @@
 .login .login-right h1{
     font-family: 'Roboto Slab';
     font-size: 50px;
-    background-color: #e8eaed;
+    color: #22b2aa;
+    /* background-color: #e8eaed; */
     margin-bottom: 20px;
 }
 
@@ -111,14 +111,14 @@
 
 /*Vamos fazer o Botão mudar de cor quando passar o cursor em cima*/
 .login .login-right button:hover{
-    background-color:green;
+    background-color:rgba(107, 0, 128, 0.623);
     color:white ;
     cursor: pointer;
 }
 
 /*Campo por trás dos text de email e senha */
 .login .login-right{
-    background-color: #e8eaed;
+    background-color: #ddd;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -127,7 +127,7 @@
     margin-left: 50;
     padding: 20px;
     width: 500px;
-    right: 500px;
+    height:100vh;
 
 
 }

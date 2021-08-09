@@ -1,7 +1,7 @@
 import './App.css';
 import InicioNutri from './components/Pages/InicioNutri/InicioNutri';
-import Login from './components/Pages/login/Login';
-
+import Login1 from './components/Pages/login/Login';
+import Login from './Caio/pages/Login/index'
 
 
 
@@ -11,9 +11,9 @@ import Login from './components/Pages/login/Login';
 function App() {
     return (
         <div className="App">
-
-            {/* <Login></Login> */}
+            {/* <Login></Login >         */}
             <InicioNutri></InicioNutri>
+            {/* <Login1></Login1> */}
 
         </div>
     );
