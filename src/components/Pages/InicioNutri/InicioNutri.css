@@ -56,8 +56,10 @@
 }
 
 .DivBotoes{
-    width: 100%;
-    max-height: 21vh;
+    margin: 20px;
+    width: 93%;
+    max-height: 17vh;
+    height: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -73,9 +75,6 @@
     
 }
 
-#btE hover{
-    background-color: #000;
-}
 
 .divPizza{
     width: 72%;
