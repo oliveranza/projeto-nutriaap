@@ -1,0 +1,113 @@
+*{
+    font-family: 'roboto slab';
+    font-size:  20px;
+    margin: auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.Container {
+    width:50vw;
+    max-width: 500px;
+    height:100vh;
+}
+
+
+.CardVertical{
+    padding-bottom: 20%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+    background-color: #ccc;
+    height: 100%;
+    width: 100%;
+    
+}
+
+
+
+#lefticon {
+    border-radius: 5px;
+    height:40px;
+    width: 100%;
+    
+}
+
+.CardVertical h1{
+    font-size: 70px;
+    font-weight: bold;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #22b2aa;
+}
+
+.CardVertical h2{
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #22b2aa;
+}
+.CardVertical p{
+    font-size: 15px;
+    text-align: center;
+    font-weight: bold;
+    width: 70%;
+    align-items: center;
+    justify-content: center;
+    color: #22b2aa;
+}
+
+.Email{
+    padding-bottom: 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Email  span label {
+    font-weight: bold;
+    color: #22b2abe0;
+}
+
+.Email input{
+    width: 50%;
+}
+
+#userIcon{
+    color: #22b2aa;
+
+}
+
+.Botao{
+    padding-top: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#bt,#bt2{
+    background-color: #22b2aa;
+    margin: 2px;
+    height: 40px;
+    min-width: 57%;
+    border-color:transparent;
+}
+
+
+
