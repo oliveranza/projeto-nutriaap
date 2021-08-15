@@ -11,8 +11,10 @@ import GraficoLinhas from '../../meusComponentes/graficoLinhas/GraficoLinhas';
 export default function InicioNutri() {
 
     return (
-        <div className="Header">
-            <BarraDeMenu />
+        <div className="Inicio">
+            <div className="header">
+                <BarraDeMenu />
+            </div>
             <div className="InicioBody">
                 <div className="LadoEsquerdo">
                     <TabelaComTabs tabs="" />
@@ -23,10 +25,10 @@ export default function InicioNutri() {
                         <Button id="btD" label={<p>Marcar<br />Consulta</p>} icon="pi pi-plus" iconPos="top"></Button>
                     </div>
                     <div className="divPizza">
-                        <GraficoPizza titulo="Meu Grafico de Pizza" data=""/>
+                        <GraficoPizza titulo="Meu Grafico de Pizza" data="" />
                     </div>
                     <div className="divLinhas">
-                        <GraficoLinhas titulo="Meu grafico de Linhas"/>
+                        <GraficoLinhas titulo="Meu grafico de Linhas" data="" />
                     </div>
 
                 </div>

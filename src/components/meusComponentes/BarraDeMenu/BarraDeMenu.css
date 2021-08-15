@@ -1,0 +1,39 @@
+
+#MBar{
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100vw;
+    background-color: #22b2aa;
+}
+
+.p-menubar-start{
+
+    justify-items: flex-start;
+    /* background-color: brown; */
+}
+
+.p-menubar-start{
+    width: auto;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.p-menubar-root-list{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    /* background-color: #ccc; */
+    padding-left: 10px;
+    
+}
+
+.p-menuitem{
+    margin: 0%;
+    height: 100%;
+    width: auto;
+    
+}
+
+.p-menuitem{
+}

@@ -1,7 +1,8 @@
 import React from 'react'
-import { Menubar } from 'primereact/menubar';
-import { Button } from 'primereact/button';
-import { Component } from 'react';
+import { Menubar } from 'primereact/menubar'
+import { Button } from 'primereact/button'
+import { Component } from 'react'
+import './BarraDeMenu.css'
 
 
 export default class BarraDeMenu extends Component {
@@ -29,7 +30,7 @@ export default class BarraDeMenu extends Component {
     render() {
         return (
             <div className="Menu" >
-                <Menubar className="MBar" style={{ "backgroundColor": "#22b2aa", "width": "100vw" }}
+                <Menubar id="MBar"
                     start={<h1 style={{ "color": "white" }}>NUTRIAPP</h1>}
                     model={this.state.items}
                     end={<div style={{ "display": "flex", "justifyContent": "center", "alignItems": "center", "flexDirection": "row" }}>
