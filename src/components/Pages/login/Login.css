@@ -1,65 +1,62 @@
-*{
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size:  20px;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-.Container {
-    width:50vw;
-    max-width: 500px;
+.nutriapp-login {
+    width: 100%;
     height:100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-
-.CardVertical{
-    padding-bottom: 20%;
+.nutriapp-login .CardVertical{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 200px;
     background-color: #ccc;
-    height: 100%;
-    width: 100%;
-    
+    height: 100vh;
+    width: 25%;
+    min-width: 20rem;
 }
 
+.nutriapp-login .CardVertical div{
+    margin: 0.5rem
+}
 
-
-#lefticon {
+.nutriapp-login #campoemail,
+.nutriapp-login #camposenha{
+    padding: 0 2.5rem;
     border-radius: 5px;
-    height:40px;
+    height:2.5rem;
     width: 100%;
-    
 }
 
 
-
-.Logo{
-    margin: 20px;
+.nutriapp-login .CardVertical h1{
     text-align: center;
-    width: 300px;
-    height: 100px;
-}
-
-.CardVertical h1{
-    font-size: 70px;
+    font-size: 3.6rem;
     font-weight: bold;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #22b2aa;
+    width: 100%;
+    height: 15%;
+    color: var(--primary-color);
 }
 
 
-.Email{
-    padding-bottom: 40px;
+.nutriapp-login .Email  span label {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+
+
+.nutriapp-login .Senha span label{
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.nutriapp-login .Botao{
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -67,74 +64,48 @@
     justify-content: center;
 }
 
-.Email  span label {
-    font-weight: bold;
-    color: #22b2abe0;
+.nutriapp-login #bt{
+    background-color: var(--primary-color);
+    height: 2.5rem;
+    width: 65%;
 }
 
-#userIcon{
-    color: #22b2aa;
-
-}
-
-#senhaIcon{
-    color: #22b2aa;
-}
-
-.Email input{
-    width: 50%;
-}
-
-
-
-.Senha{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.Senha input{
-    width: 50%;
-}
-.Senha span label{
-    font-weight: bold;
-    color: #22b2abe0;
-}
-
-.Botao{
-    padding-top: 50px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-#bt{
-    background-color: #22b2aa;
-    height: 40px;
-    min-width: 57%;
-    border-color:transparent;
-}
-
-.DivChave{
+.nutriapp-login .DivChave{
     width: 57%;
-    height: 100px;
+    height: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
 
-.DivChave label{
-    padding: 20px;
-    font-weight: bold;
-    color: #22b2aa;
+/* botao interno slider*/
+.nutriapp-login .p-inputswitch-slider::before{
+    /* background-color:rgb(255, 255, 255)!important; */
+    border-radius: 50%!important;
 }
-.slider{
-    color: #22b2aa;
+/* slider unchecked*/
+.nutriapp-login .p-inputswitch .p-inputswitch-slider{
+    background-color: rgb(136, 136, 136);
+    border-radius: 20px;
+}
+
+/* slider hover*/
+.nutriapp-login .p-inputswitch .p-inputswitch-slider:hover{
+    background-color:rgb(77, 145, 139)!important;
+}
+
+/* slider checked*/
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+    background-color: var(--primary-color)!important;
+}
+
+.nutriapp-login .DivChave label{
+    font-weight: bold;
+    color: var(--primary-color);
+}
+.nutriapp-login .slider{
+    color: var(--primary-color);
 }
 
 

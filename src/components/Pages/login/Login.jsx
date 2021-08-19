@@ -13,8 +13,29 @@ function Login() {
             valor ? false : true
         );
     }
+
+    let [email, setEmail] = useState();
+    let [senha, setSenha] = useState();
+    let [eye,setEye] = useState("pi pi-eye");
+    let [visible,setVisible] = useState("password");
+
+    function visivel(){
+        if (eye=="pi pi-eye") {
+           setEye("pi pi-eye-slash")
+           setVisible("")
+        }
+        else{
+           setEye("pi pi-eye")
+           setVisible("password")
+        }
+    }
+
+
+
+
+
     return (
-        <div className="Container">
+        <div className="nutriapp-login">
 
             <div className="CardVertical">
 
@@ -26,19 +47,21 @@ function Login() {
 
 
                 <div className="Email">
-                    <span className="p-float-label p-input-icon-left" >
+                    <span className="p-float-label p-input-icon-left p-input-icon-right" >
                         <i className="pi pi-user" id="userIcon" />
-                        <InputText id="lefticon" value="" onChange={e => setState()} />
-                        <label htmlFor="lefticon">E-mail</label>
+                        <i/>
+                        <InputText id="campoemail" value={email} onChange={e => setEmail(e.target.value)} />
+                        <label htmlFor="" onChange="">E-mail</label>
                     </span>
                 </div>
 
 
 
                 <div className="Senha">
-                    <span className="p-float-label p-input-icon-left">
+                    <span className="p-float-label p-input-icon-left p-input-icon-right">
                         <i className="pi pi-lock" id="senhaIcon" />
-                        <InputText id="lefticon" type="password" value="" />
+                        <InputText id="camposenha" type={visible} value={senha} onChange={e => setSenha(e.target.value)} />
+                        <i><button className={eye} id="eyeIcon" onClick={e =>visivel()} style={{ background: "none", border: "none" }} /></i>
                         <label htmlFor="lefticon">Senha</label>
                     </span>
 

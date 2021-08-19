@@ -1,4 +1,5 @@
 import './App.css';
+import CadastroNutri from './components/Pages/cadastroNutri/CadastroNutri';
 import InicioAdmin from './components/Pages/inicioAdmin/InicioAdmin';
 import InicioNutri from './components/Pages/InicioNutri/InicioNutri';
 import Login1 from './components/Pages/login/Login';
@@ -15,7 +16,8 @@ function App() {
             {/* <Login1/> */}
             {/* <Recuperacao/> */}
             {/* <InicioNutri/> */}
-            <InicioAdmin/>
+            {/* <InicioAdmin/> */}
+            <CadastroNutri/>
 
         </div>
     );

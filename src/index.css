@@ -4,6 +4,14 @@
   box-sizing: border-box;
 }
 
+:root{
+  --text-color: #212529;
+  --text-color-secondary: #6c757d;
+  --primary-color: #22b2aa;
+  --primary-color-text: #ffffff;
+}
+
+
 body {
 
   margin: 0;
@@ -15,5 +23,11 @@ body {
   background-color: rgb(255, 255, 255);
 }
 
+.p-button{
+  background: var(--primary-color);
+  border: var(--primary-color);
+}
 
-
+i.pi{
+  color: var(--primary-color)!important;
+}

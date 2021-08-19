@@ -1,23 +1,25 @@
 
-#MBar{
+.nutriapp-menu #MBar{
     justify-content: flex-start;
     align-items: flex-start;
-    width: 100vw;
-    background-color: #22b2aa;
+    width: 100%;
+    background-color:var(--primary-color);
 }
 
-.p-menubar-start{
+
+
+.nutriapp-menu .p-menubar-start{
 
     justify-items: flex-start;
     /* background-color: brown; */
 }
 
-.p-menubar-start{
+.nutriapp-menu .p-menubar-start{
     width: auto;
     align-items: flex-start;
     justify-content: flex-start;
 }
-.p-menubar-root-list{
+.nutriapp-menu .p-menubar-root-list{
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -28,12 +30,16 @@
     
 }
 
-.p-menuitem{
-    margin: 0%;
-    height: 100%;
-    width: auto;
+.nutriapp-menu .p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link .p-menuitem-text,
+.nutriapp-menu .p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link .p-menuitem-icon {
+    /* margin: 0%; */
+    /* height: 100%; */
+    color: white;
     
 }
 
-.p-menuitem{
+.nutriapp-menu .p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link:hover .p-menuitem-text,
+.nutriapp-menu .p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link:hover .p-menuitem-icon {
+    color: red;   
 }
+

@@ -1,0 +1,84 @@
+.nutriapp-cadastronutri{
+  width: 100%;
+}
+
+.nutriapp-cadastronutri-inicio{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.nutriapp-cadastronutri-inicio div{
+  margin: 0%;
+  /* padding: 2px; */
+  height: auto;
+  border-radius: 5px;
+  
+}
+
+
+.nutriapp-cadastronutri .ladoEsquerdo{
+  margin: 0 5%;
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+}
+.nutriapp-cadastronutri .ladoDireito{
+  color: #22b2aa;
+  margin: 0 5%;
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.nutriapp-cadastronutri .ladoDireito .Dados{
+  margin-top: 15px;
+}
+
+.nutriapp-cadastronutri .foto{
+  width: 5cm;
+  height: 6cm;
+  border: 2px solid #000;
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nutriapp-cadastronutri .foto #lbfoto::before{
+  font-size: 5em;
+  color: #22b2aa;
+}
+
+
+
+.nutriapp-cadastronutri .CheckBox{
+  display: flex;
+  flex-direction: row;  
+}
+
+
+
+.nutriapp-cadastronutri #bt{
+  margin-top: 10px;
+  width: 12rem;
+  height: 3rem;
+
+}
+
+
+.nutriapp-cadastronutri #bt2{
+  margin-top: 10px;
+  background-color: #555;
+  width: 12rem;
+  height: 3rem;
+}
+
+
+
+.nutriapp-cadastronutri .p-d-flex {
+  margin: 0 10px;
+}

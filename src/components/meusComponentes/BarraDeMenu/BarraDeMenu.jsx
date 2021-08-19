@@ -29,7 +29,7 @@ export default class BarraDeMenu extends Component {
 
     render() {
         return (
-            <div className="Menu" >
+            <div className="nutriapp-menu" >
                 <Menubar id="MBar"
                     start={<h1 style={{ "color": "white" }}>NUTRIAPP</h1>}
                     model={this.state.items}
