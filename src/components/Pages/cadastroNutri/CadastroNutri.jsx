@@ -20,11 +20,32 @@ function CadastroNutri() {
   const [especializacoes, setEscializacoes] = useState(null);
 
   const cities = [
-    { name: 'New York', code: 0 },
-    { name: 'Rome', code: 1}, 
-    { name: 'London', code : 2},
-    { name: 'Istanbul',code : 3 },
-    { name: 'Paris', code : 4}
+    { name: 'Alergias alimentares', code: 0 },
+    { name: 'Doenças autoimunes', code: 1}, 
+    { name: 'Doenças cardiovasculares', code : 2},
+    { name: 'Doenças Crônicas Não Transmissíveis',code : 3 },
+    { name: 'Ayurveda', code : 4},
+    { name: 'Fitoterapia', code: 5 },
+    { name: 'Fertilidade', code: 6}, 
+    { name: 'Clínica', code : 7},
+    { name: 'Esportiva',code : 8},
+    { name: 'Estética', code : 9},
+    { name: 'Comportamental', code: 10 },
+    { name: 'Funcional', code: 11}, 
+    { name: 'Gerontologia', code : 12},
+    { name: 'Doenças pulmonares',code : 13},
+    { name: 'Doenças renais', code : 14},  
+    { name: 'Materno-infantil', code: 15 },
+    { name: 'Nutrigenética', code: 16}, 
+    { name: 'Oncológica', code : 17},
+    { name: 'Pediátrica',code : 18},
+    { name: 'Ortomolecular', code : 19},
+    { name: 'Saúde da Mulher', code: 20 },
+    { name: 'Vegetariana', code: 21}, 
+    { name: 'Saúde intestinal', code : 22},
+    { name: 'Terapia Intensiva',code : 23},
+    { name: 'Transtornos alimentares', code : 24}
+    
   ];
 
 
