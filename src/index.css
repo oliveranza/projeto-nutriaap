@@ -29,5 +29,5 @@ body {
 }
 
 i.pi{
-  color: var(--primary-color)!important;
+  color: var(--primary-color);
 }

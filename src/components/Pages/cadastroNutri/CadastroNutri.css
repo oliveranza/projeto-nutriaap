@@ -11,12 +11,10 @@
 
 .nutriapp-cadastronutri-inicio div{
   margin: 0%;
-  /* padding: 2px; */
   height: auto;
   border-radius: 5px;
   
 }
-
 
 .nutriapp-cadastronutri .ladoEsquerdo{
   margin: 0 5%;
@@ -53,14 +51,10 @@
   color: #22b2aa;
 }
 
-
-
 .nutriapp-cadastronutri .CheckBox{
   display: flex;
   flex-direction: row;  
 }
-
-
 
 .nutriapp-cadastronutri #bt{
   margin-top: 10px;
@@ -69,7 +63,6 @@
 
 }
 
-
 .nutriapp-cadastronutri #bt2{
   margin-top: 10px;
   background-color: #555;
@@ -77,8 +70,11 @@
   height: 3rem;
 }
 
-
-
 .nutriapp-cadastronutri .p-d-flex {
   margin: 0 10px;
 }
+
+.nutriapp-cadastronutri .p-multiselect-panel .p-multiselect-header {
+  height: 25px!important;
+}
+

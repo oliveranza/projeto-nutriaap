@@ -1,45 +1,62 @@
 
-.nutriapp-menu #MBar{
-    justify-content: flex-start;
-    align-items: flex-start;
+.nutriapp-menu {
+    display: flex;
+    padding: 0 20px;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     background-color:var(--primary-color);
 }
 
-
-
-.nutriapp-menu .p-menubar-start{
-
-    justify-items: flex-start;
-    /* background-color: brown; */
+.nutriapp-menu i{
+    color: white !important;;
+    
 }
 
-.nutriapp-menu .p-menubar-start{
-    width: auto;
-    align-items: flex-start;
-    justify-content: flex-start;
+.nutriapp-menu h1{
+    min-width: 170px;
+    max-width: 12%;
 }
-.nutriapp-menu .p-menubar-root-list{
-    width: 100%;
+
+.nutriapp-menu #centermenu{
+    margin: 0;
+    padding: 0px 10px;
+    width: 75%;
+    background-color: #22b2aa;
+    justify-self: flex-start;
+    overflow: unset;
+    position: relative;
+}
+.nutriapp-menu #endmenu{
+    min-width: 20%;
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: flex-start;
-    /* background-color: #ccc; */
-    padding-left: 10px;
-    
+    justify-content: flex-end;
+    align-items: center;
 }
 
-.nutriapp-menu .p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link .p-menuitem-text,
-.nutriapp-menu .p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link .p-menuitem-icon {
-    /* margin: 0%; */
-    /* height: 100%; */
+.nutriapp-menu #centermenu .p-tabmenu-nav{
+    border: 0;
+}
+
+  /* tab selecionada*/
+.nutriapp-menu .p-tabmenu .p-tabmenu-nav .p-tabmenuitem.p-highlight .p-menuitem-link {
+    background:white;
+    color: #22b2aa;
+}
+
+/* tabs nao selecionadas*/
+.nutriapp-menu .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
+    background: #22b2aa;
+    border: transparent;
     color: white;
+}
+
+
+/* 
+@media screen and (max-width: 960px) {
     
 }
 
-.nutriapp-menu .p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link:hover .p-menuitem-text,
-.nutriapp-menu .p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link:hover .p-menuitem-icon {
-    color: red;   
-}
-
+@media screen and (max-width: 730px) {
+   
+} */

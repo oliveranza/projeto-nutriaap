@@ -3,6 +3,7 @@ import { Menubar } from 'primereact/menubar'
 import { Button } from 'primereact/button'
 import { Component } from 'react'
 import './BarraDeMenu.css'
+import { TabMenu } from 'primereact/tabmenu'
 
 
 export default class BarraDeMenu extends Component {
@@ -18,29 +19,24 @@ export default class BarraDeMenu extends Component {
 
         this.state = {
             items: this.props.items || this.itemsDefault,
+            tab: 0,
         }
 
     };
-
-    mudarState() {
-
+    selectTab(e) {
+        this.setState({ tab: e })
     }
 
 
     render() {
         return (
             <div className="nutriapp-menu" >
-                <Menubar id="MBar"
-                    start={<h1 style={{ "color": "white" }}>NUTRIAPP</h1>}
-                    model={this.state.items}
-                    end={<div style={{ "display": "flex", "justifyContent": "center", "alignItems": "center", "flexDirection": "row" }}>
-                        <div style={{ "width": "40px" }}>
-                            <i className="pi pi-bell" />
-                        </div>
-                        <Button label="Logout" icon="pi pi-sign-out"
-                            style={{ "backgroundColor": "#22b2aa", "borderColor": "transparent" }} />
-                    </div>}
-                />
+                <h1 style={{ "color": "white" }}>NUTRIAPP</h1>
+                <TabMenu model={this.state.items} activeIndex={this.state.tab} onTabChange={e => this.selectTab(e.index)} id="centermenu" />
+                <div id="endmenu">
+                    <i className="pi pi-bell" />
+                    <Button label="Logout" icon="pi pi-sign-out" style={{ "backgroundColor": "#22b2aa", "borderColor": "transparent" }} />
+                </div>
             </div>
 
 

@@ -15,14 +15,14 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    background-color: #ccc;
+    background-color: var(--surface-d);
     height: 100vh;
-    width: 25%;
+    width: 30%;
     min-width: 20rem;
 }
 
 .nutriapp-login .CardVertical div{
-    margin: 0.5rem
+    margin: 1rem 0;
 }
 
 .nutriapp-login #campoemail,
@@ -67,7 +67,11 @@
 .nutriapp-login #bt{
     background-color: var(--primary-color);
     height: 2.5rem;
-    width: 65%;
+    width: 16rem;
+}
+
+.nutriapp-login .DivChave label{
+    width: 45%;
 }
 
 .nutriapp-login .DivChave{
@@ -92,7 +96,7 @@
 
 /* slider hover*/
 .nutriapp-login .p-inputswitch .p-inputswitch-slider:hover{
-    background-color:rgb(77, 145, 139)!important;
+    background-color:#17cac1 !important;
 }
 
 /* slider checked*/
