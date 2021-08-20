@@ -11,6 +11,7 @@ import { Button } from 'primereact/button';
 import { MultiSelect } from 'primereact/multiselect';
 import React, { useState } from "react";
 
+import { locale, addLocale } from 'primereact/api';
 
 
 
@@ -18,6 +19,8 @@ function CadastroNutri() {
 
 
   const [especializacoes, setEscializacoes] = useState(null);
+  const [genero, setGenero] = useState(null);
+  const [data, setData] = useState(null);
 
   const cities = [
     { name: 'Alergias alimentares', code: 0 },
@@ -54,13 +57,35 @@ function CadastroNutri() {
     { label: 'Relatórios', icon: 'pi pi-chart-line', url: '' },
   ]
 
+  const generos = [
+    { label: "Masculino" },
+    { label: "Feminino" },
+    { label: "Outro" },
+    { label: "Prefere Não declarar" },
+  ]
+
+
+  /*=================================calendário ===================================//
+  * 
+  */
+  addLocale('pt-br', {
+    firstDayOfWeek: 1,
+    dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+    dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
+    dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+    monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+    monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Sep', 'Out', 'Nov', 'Dec'],
+    today: 'Hoje',
+    clear: 'Claro'
+  });
+
 
   return (
 
 
 
     <div className="nutriapp-cadastronutri">
-      <BarraDeMenu items={itemsMenu}/>
+      <BarraDeMenu items={itemsMenu} />
       <div className="nutriapp-cadastronutri-inicio">
         <div className="ladoEsquerdo">
           <div className="foto">
@@ -75,61 +100,59 @@ function CadastroNutri() {
         <div className="ladoDireito">
           <div className="Dados">
 
-            <div className="NomeSobreNome">
-              <div className="p-fluid p-formgrid p-grid">
-                <div className="p-field p-col">
-                  <label htmlFor="firstname2">Nome</label>
-                  <InputText id="firstname2" type="text" placeholder="DIgite o nome" />
-                </div>
-                <div className="p-field p-col">
-                  <label htmlFor="lastname2">Sobre Nome</label>
-                  <InputText id="lastname2" type="text" placeholder="Digite o sobrenome" />
-                </div>
+            <div className="p-fluid p-formgrid p-grid">
+              <div className="p-field p-col-12 p-md-6">
+                <label htmlFor="firstname2">Nome</label>
+                <InputText id="firstname2" type="text" placeholder="DIgite o nome" />
+              </div>
+              <div className="p-field p-col-12 p-md-6">
+                <label htmlFor="lastname2">Sobrenome</label>
+                <InputText id="lastname2" type="text" placeholder="Digite o sobrenome" />
+              </div>
+
+              <div className="p-field  p-col-12 ">
+                <label htmlFor="datanascimento">Data de Nascimento</label>
+                <Calendar id="datanascimento" value={data} dateFormat="dd/mm/yy" locale='pt-br' monthNavigator yearNavigator mask="99/99/9999"
+                  yearRange="1920:2021" placeholder="Data de Nascimento" showIcon icon="pi pi-calendar" onChange={e => setData(e.value)} />
+              </div>
+
+              <div className="p-field p-col-12 ">
+                <label htmlFor="genero">Gênero</label>
+                <Dropdown inputId="genero" value={genero} options={generos} onChange={e => setGenero(e.value)} placeholder="Selecione" />
+              </div>
+
+              <div className="p-field p-col-12 ">
+                <label htmlFor="phone">Telefone</label>
+                <InputMask id="phone" mask="99 9 9999-9999" placeholder="99-9999-9999" ></InputMask>
+              </div>
+
+              <div className="p-field p-col-12">
+                <label htmlFor="email">E-mail</label>
+                <InputText id="email" type="text" placeholder="Digite o e-mail" />
+              </div>
+
+
+              <div className="p-field p-col-12">
+                <label htmlFor="email">Especialidade</label>
+                <InputText id="email" type="text" placeholder="Nutricionista,Medico" />
+              </div>
+
+              <div className="p-field p-col-12 ">
+                <label htmlFor="phone">CRN</label>
+                <InputText id="CRN" type="text" placeholder="1 23456/x" />
+              </div>
+
+              <div className="p-field p-col-12">
+                <label className="mmselect">Especializações</label>
+                <MultiSelect showSelectAll={false} value={especializacoes} options={cities} onChange={(e) => setEscializacoes(e.value)} optionLabel="name" placeholder="Suas especializações" display="chip" />
 
               </div>
-            </div>
-
-            <div className="p-fluid  p-col-12 ">
-              <label htmlFor="datanascimento">Data de Nascimento</label>
-              <Calendar id="datanascimento" value="" placeholder="Data de Nascimento" />
-            </div>
-
-            <div className="p-fluid p-col-12 ">
-              <label htmlFor="genero">Gênero</label>
-              <Dropdown inputId="genero" value="Selecione o genero" placeholder="Selecione" />
-            </div>
-
-            <div className="p-fluid p-col-12 ">
-              <label htmlFor="phone">Telefone</label>
-              <InputMask id="phone" mask="99 9 9999-9999" placeholder="99-9999-9999" ></InputMask>
-            </div>
-
-            <div className="p-fluid p-col-12">
-              <label htmlFor="email">E-mail</label>
-              <InputText id="email" type="text" placeholder="Digite o e-mail" />
-            </div>
-
-
-            <div className="p-fluid p-col-12">
-              <label htmlFor="email">Especialidade</label>
-              <InputText id="email" type="text" placeholder="Nutricionista,Medico" />
-            </div>
-
-            <div className="p-fluid p-col-12 ">
-              <label htmlFor="phone">CRN</label>
-              <InputText id="CRN" type="text" placeholder="1 23456/x" />
-            </div>
-
-            <div className="p-fluid p-col-12">
-              <label className="mmselect">Especializações</label>
-              <MultiSelect showSelectAll={false} value={especializacoes} options={cities} onChange={(e) => setEscializacoes(e.value)} optionLabel="name" placeholder="Suas especializações" display="chip" />
 
             </div>
-            <div className="p-d-flex p-jc-between">
-              <Button id="bt2" label="Voltar" icon="pi pi-arrow-left" iconPos="left" />
-              <Button id="bt" label="Salvar" icon="pi pi-save" iconPos="left" />
-            </div>
-
+          </div>
+          <div className="p-d-flex p-jc-between">
+            <Button id="bt2" label="Voltar" icon="pi pi-arrow-left" iconPos="left" />
+            <Button id="bt" label="Salvar" icon="pi pi-save" iconPos="left" />
           </div>
 
 
