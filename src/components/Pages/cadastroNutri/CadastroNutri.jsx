@@ -21,6 +21,15 @@ function CadastroNutri() {
   const [especializacoes, setEscializacoes] = useState(null);
   const [genero, setGenero] = useState(null);
   const [data, setData] = useState(null);
+  const[nome, setNome] = useState(null);
+  const[sobreNome, setSobreNome] = useState(null);
+  const[telefone, setTelefone] = useState(null);
+  const[email, setEmail] = useState(null);
+  const[especialidade, setEspecialidade] = useState(null);
+  const[crn, setCrn] = useState(null);
+
+
+
 
   const cities = [
     { name: 'Alergias alimentares', code: 0 },
@@ -102,12 +111,12 @@ function CadastroNutri() {
 
             <div className="p-fluid p-formgrid p-grid">
               <div className="p-field p-col-12 p-md-6">
-                <label htmlFor="firstname2">Nome</label>
-                <InputText id="firstname2" type="text" placeholder="DIgite o nome" />
+                <label htmlFor="Nome">Nome</label>
+                <InputText id="Nome" value={nome} onChange={e => setNome(e.value)} type="text" placeholder="DIgite o nome" />
               </div>
               <div className="p-field p-col-12 p-md-6">
-                <label htmlFor="lastname2">Sobrenome</label>
-                <InputText id="lastname2" type="text" placeholder="Digite o sobrenome" />
+                <label htmlFor="SobreNome">Sobrenome</label>
+                <InputText id="SobreNome" value={sobreNome} onChange={e => setSobreNome(e.value)} type="text" placeholder="Digite o sobrenome" />
               </div>
 
               <div className="p-field  p-col-12 ">
@@ -123,23 +132,23 @@ function CadastroNutri() {
 
               <div className="p-field p-col-12 ">
                 <label htmlFor="phone">Telefone</label>
-                <InputMask id="phone" mask="99 9 9999-9999" placeholder="99-9999-9999" ></InputMask>
+                <InputMask id="phone" value={telefone} onChange={e => setTelefone(e.value)}  mask="99 9 9999-9999" placeholder="99-9999-9999" ></InputMask>
               </div>
 
               <div className="p-field p-col-12">
                 <label htmlFor="email">E-mail</label>
-                <InputText id="email" type="text" placeholder="Digite o e-mail" />
+                <InputText id="email" valeu={email} onChange={e => setEmail(e.value)} type="text" placeholder="Digite o e-mail" />
               </div>
 
 
               <div className="p-field p-col-12">
-                <label htmlFor="email">Especialidade</label>
-                <InputText id="email" type="text" placeholder="Nutricionista,Medico" />
+                <label htmlFor="especialidade">Especialidade</label>
+                <InputText id="especialidade" value={especialidade} onChange={e => setEspecialidade(e.valeu)} type="text" placeholder="Nutricionista,Medico" />
               </div>
 
               <div className="p-field p-col-12 ">
-                <label htmlFor="phone">CRN</label>
-                <InputText id="CRN" type="text" placeholder="1 23456/x" />
+                <label htmlFor="CRN">CRN</label>
+                <InputText id="CRN" value={crn} onChange={e => setCrn(e.valeu)}val type="text" placeholder="1 23456/x" />
               </div>
 
               <div className="p-field p-col-12">

@@ -4,6 +4,7 @@ import InicioAdmin from './components/Pages/inicioAdmin/InicioAdmin';
 import InicioNutri from './components/Pages/InicioNutri/InicioNutri';
 import Login1 from './components/Pages/login/Login';
 import Recuperacao from './components/Pages/Recupercaosenha/Recuperacao';
+import ListagemNutri from'./components/Pages/listagemNutri/ListagemNutri';
 
 
 
@@ -13,11 +14,12 @@ import Recuperacao from './components/Pages/Recupercaosenha/Recuperacao';
 function App() {
     return (
         <div className="App">
-            <Login1/>
+            {/* <Login1/> */}
             {/* <Recuperacao/> */}
             {/* <InicioNutri/> */}
             {/* <InicioAdmin/> */}
-            {/* <CadastroNutri/> */}
+            <CadastroNutri/>
+            {/* <ListagemNutri/> */}
 
         </div>
     );
