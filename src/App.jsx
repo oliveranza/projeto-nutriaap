@@ -13,9 +13,9 @@ import Recuperacao from './components/Pages/Recupercaosenha/Recuperacao';
 function App() {
     return (
         <div className="App">
-            {/* <Login1/> */}
+            <Login1/>
             {/* <Recuperacao/> */}
-            <InicioNutri/>
+            {/* <InicioNutri/> */}
             {/* <InicioAdmin/> */}
             {/* <CadastroNutri/> */}
 

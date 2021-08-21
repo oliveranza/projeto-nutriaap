@@ -36,8 +36,8 @@ export default class GraficoPizza extends Component {
                 <label style={{"color": "#22b2aa"}}>
                     {this.props.titulo}
                 </label>
-                <Chart id="pizza" type="pie" data={this.chartData} options={this.lightOptions}
-                    style={{ "position": "relative", "width": "70%" }} />
+                <Chart id="pizza" type="pie" data={this.chartData} options={this.lightOptions} 
+                    style="" />
             </>
         )
     }
