@@ -15,9 +15,9 @@ function App() {
         <div className="App">
             {/* <Login1/> */}
             {/* <Recuperacao/> */}
-            <InicioNutri/>
+            {/* <InicioNutri/> */}
             {/* <InicioAdmin/> */}
-            {/* <CadastroNutri/> */}
+            <CadastroNutri/>
 
         </div>
     );

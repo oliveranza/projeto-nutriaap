@@ -10,18 +10,44 @@ import { InputMask } from 'primereact/inputmask';
 import { Button } from 'primereact/button';
 import { MultiSelect } from 'primereact/multiselect';
 import React, { useState } from "react";
+import { useHistory, Link } from 'react-router-dom';
 
 import { locale, addLocale } from 'primereact/api';
+import api from "../../../services/api";
+import axios from "axios";
 
 
 
 function CadastroNutri() {
 
 
+  const [nome, setNome] = useState('');
+  const [sobreNome, setSobreNome] = useState('');
+ 
+
+
   const [especializacoes, setEscializacoes] = useState(null);
   const [genero, setGenero] = useState(null);
   const [data, setData] = useState(null);
+  
+  function valuesIniciais (){
+      return ([nome,sobreNome])
+  }
+ 
+  async function createNewNutri(e){
+    e.preventDefault();
+    
+    try {
+      alert('Entrou no TRY');
+       const response = axios.post('http://localhost:8080/api/nutricionista',valuesIniciais);
+      
+    } catch (error) {
+      alert('Erro ao tentar salvar um novo usuario');
+    }
+  }
 
+  function Form() {
+  }  
   const cities = [
     { name: 'Alergias alimentares', code: 0 },
     { name: 'Doenças autoimunes', code: 1 },
@@ -98,16 +124,16 @@ function CadastroNutri() {
 
 
         <div className="ladoDireito">
-          <div className="Dados">
+          <form onSubmit={createNewNutri}>
 
             <div className="p-fluid p-formgrid p-grid">
               <div className="p-field p-col-12 p-md-6">
                 <label htmlFor="firstname2">Nome</label>
-                <InputText id="firstname2" type="text" placeholder="DIgite o nome" />
+                <InputText id="firstname2" type="text" placeholder="DIgite o nome" value={nome} onChange={e => setNome(e.target.value)}/>
               </div>
               <div className="p-field p-col-12 p-md-6">
                 <label htmlFor="lastname2">Sobrenome</label>
-                <InputText id="lastname2" type="text" placeholder="Digite o sobrenome" />
+                <InputText id="lastname2" type="text" placeholder="Digite o sobrenome" value={sobreNome} onChange={e => setSobreNome(e.target.value)}/>
               </div>
 
               <div className="p-field  p-col-12 ">
@@ -149,10 +175,10 @@ function CadastroNutri() {
               </div>
 
             </div>
-          </div>
+          </form>
           <div className="p-d-flex p-jc-between">
             <Button id="bt2" label="Voltar" icon="pi pi-arrow-left" iconPos="left" />
-            <Button id="bt" label="Salvar" icon="pi pi-save" iconPos="left" />
+            <Button id="bt" label="Salvar" icon="pi pi-save" iconPos="left" onClick={createNewNutri}></Button>
           </div>
 
 
