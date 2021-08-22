@@ -9,13 +9,11 @@ import { InputText } from 'primereact/inputtext';
 
 
 
-
-
 function ListagemNutri() {
 
   const itemsMenu = [
-    { label: 'Início', icon: 'pi pi-home', url: '' },
-    { label: 'Profissionais de Nutrição', icon: 'pi pi-id-card', url: '' },
+    { label: 'Início', icon: 'pi pi-home', url: '/inicioAdmin' },
+    { label: 'Profissionais de Nutrição', icon: 'pi pi-id-card', url: '/listaNutri' },
     { label: 'Administradores', icon: 'pi pi-users', url: '' },
     { label: 'Relatórios', icon: 'pi pi-chart-line', url: '' },
   ]
@@ -24,7 +22,7 @@ function ListagemNutri() {
   return (
 
     <div className="nutriapp-ListagemNutri">
-      <BarraDeMenu items={itemsMenu} />
+      <BarraDeMenu tab={1} items={itemsMenu} />
 
       <div className='nutriapp-listagem-inicio'>
 

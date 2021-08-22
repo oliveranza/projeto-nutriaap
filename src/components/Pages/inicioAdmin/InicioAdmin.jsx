@@ -3,14 +3,13 @@ import GraficoBarras from "../../meusComponentes/graficoBarras/GraficoBarras";
 import GraficoPizza from "../../meusComponentes/graficoPizza/GraficoPizza";
 import GraficoLinhas from "../../meusComponentes/graficoLinhas/GraficoLinhas";
 import "./InicioAdmin.css";
-import { Link } from "react-router-dom";
 
 export default function InicioAdmin(props) {
 
 
     const menu = [
-        {label: 'Início', icon: 'pi pi-home', url: '/inicioAdmin'},
-        { label: 'Profissionais de Nutrição', icon: 'pi pi-id-card', url: '',  },
+        { label: 'Início', icon: 'pi pi-home', url: '/inicioAdmin'},
+        { label: 'Profissionais de Nutrição', icon: 'pi pi-id-card', url: '/listaNutri',  },
         { label: 'Administradores', icon: 'pi pi-users', url: '' },
         { label: 'Relatórios', icon: 'pi pi-chart-line', url: '/inicioNutri' },
     ]

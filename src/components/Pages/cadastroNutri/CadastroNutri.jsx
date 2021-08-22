@@ -43,10 +43,10 @@ function CadastroNutri() {
       return ([nome,sobreNome])
   }
  
-
+/* 
   const [especializacoes, setEscializacoes] = useState(null);
   const [genero, setGenero] = useState(null);
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(null); */
 
  useEffect(() => {
     api

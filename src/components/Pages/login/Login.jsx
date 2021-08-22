@@ -52,7 +52,7 @@ function Login() {
                         <i className="pi pi-user" id="userIcon" />
                         <i/>
                         <InputText id="campoemail" value={email} onChange={e => setEmail(e.target.value)} />
-                        <label htmlFor="" onChange="">E-mail</label>
+                        <label htmlFor="campoemail" >E-mail</label>
                     </span>
                 </div>
 
