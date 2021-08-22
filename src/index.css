@@ -30,4 +30,9 @@ body {
 
 i.pi{
   color: var(--primary-color);
+ 
 }
+a {
+  text-decoration: none;
+}
+

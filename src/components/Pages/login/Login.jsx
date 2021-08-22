@@ -3,6 +3,7 @@ import { InputText } from 'primereact/inputtext';
 import { InputSwitch } from 'primereact/inputswitch';
 import { Button } from 'primereact/button';
 import { useState } from 'react';
+import {Link } from 'react-router-dom';
 
 
 function Login() {
@@ -20,7 +21,7 @@ function Login() {
     let [visible,setVisible] = useState("password");
 
     function visivel(){
-        if (eye=="pi pi-eye") {
+        if (eye==="pi pi-eye") {
            setEye("pi pi-eye-slash")
            setVisible("")
         }
@@ -72,11 +73,11 @@ function Login() {
                     <InputSwitch id="chave" checked={valor} onChange={e => setState(chavear())} />
                 </div>
                 <div className="esqueciSenha">
-                    <a link>Esqueci a senha</a>
+                   <Link to="/recuperacao">Esqueci a senha</Link>
                 </div>
 
                 <div className="Botao">
-                    <Button id="bt" label="Entrar" icon="pi pi-sign-in" iconPos="left" />
+                    <Link to="/inicioAdmin"><Button id="bt" label="Entrar" icon="pi pi-sign-in" iconPos="left" /> </Link>
                 </div>
 
             </div>

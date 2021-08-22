@@ -33,7 +33,7 @@ export default class TabelaComTabs extends Component{
         for (let i = 7; i < 24; i++) {
             consultas1.push({
                 horario: `${(i < 10) ? ("0" + i + ":00") : (i + ":00")}`,
-                descricao: `${(i > 6 && i % 3 == 0) ? (`Consulta com o(a) Sr(a). ${pacientes[p++]}`) : ("")}`
+                descricao: `${(i > 6 && i % 3 === 0) ? (`Consulta com o(a) Sr(a). ${pacientes[p++]}`) : ("")}`
             })
         }
         return consultas1

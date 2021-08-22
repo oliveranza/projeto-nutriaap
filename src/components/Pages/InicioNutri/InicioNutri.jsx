@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import './InicioNutri.css';
 
 import { Button } from 'primereact/button';
@@ -13,7 +12,7 @@ export default function InicioNutri() {
     return (
         <div className="nutriapp-inicioNutri">
             <div className="header">
-                <BarraDeMenu />
+                <BarraDeMenu tab={0}/>
             </div>
             <div className="InicioBody">
                 
