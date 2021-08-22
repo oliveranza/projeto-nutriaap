@@ -19,7 +19,8 @@ function App() {
             {/* <InicioNutri/> */}
             {/* <InicioAdmin/> */}
             {/* <CadastroNutri/> */}
-            <ListagemNutri/>
+            {/* <ListagemNutri/> */}
+            <Routes></Routes>
 
         </div>
     );

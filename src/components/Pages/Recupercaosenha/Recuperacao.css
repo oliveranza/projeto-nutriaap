@@ -1,93 +1,77 @@
 .nutriapp-recuperarsenha{
-    width:50vw;
-    max-width: 500px;
+    width: 100%;
     height:100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 
 .nutriapp-recuperarsenha .CardVertical{
-    padding-bottom: 20%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    background-color: var(--surface-d);
     height: 100vh;
-    background-color:var(--surface-d);
-    padding: 1rem 1rem;
+    width: 30%;
+    min-width: 20rem;
     
 }
 .nutriapp-recuperarsenha .CardVertical div{
-    padding: 0.5rem;
+    padding: 1rem 0;
 }
 
 
-.nutriapp-recuperarsenha #lefticon {
+.nutriapp-recuperarsenha #campoEmail {
+    padding: 0 2.5rem;
     border-radius: 5px;
-    height:40px;
+    height:2.5rem;
     width: 100%;
-    
 }
 
 .nutriapp-recuperarsenha .CardVertical h1{
-    font-size: 3.5rem;
+    text-align: center;
+    font-size: 3.6rem;
     font-weight: bold;
-    /* width: 50%; */
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* align-items: center; */
-    /* justify-content: center; */
+    width: 100%;
+    height: 15%;
+    color: var(--primary-color);
+}
+.nutriapp-recuperarsenha .CardVertical h2{
     color: var(--primary-color);
 }
 
-
 .nutriapp-recuperarsenha .CardVertical p{
-    padding: 5px 0px;
-    font-weight: bold;
-    text-align: center;
-    color: #22b2aa;
-}
-
-.nutriapp-recuperarsenha .Email{
-    /* padding-bottom: 40px; */
-    /* width: 100%; */
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* align-items: center; */
-    /* justify-content: center; */
-}
-
-.nutriapp-recuperarsenha .Email  span label {
-    /* font-weight: bold; */
-    /* color: #22b2abe0; */
-}
-
-.nutriapp-recuperarsenha .Email input{
-    /* width: 50%; */
+    margin: 1.3rem;
+    text-align: justify;
+    color: var(--primary-color);
 }
 
 .nutriapp-recuperarsenha #userIcon{
-    /* color: #22b2aa; */
-
+    color: var(--primary-color);
 }
 
-.nutriapp-recuperarsenha .Botao{
-    /* padding-top: 50px; */
+/*div dos botoes*/
+.nutriapp-recuperarsenha #botoes{
     width: 100%;
-    display: flex;
-    /* flex-direction: column; */
-    align-items: center;
-    justify-content: center;
+    padding: 10%;
+}
+/*os dois botoes*/
+.nutriapp-recuperarsenha .p-button{
+    width: 8rem;
+}
+.nutriapp-recuperarsenha #btcancelar{
+    background-color: var(--text-color-secondary);
 }
 
-/* #bt,#bt2{ */
-    /* background-color: #22b2aa; */
-    /* margin: 2px;
-    height: 40px;
-    min-width: 57%; */
-    /* border-color:transparent; */
-/* } */
+.nutriapp-recuperarsenha #btcancelar:hover{
+    background-color: #883cae;
+}
+
 
 
 

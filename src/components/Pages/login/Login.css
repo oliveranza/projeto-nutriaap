@@ -23,6 +23,7 @@
 
 .nutriapp-login .CardVertical div{
     margin: 1rem 0;
+    
 }
 
 .nutriapp-login #campoemail,
@@ -62,12 +63,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
 }
 
 .nutriapp-login #bt{
     background-color: var(--primary-color);
     height: 2.5rem;
     width: 16rem;
+    
 }
 
 .nutriapp-login .DivChave label{
@@ -80,14 +83,16 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 /* botao interno slider*/
 .nutriapp-login .p-inputswitch-slider::before{
-    /* background-color:rgb(255, 255, 255)!important; */
+    background-color: #ffffff !important;
     border-radius: 50%!important;
+    box-shadow: inset 3px 3px 3px #ffffff, inset -3px -3px 3px #797979ab;
 }
+
 /* slider unchecked*/
 .nutriapp-login .p-inputswitch .p-inputswitch-slider{
     background-color: rgb(136, 136, 136);
@@ -110,6 +115,10 @@
 }
 .nutriapp-login .slider{
     color: var(--primary-color);
+}
+
+.nutriapp-login .esqueciSenha a{
+    text-decoration: underline!important;
 }
 
 

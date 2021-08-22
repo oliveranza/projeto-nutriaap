@@ -1,6 +1,7 @@
 import './Recuperacao.css'
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
+import { Link } from 'react-router-dom';
 
 function Recuperacao() {
 
@@ -12,7 +13,7 @@ function Recuperacao() {
           <h1>NUTRIAPP</h1>
         </div>
         <div>
-          <p>Recuperação de Senha</p>
+          <h2>Recuperação de Senha</h2>
         </div>
         <div>
           <p>Digite seu endereço de e-mail e depois click no botão "Enviar" para que possamos
@@ -23,7 +24,7 @@ function Recuperacao() {
         <div className="Email">
           <span className="p-float-label p-input-icon-left" >
             <i className="pi pi-envelope" id="userIcon" />
-            <InputText id="lefticon" value="" />
+            <InputText id="campoEmail" value="" />
             <label htmlFor="lefticon">E-mail</label>
           </span>
         </div>
@@ -31,12 +32,12 @@ function Recuperacao() {
 
 
 
-        <div className="p-d-flex p-jc-center" style={{ width: "100%" }}>
+        <div className="p-d-flex p-jc-between" id="botoes">
           <div className="p-mr-2">
-            <Button label="Enviar" icon="pi pi-send" iconPos="left" />
+          <Link to="/login"><Button id="btcancelar" label="Cancelar" icon="pi pi-times-circle" iconPos="left" /></Link>
           </div>
           <div className="p-mr-2">
-            <Button label="Cancelar" icon="pi pi-times-circle" iconPos="left" />
+            <Link to="/login"><Button label="Enviar" icon="pi pi-send" iconPos="left" /></Link>
           </div>
 
         </div>

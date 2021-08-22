@@ -1,6 +1,5 @@
 import { Chart } from "primereact/chart";
 import { Component } from "react";
-import { ReactChild } from "react";
 
 export default class GraficoPizza extends Component {
     constructor(props) {
@@ -36,8 +35,7 @@ export default class GraficoPizza extends Component {
                 <label style={{"color": "#22b2aa"}}>
                     {this.props.titulo}
                 </label>
-                <Chart id="pizza" type="pie" data={this.chartData} options={this.lightOptions} 
-                    style="" />
+                <Chart id="pizza" type="pie" data={this.chartData} options={this.lightOptions} />
             </>
         )
     }

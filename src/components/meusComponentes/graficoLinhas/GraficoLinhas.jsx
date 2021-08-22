@@ -1,6 +1,5 @@
 import { Chart } from "primereact/chart";
 import { Component } from "react";
-import { ReactChild } from "react";
 
 export default class GraficoLinhas extends Component {
     constructor(props) {
