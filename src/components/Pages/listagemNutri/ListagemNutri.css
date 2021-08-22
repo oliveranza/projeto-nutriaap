@@ -1,0 +1,26 @@
+.nutriapp-ListagemNutri{
+  width: 100vw;
+  
+}
+
+ 
+.nutriapp-ListagemNutri .nutriapp-listagem-inicio #bt{
+
+  position: absolute;
+  right: 3%;
+  width: 300px;
+  border: 3px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.nutriapp-ListagemNutri .nutriapp-listagem-inicio .search{
+  position: absolute;
+  left: 3%;
+  width: 300px;
+  border: 3px; 
+  padding: 10px;
+}
+.nutriapp-ListagemNutri .cardsListagem .btGrande{
+
+}

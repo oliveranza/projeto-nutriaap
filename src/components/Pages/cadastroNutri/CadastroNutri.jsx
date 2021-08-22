@@ -21,14 +21,22 @@ import axios from "axios";
 function CadastroNutri() {
 
 
+  
   const [nome, setNome] = useState('');
   const [sobreNome, setSobreNome] = useState('');
- 
-
-
+  
+  
+  const [telefone, setTelefone] = useState(null);
   const [especializacoes, setEscializacoes] = useState(null);
   const [genero, setGenero] = useState(null);
   const [data, setData] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [especialidade, setEspecialidade] = useState(null);
+  const [crn, setCrn] = useState(null);
+
+
+
+
   
   function valuesIniciais (){
       return ([nome,sobreNome])
@@ -128,12 +136,12 @@ function CadastroNutri() {
 
             <div className="p-fluid p-formgrid p-grid">
               <div className="p-field p-col-12 p-md-6">
-                <label htmlFor="firstname2">Nome</label>
-                <InputText id="firstname2" type="text" placeholder="DIgite o nome" value={nome} onChange={e => setNome(e.target.value)}/>
+                <label htmlFor="nome">Nome</label>
+                <InputText id="nome" type="text" placeholder="DIgite o nome" value={nome} onChange={e => setNome(e.target.value)}/>
               </div>
               <div className="p-field p-col-12 p-md-6">
-                <label htmlFor="lastname2">Sobrenome</label>
-                <InputText id="lastname2" type="text" placeholder="Digite o sobrenome" value={sobreNome} onChange={e => setSobreNome(e.target.value)}/>
+                <label htmlFor="sobreNome">Sobrenome</label>
+                <InputText id="sobreNome" type="text" placeholder="Digite o sobrenome" value={sobreNome} onChange={e => setSobreNome(e.target.value)}/>
               </div>
 
               <div className="p-field  p-col-12 ">
@@ -149,23 +157,23 @@ function CadastroNutri() {
 
               <div className="p-field p-col-12 ">
                 <label htmlFor="phone">Telefone</label>
-                <InputMask id="phone" mask="99 9 9999-9999" placeholder="99-9999-9999" ></InputMask>
+                <InputMask id="phone" value={telefone} onChange={e => setTelefone(e.value)} mask="99 9 9999-9999" placeholder="99-9999-9999" ></InputMask>
               </div>
 
               <div className="p-field p-col-12">
                 <label htmlFor="email">E-mail</label>
-                <InputText id="email" type="text" placeholder="Digite o e-mail" />
+                <InputText id="email" value={email} onChange={e => setEmail(e.value)} type="text" placeholder="Digite o e-mail" />
               </div>
 
 
               <div className="p-field p-col-12">
-                <label htmlFor="email">Especialidade</label>
-                <InputText id="email" type="text" placeholder="Nutricionista,Medico" />
+                <label htmlFor="especialidade">Especialidade</label>
+                <InputText id="especialidade" value={especialidade} onChange={e => setEspecialidade(e.value)} type="text" placeholder="Nutricionista,Medico" />
               </div>
 
               <div className="p-field p-col-12 ">
-                <label htmlFor="phone">CRN</label>
-                <InputText id="CRN" type="text" placeholder="1 23456/x" />
+                <label htmlFor="crn">CRN</label>
+                <InputText id="crn" value={crn} onChange={e => setCrn(e.value)} type="text" placeholder="1 23456/x" />
               </div>
 
               <div className="p-field p-col-12">
