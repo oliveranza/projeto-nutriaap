@@ -12,7 +12,7 @@ import './Login.css';
 
 function Login() {
     const [valor, setState] = useState(false);
-    const { setToken } = useContext(StoreContext);
+    const { token ,setToken } = useContext(StoreContext);
     const history = useHistory();
 
     let [email, setEmail] = useState();
@@ -54,14 +54,14 @@ function Login() {
             setSenha("")
         }
     }
-
-
-
-
+    
+    
+    
     return (
+        setToken(null),
         <div className="nutriapp-login">
 
-            <div className="CardVertical" onSubmit={onSubmit}>
+            <div className="CardVertical">
 
                 <h1>NUTRIAPP</h1>
 

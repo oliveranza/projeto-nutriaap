@@ -1,13 +1,15 @@
-import React from 'react'
-import { Button } from 'primereact/button'
-import { Component } from 'react'
-import './BarraDeMenu.css'
-import { TabMenu } from 'primereact/tabmenu'
+import React,{Component} from 'react'
 import { Link } from 'react-router-dom'
 
+import { Button } from 'primereact/button'
+import { TabMenu } from 'primereact/tabmenu'
+
+import './BarraDeMenu.css'
 
 export default class BarraDeMenu extends Component {
 
+    
+    
     constructor(props) {
         super(props)
         this.itemsDefault = [
@@ -16,17 +18,22 @@ export default class BarraDeMenu extends Component {
             { label: 'Agenda', icon: 'pi pi-calendar', url: '' },
             { label: 'Chat', icon: 'pi pi-comments', url: '/inicioAdmin' }
         ]
-
+        
         this.state = {
             items: this.props.items || this.itemsDefault,
             tab: this.props.tab || 0,
         }
 
+        
+       
+        
     };
+
+
     selectTab(e) {
         this.setState({ tab: e })
-    }
-
+    };
+    
 
     render() {
         return (
@@ -35,7 +42,7 @@ export default class BarraDeMenu extends Component {
                 <TabMenu model={this.state.items} activeIndex={this.state.tab} onTabChange={e => this.selectTab(e.index)} id="centermenu" />
                 <div id="endmenu">
                     <i className="pi pi-bell" />
-                    <Link to="/login"><Button label="Logout" icon="pi pi-sign-out" style={{ "backgroundColor": "#22b2aa", "borderColor": "transparent" }} /></Link>
+                    <Link to="/login"><Button label="Logout" icon="pi pi-sign-out"  style={{ "backgroundColor": "#22b2aa", "borderColor": "transparent" }} /></Link>
                 </div>
             </div>
 
