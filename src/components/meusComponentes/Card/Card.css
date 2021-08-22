@@ -1,20 +1,79 @@
-.Card{
-    flex: 1;
-    border: 1px solid #000;
-    border-radius: 10px;
-    overflow: hidden;
-    background-color: #fff;
-    margin-top: 90px;
-    margin:70px;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    max-width: 90vw;
-  }
-  
-  .Card .Content {
-    flex: 1;
-    padding: 15px 0px;
-    color: #000;
+.nutriapp-card{
+  border: 1px solid #000;
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-around;
+  width:75%;
+  height: 18vh;
+  margin: 5px 0;
     
-  }
+}
+
+.nutriapp-card .divFoto {
+  padding: 5px;
+  color: #000;
+  
+}
+.nutriapp-card .divFoto img{
+    width: 6rem;
+    height: 100%;
+    /* border: 1px solid #000; */
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.nutriapp-card .info1,
+.nutriapp-card .info2{
+  /* border: 1px solid #000; */
+  width: 30vw;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.nutriapp-card .info1 label,
+.nutriapp-card .info2 label{
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 10px;
+  color: #22b2aa;
+}
+.nutriapp-card .info1 p,
+.nutriapp-card .info2 p{
+  color: #000;
+  font-weight: normal;
+}
+
+.nutriapp-card .botoes{
+  /* border: 1px solid #000; */
+  width: 20%;
+  margin: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+
+}
+
+/*todos os botoes */
+.nutriapp-card .botoes button{
+  margin: 10px;
+}
+
+/*botoes grandes*/
+.nutriapp-card .btGrande button{
+  width: 10rem;
+}
+
+.nutriapp-card #btApagar{
+  background-color: rgb(252, 48, 58);
+}

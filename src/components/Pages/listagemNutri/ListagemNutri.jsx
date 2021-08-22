@@ -5,7 +5,10 @@ import BarraDeMenu from '../../meusComponentes/BarraDeMenu/BarraDeMenu';
 import Card from '../../meusComponentes/Card/Card';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
-
+import foto1 from "../../../assets/female.png"
+import foto2 from "../../../assets/foto1.png"
+import foto3 from "../../../assets/foto3.png"
+import foto4 from "../../../assets/foto2.png"
 
 
 
@@ -19,55 +22,56 @@ function ListagemNutri() {
   ]
 
 
+  /* é só carrega as informações do back e passa os valores
+     das informações dos nutricionistas para dentro de cada propriedade do Card
+  */
+  const fotos = [foto1,foto2,foto3,foto4]
+
+  let cards = [];
+  for (let i = 0; i < 4; i++) {
+    cards.push(<Card
+        foto={fotos[i]}
+        nome="Nome de Teste da Silva"
+        dtNasc="25/01/1999"
+        genero="Masculino"
+        crn="0 12345/x"
+        tel="(83) 9 9999-9999"
+        email="exemplo@email.com"
+    />)
+  }
+
+
+
   return (
 
     <div className="nutriapp-ListagemNutri">
       <BarraDeMenu tab={1} items={itemsMenu} />
 
-      <div className='nutriapp-listagem-inicio'>
+      <div className="corpo">
 
-        <div className='botao'>
+        <div className='header'>
 
-          <Button id="bt" label="cadastrar Nutricionista" icon="pi pi-id-card" iconPos="left" />
+        {/* barra de pesquisa*/}
+          <div className='divPesquisa'>
+            <span className="p-input-icon-left">
+              <i className="pi pi-search" />
+              <InputText className="pesquisa" placeholder="Digite para pesquisar" />
+            </span>
+          </div>
+
+          <div className='botaocadastro'>
+            <Button id="bt" label="cadastrar Nutricionista" icon="pi pi-id-card" iconPos="left" />
+          </div>
+
         </div>
 
-        <div className='search'>
 
-          <span className="p-input-icon-left">
-            <i className="pi pi-search" />
-            <InputText  placeholder="Search" />
-          </span>
-        </div>
-
+        {cards}
       </div>
 
-      <div className='cards-listagem'>
-        <Card>
-          <div className='dados'>
-            <h5>Nome:</h5>
-            <h5>Data Nasc:</h5>
-            <h5>Gênero:</h5>
-            <h5>Crn:</h5>
-            <h5>Telefone:</h5>
-            <h5>E-mail:</h5>
 
 
-          </div>
 
-          <div className='btGrande'>
-             <Button id="btDesempenho" label="DESEMPENHO" icon="pi pi-chart-line" iconPos="left" />
-            <Button id="btEmail" label="E-MAIL" icon="pi pi-envelope" iconPos="left" />
-          </div>
-
-          <div className='btPequeno'>
-             <Button id="btPerfil" label="" icon="pi pi-user" iconPos="left" />
-            <Button id="btApagar" label="" icon="pi pi-user-minus" iconPos="left" /> 
-          </div>
-        
-        </Card>
-
-
-      </div>
 
     </div>
   );
