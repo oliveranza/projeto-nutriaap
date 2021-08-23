@@ -14,68 +14,47 @@ import { useHistory, Link } from 'react-router-dom';
 
 import { addLocale } from 'primereact/api';
 import api from "../../../services/api";
-import axios from "axios";
-import { useEffect } from "react";
 
 
 
 function CadastroNutri() {
+  const history = useHistory();
 
 
-  
   const [nome, setNome] = useState('');
   const [sobreNome, setSobreNome] = useState('');
-  const [telefone, setTelefone] = useState(null);
-  const [especializacoes, setEscializacoes] = useState(null);
-  const [genero, setGenero] = useState(null);
-  const [data, setData] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [especialidade, setEspecialidade] = useState(null);
-  const [crn, setCrn] = useState(null);
+  const [dataNasc, setData] = useState('');
+  const [email, setEmail] = useState('');
+  const [cell, setcell] = useState(Number);
+  const [crn, setCrn] = useState('');
+  const [especializacoes, setEscializacoes] = useState('');
+  const [genero, setGenero] = useState('');
+  const [especialidade, setEspecialidade] = useState('');
 
 
-
-
-  
-  function valuesIniciais (){
-      return ([nome,sobreNome])
-  }
- 
-
-/*  useEffect(() => {
-    api
-      .post("http://localhost:8080/api/nutricionista", {
+  async function Add(e) {
+    e.preventDefault()
+    try {
+      const response = api.post("http://localhost:8080/api/nutricionista", {
         nome,
         sobreNome,
+        dataNasc,
+        email,
+        cell,
+        crn,
       })
-      .then((response) => console.log("deu certo"))
-      .catch((err) => {
-        console.log("ops! ocorreu um erro" + err)
-      })
-
-  }, ) */
-
-
-
-
-    function valuesIniciais (){
-        // return ([nome,sobreNome])
-        return{nome, sobreNome}
-    }
-
-  async function createNewNutri(e){
-    e.preventDefault();
-    
-    try {
-      alert('Entrou no TRY');
-       const response = api.post('http://localhost:8080/api/nutricionista',valuesIniciais);
-      
+      alert("Salva com sucesso!")
+      console.log(response)
+      history.push('/listaNutri')
     } catch (error) {
-      alert('Erro ao tentar salvar um novo usuario');
-    }
-  }
+      alert("falhou")
+      console.log("ops! ocorreu um erro" + error)
+      
+    }   
+}
 
-  const cities = [
+
+  const especi = [
     { name: 'Alergias alimentares', code: 0 },
     { name: 'Doenças autoimunes', code: 1 },
     { name: 'Doenças cardiovasculares', code: 2 },
@@ -104,10 +83,10 @@ function CadastroNutri() {
 
   ];
   const itemsMenu = [
-    { label: 'Início', icon: 'pi pi-home', url: '' },
-    { label: 'Profissionais de Nutrição', icon: 'pi pi-id-card', url: '' },
+    { label: 'Início', icon: 'pi pi-home', url: '/inicioAdmin' },
+    { label: 'Profissionais de Nutrição', icon: 'pi pi-id-card', url: '/listaNutri' },
     { label: 'Administradores', icon: 'pi pi-users', url: '' },
-    { label: 'Relatórios', icon: 'pi pi-chart-line', url: '' },
+    { label: 'Relatórios', icon: 'pi pi-chart-line', url: '/inicioNutri' },
   ]
 
   const generos = [
@@ -138,7 +117,7 @@ function CadastroNutri() {
 
 
     <div className="nutriapp-cadastronutri">
-      <BarraDeMenu items={itemsMenu} />
+      <BarraDeMenu tab={1} items={itemsMenu} />
       <div className="nutriapp-cadastronutri-inicio">
         <div className="ladoEsquerdo">
           <div className="foto">
@@ -151,7 +130,7 @@ function CadastroNutri() {
 
 
         <div className="ladoDireito">
-          <form onSubmit={createNewNutri}>
+          <form onSubmit={Add}>
 
             <div className="p-fluid p-formgrid p-grid">
               <div className="p-field p-col-12 p-md-6">
@@ -165,7 +144,7 @@ function CadastroNutri() {
 
               <div className="p-field  p-col-12 ">
                 <label htmlFor="datanascimento">Data de Nascimento</label>
-                <Calendar id="datanascimento" value={data} dateFormat="dd/mm/yy" locale='pt-br' monthNavigator yearNavigator mask="99/99/9999"
+                <Calendar id="datanascimento" value={dataNasc} dateFormat="dd/mm/yy" locale='pt-br' monthNavigator yearNavigator mask="99/99/9999"
                   yearRange="1920:2021" placeholder="Data de Nascimento" showIcon icon="pi pi-calendar" onChange={e => setData(e.value)} />
               </div>
 
@@ -175,8 +154,8 @@ function CadastroNutri() {
               </div>
 
               <div className="p-field p-col-12 ">
-                <label htmlFor="phone">Telefone</label>
-                <InputMask id="phone" value={telefone} onChange={e => setTelefone(e.value)} mask="99 9 9999-9999" placeholder="99-9999-9999" ></InputMask>
+                <label htmlFor="phone">cell</label>
+                <InputMask id="phone" value={cell} onChange={e => setcell(e.value)} mask="99 9 9999-9999" placeholder="99-9999-9999" ></InputMask>
               </div>
 
               <div className="p-field p-col-12">
@@ -197,18 +176,17 @@ function CadastroNutri() {
 
               <div className="p-field p-col-12">
                 <label className="mmselect">Especializações</label>
-                <MultiSelect showSelectAll={false} value={especializacoes} options={cities} onChange={(e) => setEscializacoes(e.value)} optionLabel="name" placeholder="Suas especializações" display="chip" />
+                <MultiSelect showSelectAll={false} value={especializacoes} options={especi} onChange={(e) => setEscializacoes(e.value)} optionLabel="name" placeholder="Suas especializações" display="chip" />
 
               </div>
 
             </div>
             <div className="p-d-flex p-jc-between">
-              <Button id="bt2" label="Voltar" icon="pi pi-arrow-left" iconPos="left" />
-              <Button type="submit" id="bt" label="Salvar" icon="pi pi-save"  iconPos="left" ></Button>
+              <Link to="/listaNutri"><Button id="bt2" label="Voltar" icon="pi pi-arrow-left" iconPos="left" /></Link>
+              <Button type="submit" id="bt" label="Salvar" icon="pi pi-save" onSubmit={Add} iconPos="left" ></Button>
             </div>
           </form>
-
-
+'
         </div>
 
       </div>

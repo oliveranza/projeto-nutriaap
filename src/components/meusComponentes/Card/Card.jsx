@@ -1,7 +1,7 @@
 import { Button } from 'primereact/button'
 import React from 'react'
 import './Card.css'
-import fotos from "../../../assets/male.png"
+import foto from "../../../assets/default.png"
 
 
 export default function Card(props) {
@@ -11,7 +11,7 @@ export default function Card(props) {
 
         <div className="nutriapp-card">
             <div className="divFoto">
-                <img src={props.foto || fotos} alt="foto" className="foto"/>
+                <img src={props.foto || foto} alt="foto" className="foto"/>
             </div>
 
             <div className="info1">
