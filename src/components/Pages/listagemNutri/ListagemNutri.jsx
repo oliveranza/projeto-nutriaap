@@ -9,6 +9,10 @@ import foto1 from "../../../assets/female.png"
 import foto2 from "../../../assets/foto1.png"
 import foto3 from "../../../assets/foto3.png"
 import foto4 from "../../../assets/foto2.png"
+import { useState } from 'react';
+import api from '../../../services/api';
+import { useEffect } from 'react';
+import { getAllByDisplayValue } from '@testing-library/react';
 
 
 
@@ -22,6 +26,22 @@ function ListagemNutri() {
   ]
 
 
+  const [nutris ,setNutri] = useState([]);
+
+    useEffect(() => {
+      api.get("http://localhost:8080/api/nutricionistas")
+      .then((response) =>{
+        // console.log(response.data)
+        setNutri(response.data);
+      }).catch((err) => {
+        console.log("ops! ocorreu um erro" + err)
+      })
+    },[]);
+    
+
+
+
+
   /* é só carrega as informações do back e passa os valores
      das informações dos nutricionistas para dentro de cada propriedade do Card
   */
@@ -31,19 +51,18 @@ function ListagemNutri() {
   for (let i = 0; i < 4; i++) {
     cards.push(<Card
         foto={fotos[i]}
-        nome="Nome de Teste da Silva"
-        dtNasc="25/01/1999"
+        nome={`${nutris[i].nome +" "+nutris[i].sobreNome||""}`}
+        dtNasc={`${nutris[i].dataNasc||""}`}
         genero="Masculino"
-        crn="0 12345/x"
-        tel="(83) 9 9999-9999"
-        email="exemplo@email.com"
+        crn={`${nutris[i].crn||""}`}
+        tel={`${nutris[i].cell||""}`}
+        email={`${nutris[i].email||""}`}
     />)
   }
 
 
 
   return (
-
     <div className="nutriapp-ListagemNutri">
       <BarraDeMenu tab={1} items={itemsMenu} />
 

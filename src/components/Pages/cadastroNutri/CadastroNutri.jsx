@@ -25,8 +25,6 @@ function CadastroNutri() {
   
   const [nome, setNome] = useState('');
   const [sobreNome, setSobreNome] = useState('');
-  
-  
   const [telefone, setTelefone] = useState(null);
   const [especializacoes, setEscializacoes] = useState(null);
   const [genero, setGenero] = useState(null);
@@ -43,12 +41,8 @@ function CadastroNutri() {
       return ([nome,sobreNome])
   }
  
-/* 
-  const [especializacoes, setEscializacoes] = useState(null);
-  const [genero, setGenero] = useState(null);
-  const [data, setData] = useState(null); */
 
- useEffect(() => {
+/*  useEffect(() => {
     api
       .post("http://localhost:8080/api/nutricionista", {
         nome,
@@ -59,12 +53,12 @@ function CadastroNutri() {
         console.log("ops! ocorreu um erro" + err)
       })
 
-  }, )
+  }, ) */
 
 
 
 
-    /* function valuesIniciais (){
+    function valuesIniciais (){
         // return ([nome,sobreNome])
         return{nome, sobreNome}
     }
@@ -74,15 +68,13 @@ function CadastroNutri() {
     
     try {
       alert('Entrou no TRY');
-       const response = api.post('http://localhost:8080/api/nutricionista',{nome, sobreNome});
+       const response = api.post('http://localhost:8080/api/nutricionista',valuesIniciais);
       
     } catch (error) {
       alert('Erro ao tentar salvar um novo usuario');
     }
-  } */
-
-  function Form() {
   }
+
   const cities = [
     { name: 'Alergias alimentares', code: 0 },
     { name: 'Doenças autoimunes', code: 1 },
@@ -159,7 +151,7 @@ function CadastroNutri() {
 
 
         <div className="ladoDireito">
-          <form onSubmit={useEffect}>
+          <form onSubmit={createNewNutri}>
 
             <div className="p-fluid p-formgrid p-grid">
               <div className="p-field p-col-12 p-md-6">
@@ -212,7 +204,7 @@ function CadastroNutri() {
             </div>
             <div className="p-d-flex p-jc-between">
               <Button id="bt2" label="Voltar" icon="pi pi-arrow-left" iconPos="left" />
-              <Button type="submit" id="bt" label="Salvar" icon="pi pi-save" onClick={useEffect} iconPos="left" ></Button>
+              <Button type="submit" id="bt" label="Salvar" icon="pi pi-save"  iconPos="left" ></Button>
             </div>
           </form>
 
