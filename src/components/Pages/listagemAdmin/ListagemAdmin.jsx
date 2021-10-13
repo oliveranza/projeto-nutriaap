@@ -4,21 +4,17 @@ import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 
 import 'primeflex/primeflex.css';
-import './ListagemNutri.css'
+import './ListagemAdmin.css'
 
 import BarraDeMenu from '../../meusComponentes/BarraDeMenu/BarraDeMenu';
 import Card from '../../meusComponentes/Card/Card';
-// import foto1 from "../../../assets/female.png"
-// import foto2 from "../../../assets/foto1.png"
-// import foto3 from "../../../assets/foto3.png"
-// import foto4 from "../../../assets/foto2.png"
-// import foto5 from "../../../assets/foto6.png"
+import defaultAdmin from "../../../assets/defaultAdmin.png"
 import api from '../../../services/api';
 
 
 
 
-function ListagemNutri() {
+function ListagemAdmin() {
 
 
   /** ================================================================================
@@ -74,7 +70,7 @@ function ListagemNutri() {
   let cards = [];
   for (let i = 0; i < nutris.length; i++) {
     cards.push(<Card
-      // foto={fotos[i]}
+      foto={defaultAdmin}
       nome={nutris[i].nome+" "+nutris[i].sobreNome}
       dtNasc={nutris[i].dataNasc}
       genero={nutris[i].genero}
@@ -87,8 +83,8 @@ function ListagemNutri() {
 
 
   return (
-    <div className="nutriapp-ListagemNutri">
-      <BarraDeMenu tab={1} items={itemsMenu} />
+    <div className="nutriapp-ListagemAdmin">
+      <BarraDeMenu tab={2} items={itemsMenu} />
 
       <div className="corpo">
 
@@ -103,7 +99,7 @@ function ListagemNutri() {
           </div>
 
           <div className='botaocadastro'>
-            <Link to="/cadastroNutri"><Button id="bt" label="cadastrar Nutricionista" icon="pi pi-id-card" iconPos="left" /></Link>
+            <Link to=""><Button id="bt" label="cadastrar Administrador" icon="pi pi-id-card" iconPos="left" /></Link>
           </div>
 
         </div>
@@ -116,4 +112,4 @@ function ListagemNutri() {
 
 }
 
-export default ListagemNutri
+export default ListagemAdmin

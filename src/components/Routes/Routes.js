@@ -6,6 +6,7 @@ import CadastroNutri from "../Pages/cadastroNutri/CadastroNutri";
 import InicioAdmin from "../Pages/inicioAdmin/InicioAdmin";
 import InicioNutri from "../Pages/InicioNutri/InicioNutri";
 import ListagemNutri from "../Pages/listagemNutri/ListagemNutri";
+import ListagemAdmin from "../Pages/listagemAdmin/ListagemAdmin";
 import Login from "../Pages/login/Login";
 import Recuperacao from "../Pages/Recupercaosenha/Recuperacao";
 
@@ -24,6 +25,7 @@ const Routes = () => (
                 <PrivateRoute path="/inicioNutri" component={InicioNutri} />
                 <PrivateRoute path="/inicioAdmin" component={InicioAdmin} />
                 <PrivateRoute path="/listaNutri" component={ListagemNutri} />
+                <PrivateRoute path="/listaAdmin" component={ListagemAdmin} />
                 <PrivateRoute path="/cadastroNutri" component={CadastroNutri} />
             </StoreProvider>
 

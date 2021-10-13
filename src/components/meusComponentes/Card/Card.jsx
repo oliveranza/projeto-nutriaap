@@ -1,7 +1,7 @@
 import { Button } from 'primereact/button'
 import React from 'react'
 import './Card.css'
-import foto from "../../../assets/default.png"
+import foto from "../../../assets/defaultNutri.png"
 
 
 export default function Card(props) {

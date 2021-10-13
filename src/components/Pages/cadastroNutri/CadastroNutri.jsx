@@ -113,9 +113,6 @@ function CadastroNutri() {
 
 
   return (
-
-
-
     <div className="nutriapp-cadastronutri">
       <BarraDeMenu tab={1} items={itemsMenu} />
       <div className="nutriapp-cadastronutri-inicio">

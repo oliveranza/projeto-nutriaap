@@ -12,7 +12,7 @@ import './Login.css';
 
 function Login() {
     const [valor, setState] = useState(false);
-    const { token ,setToken } = useContext(StoreContext);
+    const {token ,setToken } = useContext(StoreContext);
     const history = useHistory();
 
     let [email, setEmail] = useState();
