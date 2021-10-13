@@ -12,7 +12,7 @@ export default function InicioNutri() {
     return (
         <div className="nutriapp-inicioNutri">
             <div className="header">
-                <BarraDeMenu tab={0}/>
+                <BarraDeMenu tipo="nutri"tab={0}/>
             </div>
             <div className="InicioBody">
                 

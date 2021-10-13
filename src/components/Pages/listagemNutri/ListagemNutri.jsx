@@ -21,19 +21,6 @@ import api from '../../../services/api';
 function ListagemNutri() {
 
 
-  /** ================================================================================
-   *                              menu
-   */
-  const itemsMenu = [
-    { label: 'Início', icon: 'pi pi-home', url: '/inicioAdmin' },
-    { label: 'Profissionais de Nutrição', icon: 'pi pi-id-card', url: '/listaNutri' },
-    { label: 'Administradores', icon: 'pi pi-users', url: '/listaAdmin' },
-    { label: 'Relatórios', icon: 'pi pi-chart-line', url: '/inicioNutri' },
-  ]
-  /** ================================================================================*/
-  
-
-
   /** =================================================================================
    *                            conexão com back
    */
@@ -88,7 +75,7 @@ function ListagemNutri() {
 
   return (
     <div className="nutriapp-ListagemNutri">
-      <BarraDeMenu tab={1} items={itemsMenu} />
+      <BarraDeMenu tab={1} tipo="admin" />
 
       <div className="corpo">
 

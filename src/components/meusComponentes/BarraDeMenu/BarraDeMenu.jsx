@@ -8,7 +8,12 @@ import './BarraDeMenu.css'
 
 export default class BarraDeMenu extends Component {
 
-    
+    // const menu = [
+    //     { label: 'Início', icon: 'pi pi-home', url: '/inicioAdmin'},
+    //     { label: 'Profissionais de Nutrição', icon: 'pi pi-id-card', url: '/listaNutri',  },
+    //     { label: 'Administradores', icon: 'pi pi-users', url: '' },
+    //     { label: 'Relatórios', icon: 'pi pi-chart-line', url: '/inicioNutri' },
+    // ]
     
     constructor(props) {
         super(props)
@@ -18,9 +23,16 @@ export default class BarraDeMenu extends Component {
             { label: 'Agenda', icon: 'pi pi-calendar', url: '' },
             { label: 'Chat', icon: 'pi pi-comments', url: '/inicioAdmin' }
         ]
+
+        this.itemsAdmin = [
+                { label: 'Início', icon: 'pi pi-home', url: '/inicioAdmin'},
+                { label: 'Profissionais de Nutrição', icon: 'pi pi-id-card', url: '/listaNutri',  },
+                { label: 'Administradores', icon: 'pi pi-users', url: '/listaAdmin' },
+                { label: 'Relatórios', icon: 'pi pi-chart-line', url: '/inicioNutri' },
+            ]
         
         this.state = {
-            items: this.props.items || this.itemsDefault,
+            items: this.selectItems() || this.itemsDefault,
             tab: this.props.tab || 0,
         }
 
@@ -29,6 +41,13 @@ export default class BarraDeMenu extends Component {
         
     };
 
+    selectItems(){
+        if(this.props.tipo==="nutri"){
+            return  this.itemsDefault
+        }else if(this.props.tipo ==="admin"){
+            return this.itemsAdmin
+        }
+    }
 
     selectTab(e) {
         this.setState({ tab: e })
@@ -37,6 +56,7 @@ export default class BarraDeMenu extends Component {
 
     render() {
         return (
+            this.selectItems(),
             <div className="nutriapp-menu" >
                 <h1 style={{ "color": "white" }}>NUTRIAPP</h1>
                 <TabMenu model={this.state.items} activeIndex={this.state.tab} onTabChange={e => this.selectTab(e.index)} id="centermenu" />

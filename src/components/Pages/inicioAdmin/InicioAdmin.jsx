@@ -6,18 +6,9 @@ import "./InicioAdmin.css";
 
 export default function InicioAdmin(props) {
 
-
-    const menu = [
-        { label: 'Início', icon: 'pi pi-home', url: '/inicioAdmin'},
-        { label: 'Profissionais de Nutrição', icon: 'pi pi-id-card', url: '/listaNutri',  },
-        { label: 'Administradores', icon: 'pi pi-users', url: '' },
-        { label: 'Relatórios', icon: 'pi pi-chart-line', url: '/inicioNutri' },
-    ]
-
-
     return (
         <div className="inicio">
-            <BarraDeMenu items={menu} tab={0} />
+            <BarraDeMenu tipo="admin" tab={0} />
             <div className="inicioBody">
 
                 <div className="cima">
