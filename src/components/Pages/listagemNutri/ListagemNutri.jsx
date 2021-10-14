@@ -19,13 +19,12 @@ import api from '../../../services/api';
 
 
 function ListagemNutri() {
-
+  
+  const [nutris, setNutri] = useState([]);
 
   /** =================================================================================
    *                            conexão com back
    */
-
-  const [nutris, setNutri] = useState([]);
 
   useEffect(() => {
     api.get("http://localhost:8080/api/nutricionistas")
@@ -43,14 +42,14 @@ function ListagemNutri() {
  *
  */
 
-   useEffect(()=>{
-     fetch('./nutricionistas.json',{
-       headers:{
-            Accept: "application/json"
-       }
-     }).then(res => res.json())
-      .then(res => setNutri(res.data))
-   },[]);
+  //  useEffect(()=>{
+  //    fetch('./nutricionistas.json',{
+  //      headers:{
+  //           Accept: "application/json"
+  //      }
+  //    }).then(res => res.json())
+  //     .then(res => setNutri(res.data))
+  //  },[]);
 
 
   /* ==================================================================================
@@ -60,8 +59,9 @@ function ListagemNutri() {
 
   let cards = [];
   for (let i = 0; i < nutris.length; i++) {
-    cards.push(<Card
+      cards.push(<Card key={nutris[i].id}
       // foto={fotos[i]}
+      id={nutris[i].id}
       nome={nutris[i].nome+" "+nutris[i].sobreNome}
       dtNasc={nutris[i].dataNasc}
       genero={nutris[i].genero}

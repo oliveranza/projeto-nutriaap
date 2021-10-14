@@ -21,13 +21,13 @@ function ListagemAdmin() {
    *                            conexão com back
    */
 
-  const [nutris, setNutri] = useState([]);
+  const [nutris,setAdmin] = useState([]);
 
   useEffect(() => {
-    api.get("http://localhost:8080/api/nutricionistas")
+    api.get("http://localhost:8080/api/admins")
       .then((response) => {
         console.log(response.data)
-        setNutri(response.data);
+      setAdmin(response.data);
       }).catch((err) => {
         console.log("ops! ocorreu um erro" + err)
       })
@@ -40,12 +40,12 @@ function ListagemAdmin() {
  */
 
    useEffect(()=>{
-     fetch('./nutricionistas.json',{
+     fetch('./administradores.json',{
        headers:{
             Accept: "application/json"
        }
      }).then(res => res.json())
-      .then(res => setNutri(res.data))
+      .then(res =>setAdmin(res.data))
    },[]);
 
 

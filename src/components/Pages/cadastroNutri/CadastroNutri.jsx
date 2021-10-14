@@ -43,7 +43,7 @@ function CadastroNutri() {
         cell,
         crn,
       })
-      alert("Salva com sucesso!")
+      alert("Salvo com sucesso!")
       console.log(response)
       history.push('/listaNutri')
     } catch (error) {
@@ -82,12 +82,6 @@ function CadastroNutri() {
     { name: 'Transtornos alimentares', code: 24 }
 
   ];
-  const itemsMenu = [
-    { label: 'Início', icon: 'pi pi-home', url: '/inicioAdmin' },
-    { label: 'Profissionais de Nutrição', icon: 'pi pi-id-card', url: '/listaNutri' },
-    { label: 'Administradores', icon: 'pi pi-users', url: '' },
-    { label: 'Relatórios', icon: 'pi pi-chart-line', url: '/inicioNutri' },
-  ]
 
   const generos = [
     { label: "Masculino" },
@@ -114,7 +108,7 @@ function CadastroNutri() {
 
   return (
     <div className="nutriapp-cadastronutri">
-      <BarraDeMenu tab={1} items={itemsMenu} />
+      <BarraDeMenu tab={1} tipo="admin" />
       <div className="nutriapp-cadastronutri-inicio">
         <div className="ladoEsquerdo">
           <div className="foto">
