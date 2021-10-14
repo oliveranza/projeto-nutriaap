@@ -9,7 +9,7 @@ export default function Card(props) {
 
     async function excluir(){
         console.log(props.id)
-        if(window.confirm('Tem certeza que deseja excluir esse usuário?')){
+        if(window.confirm(`Tem certeza que deseja excluir o usuário: ${props.nome}?`)){
             api.delete(`http://localhost:8080/api/nutricionista/${props.id}`)
             .then((response)=>{
                 console.log(response.data)
@@ -49,7 +49,7 @@ export default function Card(props) {
 
                 <div className='btPequeno'>
                     <Button id="btPerfil"  icon="pi pi-user" iconPos="left" />
-                    <Button id="btexcluir"  icon="pi pi-user-minus" iconPos="left" onClick={excluir}/>
+                    <Button id="btApagar"  icon="pi pi-user-minus" iconPos="left" onClick={excluir}/>
                 </div>
             </div>
 

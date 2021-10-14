@@ -58,6 +58,9 @@ function ListagemNutri() {
   // const fotos = [foto1, foto2, foto3, foto4, foto5]
 
   let cards = [];
+  if(nutris.length===0){
+    cards.push(<h2>Nenhum profissional de nutrição cadastrado ainda.  😅   Cadastre agora clicando no botão ao lado → </h2>)
+  }
   for (let i = 0; i < nutris.length; i++) {
       cards.push(<Card key={nutris[i].id}
       // foto={fotos[i]}
@@ -95,6 +98,9 @@ function ListagemNutri() {
 
         </div>
         <div className="fundobranco">
+          
+
+          
           {cards}
         </div>
       </div>
