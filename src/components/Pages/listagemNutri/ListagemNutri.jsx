@@ -9,10 +9,6 @@ import './ListagemNutri.css'
 import BarraDeMenu from '../../meusComponentes/BarraDeMenu/BarraDeMenu';
 import Card from '../../meusComponentes/Card/Card';
 // import foto1 from "../../../assets/female.png"
-// import foto2 from "../../../assets/foto1.png"
-// import foto3 from "../../../assets/foto3.png"
-// import foto4 from "../../../assets/foto2.png"
-// import foto5 from "../../../assets/foto6.png"
 import api from '../../../services/api';
 
 
@@ -27,7 +23,7 @@ function ListagemNutri() {
    */
 
   useEffect(() => {
-    api.get("http://localhost:8080/api/nutricionistas")
+    api.get("http://localhost:8080/api/nutricionista/getAll")
       .then((response) => {
         console.log(response.data)
         setNutri(response.data);
@@ -52,27 +48,27 @@ function ListagemNutri() {
   //  },[]);
 
 
+  // const fotos = [foto1, foto2, foto3, foto4, foto5]
+  
   /* ==================================================================================
     pssando as informações dos nutris para dentro dos cards (LISTAGEM)
   */
-  // const fotos = [foto1, foto2, foto3, foto4, foto5]
-
-  let cards = [];
-  if(nutris.length===0){
-    cards.push(<h2>Nenhum profissional de nutrição cadastrado ainda.  😅   Cadastre agora clicando no botão ao lado → </h2>)
-  }
-  for (let i = 0; i < nutris.length; i++) {
-      cards.push(<Card key={nutris[i].id}
-      // foto={fotos[i]}
-      id={nutris[i].id}
-      nome={nutris[i].nome+" "+nutris[i].sobreNome}
-      dtNasc={nutris[i].dataNasc}
-      genero={nutris[i].genero}
-      crn={nutris[i].crn}
-      tel={nutris[i].cell}
-      email={nutris[i].email}
-    />)
-  }
+  // const cards = [];
+  // if(nutris.length===0){
+  //   cards.push(<div>Nenhum profissional de nutrição cadastrado ainda.  😅   Cadastre agora clicando no botão ao lado → </div>)
+  // }
+  // for (let i = 0; i < nutris.length; i++) {
+  //     cards.push(<Card
+  //     // foto={fotos[i]}
+  //     id={nutris[i].id}
+  //     nome={nutris[i].nome+" "+nutris[i].sobreNome}
+  //     dtNasc={nutris[i].dataNasc}
+  //     genero={nutris[i].genero}
+  //     crn={nutris[i].crn}
+  //     tel={nutris[i].cell}
+  //     email={nutris[i].email}
+  //   />)
+  // }
 /**==================================================================================== */
 
 
@@ -98,10 +94,20 @@ function ListagemNutri() {
 
         </div>
         <div className="fundobranco">
+          { nutris.length===0?
+          <h2>Nenhum profissional de nutrição cadastrado ainda. 😅   Cadastre agora clicando no botão ao lado → </h2>:
+          nutris.map((nutri, i)=> 
+          <Card
+            key={i} 
+            id={nutri.id}
+            nome={nutri.nome+" "+nutri.sobreNome}
+            dtNasc={nutri.dataNasc}
+            genero={nutri.genero}
+            crn={nutri.crn}
+            tel={nutri.cell}
+            email={nutri.email}/>
+           )}
           
-
-          
-          {cards}
         </div>
       </div>
     </div>

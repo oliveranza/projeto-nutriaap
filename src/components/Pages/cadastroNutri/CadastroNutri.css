@@ -2,6 +2,14 @@
   width: 100%;
 }
 
+.nutriapp-cadastronutri input:invalid{
+  border-color: red;
+}
+
+.nutriapp-cadastronutri input:valid{
+  border-color:limegreen;
+}
+
 .nutriapp-cadastronutri-inicio{
   display: flex;
   flex-direction: row;

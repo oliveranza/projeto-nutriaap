@@ -8,13 +8,17 @@ import api from '../../../services/api'
 export default function Card(props) {
 
     async function excluir(){
-        console.log(props.id)
         if(window.confirm(`Tem certeza que deseja excluir o usuário: ${props.nome}?`)){
-            api.delete(`http://localhost:8080/api/nutricionista/${props.id}`)
+            await api.delete(`http://localhost:8080/api/nutricionista/${props.id}`)
             .then((response)=>{
                 console.log(response.data)
                 alert("Excluido com sucesso!")
                 window.location.reload()
+            })
+            .catch((error) =>{
+                alert("Erro ao excluir este usuário!")
+                console.log(`error: ${error}`)
+
             })
         }
     }
@@ -23,7 +27,7 @@ export default function Card(props) {
 
     return (
 
-        <div className="nutriapp-card">
+        <div className="nutriapp-card" key={props.id}>
             <div className="divFoto">
                 <img src={props.foto || foto} alt="foto" className="foto"/>
             </div>

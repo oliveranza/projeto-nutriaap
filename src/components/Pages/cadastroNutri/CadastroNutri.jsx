@@ -20,37 +20,41 @@ import api from "../../../services/api";
 function CadastroNutri() {
   const history = useHistory();
 
-
-  const [nome, setNome] = useState('');
-  const [sobreNome, setSobreNome] = useState('');
-  const [dataNasc, setData] = useState('');
-  const [email, setEmail] = useState('');
-  const [cell, setcell] = useState(Number);
-  const [crn, setCrn] = useState('');
-  const [especializacoes, setEscializacoes] = useState('');
-  const [genero, setGenero] = useState('');
-  const [especialidade, setEspecialidade] = useState('');
+  const [nome, setNome] = useState(null);
+  const [sobreNome, setSobreNome] = useState(null);
+  const [dataNasc, setData] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [cell, setCell] = useState(Number);
+  const [crn, setCrn] = useState(null);
+  const [especializacoes, setEscializacoes] = useState(null);
+  const [genero, setGenero] = useState(null);
+  const [especialidade, setEspecialidade] = useState(null);
 
 
   async function Add(e) {
     e.preventDefault()
-    try {
-      const response = api.post("http://localhost:8080/api/nutricionista", {
-        nome,
-        sobreNome,
-        dataNasc,
-        email,
-        cell,
-        crn,
-      })
-      alert("Salvo com sucesso!")
-      console.log(response)
-      history.push('/listaNutri')
-    } catch (error) {
-      alert("falhou")
-      console.log("ops! ocorreu um erro" + error)
-      
-    }   
+    
+    
+    
+    const usuario = {
+      nome: nome,
+      sobreNome: sobreNome,
+      dataNasc: dataNasc,
+      email: email,
+      cell: cell,
+      crn: crn
+    }
+
+    await api.post("http://localhost:8080/api/nutricionista", usuario)
+      .then(response => {
+        alert("Salvo com sucesso!")
+        history.push('/listaNutri')
+        console.log(response)
+    })
+      .catch(error=> {
+        alert(`oops! ocorreu um erro. Tente novamente mais tarde`)
+        console.log("oops! ocorreu um erro. " + error)
+    })
 }
 
 
@@ -126,55 +130,56 @@ function CadastroNutri() {
             <div className="p-fluid p-formgrid p-grid">
               <div className="p-field p-col-12 p-md-6">
                 <label htmlFor="firstname2">Nome</label>
-                <InputText id="firstname2" type="text" placeholder="DIgite o nome" value={nome} onChange={e => setNome(e.target.value)} />
+                <InputText id="firstname2"  type="text" placeholder="Digite o nome" value={nome} onChange={e => setNome(e.target.value)} required minLength="2" maxLength="25"/>
               </div>
               <div className="p-field p-col-12 p-md-6">
                 <label htmlFor="lastname2">Sobrenome</label>
-                <InputText id="lastname2" type="text" placeholder="Digite o sobrenome" value={sobreNome} onChange={e => setSobreNome(e.target.value)} />
+                <InputText id="lastname2" type="text" placeholder="Digite o sobrenome" value={sobreNome} onChange={e => setSobreNome(e.target.value)} required minLength="2" maxLength="80"/>
               </div>
 
               <div className="p-field  p-col-12 ">
                 <label htmlFor="datanascimento">Data de Nascimento</label>
                 <Calendar id="datanascimento" value={dataNasc} dateFormat="dd/mm/yy" locale='pt-br' monthNavigator yearNavigator mask="99/99/9999"
-                  yearRange="1920:2021" placeholder="Data de Nascimento" showIcon icon="pi pi-calendar" onChange={e => setData(e.value)} />
+                  yearRange="1920:2021" placeholder="Data de Nascimento" showIcon icon="pi pi-calendar" onChange={e => setData(e.value)} required/>
               </div>
 
               <div className="p-field p-col-12 ">
                 <label htmlFor="genero">Gênero</label>
-                <Dropdown inputId="genero" value={genero} options={generos} onChange={e => setGenero(e.value)} placeholder="Selecione" />
+                <Dropdown inputId="genero" value={genero} options={generos} onChange={e => setGenero(e.value)} placeholder="Selecione" required/>
               </div>
 
               <div className="p-field p-col-12 ">
                 <label htmlFor="phone">cell</label>
-                <InputMask id="phone" value={cell} onChange={e => setcell(e.value)} mask="99 9 9999-9999" placeholder="99-9999-9999" ></InputMask>
+                <InputMask id="phone" value={cell} onChange={e => setCell(e.value)} mask="99 9 9999-9999" placeholder="99-9999-9999" required></InputMask>
               </div>
 
               <div className="p-field p-col-12">
                 <label htmlFor="email">E-mail</label>
-                <InputText id="email" value={email} onChange={e => setEmail(e.value)} type="text" placeholder="Digite o e-mail" />
+                <InputText id="email" value={email} onChange={e => setEmail(e.target.value)} type="email" placeholder="Digite o e-mail" required requiredmaxLength="80"/>
               </div>
 
 
               <div className="p-field p-col-12">
                 <label htmlFor="especialidade">Especialidade</label>
-                <InputText id="especialidade" value={especialidade} onChange={e => setEspecialidade(e.value)} type="text" placeholder="Nutricionista,Medico" />
+                <InputText id="especialidade" value={especialidade} onChange={e => setEspecialidade(e.value)} type="text" placeholder="Nutricionista,Medico" required/>
               </div>
 
               <div className="p-field p-col-12 ">
                 <label htmlFor="crn">CRN</label>
-                <InputText id="crn" value={crn} onChange={e => setCrn(e.value)} type="text" placeholder="1 23456/x" />
+                <InputText id="crn" value={crn} onChange={e => setCrn(e.target.value)} type="text" placeholder="1 23456/x" required/>
               </div>
 
               <div className="p-field p-col-12">
                 <label className="mmselect">Especializações</label>
-                <MultiSelect showSelectAll={false} value={especializacoes} options={especi} onChange={(e) => setEscializacoes(e.value)} optionLabel="name" placeholder="Suas especializações" display="chip" />
+                <MultiSelect showSelectAll={false} value={especializacoes} options={especi} onChange={(e) => setEscializacoes(e.value)}
+                      optionLabel="name" placeholder="Suas especializações" display="chip"/>
 
               </div>
 
             </div>
             <div className="p-d-flex p-jc-between">
               <Link to="/listaNutri"><Button id="bt2" label="Voltar" icon="pi pi-arrow-left" iconPos="left" /></Link>
-              <Button type="submit" id="bt" label="Salvar" icon="pi pi-save" onSubmit={Add} iconPos="left" ></Button>
+              <Button type="submit" id="bt" label="Salvar" icon="pi pi-save" onSubmit={Add} iconPos="left" autoFocus></Button>
             </div>
           </form>
 '

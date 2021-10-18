@@ -12,7 +12,7 @@ import './Login.css';
 
 function Login() {
     const [valor, setState] = useState(false);
-    const {token ,setToken } = useContext(StoreContext);
+    const {token1 ,setToken } = useContext(StoreContext);
     const history = useHistory();
 
     let [email, setEmail] = useState();
@@ -44,17 +44,22 @@ function Login() {
 
 
     function onSubmit(event) {
-        event.preventDefault()
 
         const { token } = fazerLogin(email, senha);
         if (token) {
-            setToken(token);
+            setToken(token)
+            console.log(token1)
             return history.push('/inicioAdmin')
         } else {
             setSenha("")
         }
     }
-    
+    function keyHandler(e){
+        if(e.code ==="Enter" || e.code === "NumpadEnter"){
+            return onSubmit()
+        }
+
+    }
     
     
     return (
@@ -84,7 +89,7 @@ function Login() {
                 <div className="Senha">
                     <span className="p-float-label p-input-icon-left p-input-icon-right">
                         <i className="pi pi-lock" id="senhaIcon" />
-                        <InputText id="camposenha" type={visible} value={senha} onChange={e => setSenha(e.target.value)} />
+                        <InputText id="camposenha" type={visible} value={senha} onKeyDown={(e) => keyHandler(e)} onChange={e => setSenha(e.target.value)} />
                         <i><button className={eye} id="eyeIcon" onClick={e => visivel()} style={{ background: "none", border: "none" }} /></i>
                         <label htmlFor="lefticon">Senha</label>
                     </span>
@@ -100,7 +105,7 @@ function Login() {
                 </div>
 
                 <div className="Botao">
-                    <Button id="bt" label="Entrar" icon="pi pi-sign-in" type="submit" onClick={onSubmit} iconPos="left" />
+                    <Button id="bt" label="Entrar" icon="pi pi-sign-in" type="submit" onClick={onSubmit}  iconPos="left" />
                 </div>
 
             </div>
