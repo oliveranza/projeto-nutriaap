@@ -7,7 +7,7 @@ import "./InicioAdmin.css";
 export default function InicioAdmin(props) {
 
     return (
-        <div className="inicio">
+        <div className="nutriap-inicioadmin">
             <BarraDeMenu tipo="admin" tab={0} />
             <div className="inicioBody">
 

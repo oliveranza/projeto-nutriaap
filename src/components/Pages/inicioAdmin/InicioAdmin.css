@@ -1,10 +1,10 @@
-.cima{
+.nutriap-inicioadmin .cima{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
-.esquerda{
+.nutriap-inicioadmin .esquerda{
     height: 40%;
     width: 58vw;
     display: flex;
@@ -12,10 +12,10 @@
     justify-content: center;
     align-items: center;
 }
-.esquerda.p-chart{
+.nutriap-inicioadmin .esquerda.p-chart{
     max-height: 40%;
 }
-.p-chart canvas{
+.nutriap-inicioadmin .p-chart canvas{
     margin: 0px;
     padding: 0px;
     display: flex;
@@ -23,9 +23,7 @@
     max-height: 300px;
 }
 
-
-
-.direita{
+.nutriap-inicioadmin .direita{
     margin: 10px;
     width: 38vw;
     height: 100%;
@@ -35,15 +33,15 @@
     align-items: center;
 }
 
-.direita .p-chart{
-    width: 100vw;
+.nutriap-inicioadmin .direita .p-chart{
+    width: 50%;
 }
 
-.direita .p-chart canvas{
+.nutriap-inicioadmin .direita .p-chart canvas{
     padding: 30px;
 }
 
-.baixo{
+.nutriap-inicioadmin .baixo{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -51,11 +49,11 @@
     width: 100vw;
 }
 
-.baixo .p-chart{
+.nutriap-inicioadmin .baixo .p-chart{
     margin: 10px
 }
 
-.baixo .p-chart canvas{
+.nutriap-inicioadmin .baixo .p-chart canvas{
     width: 89vw;
     max-height: 270px
 }

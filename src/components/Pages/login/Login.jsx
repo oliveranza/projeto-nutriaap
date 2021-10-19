@@ -43,7 +43,7 @@ function Login() {
 
 
 
-    function onSubmit(event) {
+    function onSubmitHandler(event) {
 
         const { token } = fazerLogin(email, senha);
         if (token) {
@@ -55,10 +55,8 @@ function Login() {
         }
     }
     function keyHandler(e){
-        if(e.code ==="Enter" || e.code === "NumpadEnter"){
-            return onSubmit()
-        }
-
+        if(e.code ==="Enter" || e.code === "NumpadEnter")
+            onSubmitHandler()
     }
     
     
@@ -105,7 +103,7 @@ function Login() {
                 </div>
 
                 <div className="Botao">
-                    <Button id="bt" label="Entrar" icon="pi pi-sign-in" type="submit" onClick={onSubmit}  iconPos="left" />
+                    <Button id="bt" label="Entrar" icon="pi pi-sign-in" type="submit" onClick={onSubmitHandler}  iconPos="left" />
                 </div>
 
             </div>

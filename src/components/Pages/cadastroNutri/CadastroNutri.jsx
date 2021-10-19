@@ -26,38 +26,10 @@ function CadastroNutri() {
   const [email, setEmail] = useState(null);
   const [cell, setCell] = useState(Number);
   const [crn, setCrn] = useState(null);
-  const [especializacoes, setEscializacoes] = useState(null);
   const [genero, setGenero] = useState(null);
   const [especialidade, setEspecialidade] = useState(null);
-
-
-  async function Add(e) {
-    e.preventDefault()
-    
-    
-    
-    const usuario = {
-      nome: nome,
-      sobreNome: sobreNome,
-      dataNasc: dataNasc,
-      email: email,
-      cell: cell,
-      crn: crn
-    }
-
-    await api.post("http://localhost:8080/api/nutricionista", usuario)
-      .then(response => {
-        alert("Salvo com sucesso!")
-        history.push('/listaNutri')
-        console.log(response)
-    })
-      .catch(error=> {
-        alert(`oops! ocorreu um erro. Tente novamente mais tarde`)
-        console.log("oops! ocorreu um erro. " + error)
-    })
-}
-
-
+  const [especializacoes, setEscializacoes] = useState([]);
+  
   const especi = [
     { name: 'Alergias alimentares', code: 0 },
     { name: 'Doenças autoimunes', code: 1 },
@@ -84,17 +56,16 @@ function CadastroNutri() {
     { name: 'Saúde intestinal', code: 22 },
     { name: 'Terapia Intensiva', code: 23 },
     { name: 'Transtornos alimentares', code: 24 }
-
   ];
-
+  
   const generos = [
     { label: "Masculino" },
     { label: "Feminino" },
     { label: "Outro" },
     { label: "Prefere Não declarar" },
   ]
-
-
+  
+  
   /*=================================calendário ===================================//
   * 
   */
@@ -108,6 +79,37 @@ function CadastroNutri() {
     today: 'Hoje',
     clear: 'Claro'
   });
+  
+
+  async function CadastrarNovo(e) {
+    e.preventDefault()
+    const espe  = especializacoes.map(especi=>especi.name)
+    const gen = genero.label
+
+    const usuario = {
+      nome: nome,
+      sobreNome: sobreNome,
+      dataNasc: dataNasc,
+      email: email,
+      cell: cell,
+      crn: crn,
+      genero:gen,
+      especialidade:especialidade,
+      especializacoes: espe
+    }
+      
+    await api.post("http://localhost:8080/api/nutricionista", usuario)
+      .then(response => {
+        alert("Salvo com sucesso!")
+        history.push('/listaNutri')
+        console.log(response)
+    })
+      .catch(error=> {
+        alert(`oops! ocorreu um erro. tente novamente mais tarde`)
+        console.log("oops! ocorreu um erro. " + error)
+    })
+}
+
 
 
   return (
@@ -125,7 +127,7 @@ function CadastroNutri() {
 
 
         <div className="ladoDireito">
-          <form onSubmit={Add}>
+          <form onSubmit={CadastrarNovo}>
 
             <div className="p-fluid p-formgrid p-grid">
               <div className="p-field p-col-12 p-md-6">
@@ -145,7 +147,7 @@ function CadastroNutri() {
 
               <div className="p-field p-col-12 ">
                 <label htmlFor="genero">Gênero</label>
-                <Dropdown inputId="genero" value={genero} options={generos} onChange={e => setGenero(e.value)} placeholder="Selecione" required/>
+                <Dropdown inputId="genero" value={genero} options={generos} onChange={e => setGenero(e.target.value)} placeholder="Selecione" required/>
               </div>
 
               <div className="p-field p-col-12 ">
@@ -155,13 +157,13 @@ function CadastroNutri() {
 
               <div className="p-field p-col-12">
                 <label htmlFor="email">E-mail</label>
-                <InputText id="email" value={email} onChange={e => setEmail(e.target.value)} type="email" placeholder="Digite o e-mail" required requiredmaxLength="80"/>
+                <InputText id="email" value={email} onChange={e => setEmail(e.target.value)} type="email" placeholder="Digite o e-mail" required maxLength="80"/>
               </div>
 
 
               <div className="p-field p-col-12">
                 <label htmlFor="especialidade">Especialidade</label>
-                <InputText id="especialidade" value={especialidade} onChange={e => setEspecialidade(e.value)} type="text" placeholder="Nutricionista,Medico" required/>
+                <InputText id="especialidade" value={especialidade} onChange={e => setEspecialidade(e.target.value)} type="text" placeholder="Nutricionista,Medico" required/>
               </div>
 
               <div className="p-field p-col-12 ">
@@ -171,18 +173,20 @@ function CadastroNutri() {
 
               <div className="p-field p-col-12">
                 <label className="mmselect">Especializações</label>
-                <MultiSelect showSelectAll={false} value={especializacoes} options={especi} onChange={(e) => setEscializacoes(e.value)}
+                <MultiSelect showSelectAll={false} value={especializacoes} options={especi} onChange={(e) => setEscializacoes(e.target.value)}
                       optionLabel="name" placeholder="Suas especializações" display="chip"/>
 
               </div>
 
             </div>
             <div className="p-d-flex p-jc-between">
-              <Link to="/listaNutri"><Button id="bt2" label="Voltar" icon="pi pi-arrow-left" iconPos="left" /></Link>
-              <Button type="submit" id="bt" label="Salvar" icon="pi pi-save" onSubmit={Add} iconPos="left" autoFocus></Button>
+              <Link to="/listaNutri">
+                <Button type="button" id="bt2"  label="Voltar" icon="pi pi-arrow-left" iconPos="left" />
+              </Link>
+                <Button type="submit" id="bt" label="Salvar" icon="pi pi-save" iconPos="left" autoFocus></Button>
             </div>
           </form>
-'
+
         </div>
 
       </div>
