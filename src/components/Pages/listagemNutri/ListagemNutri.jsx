@@ -95,7 +95,7 @@ function ListagemNutri() {
         </div>
         <div className="fundobranco">
           { nutris.length===0?
-          <h3>Nenhum profissional de nutrição cadastrado ainda. 😅   Cadastre agora clicando no botão ao lado → </h3>:
+          <h3>Nenhum profissional de nutrição cadastrado.😅 Cadastre agora clicando no botão ao lado ➔  </h3>:
           nutris.map((nutri, i)=> 
           <Card
             key={i} 

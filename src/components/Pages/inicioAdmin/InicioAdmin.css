@@ -1,60 +1,83 @@
+.nutriap-inicioadmin .inicioBody{
+    min-height: 90vh;
+    margin: 0 14%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    /* background-color: tomato; */
+}
+
 .nutriap-inicioadmin .cima{
+    width: 100%;
+    height: 30vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    /* background-color: turquoise; */
 }
-.nutriap-inicioadmin .esquerda{
-    height: 40%;
-    width: 58vw;
+.nutriap-inicioadmin .cima .esquerda{
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* background-color: turquoise; */
 }
-.nutriap-inicioadmin .esquerda.p-chart{
-    max-height: 40%;
+.nutriap-inicioadmin .cima .esquerda .p-chart{
+    min-height: 100%;
+    min-width: 50%;
 }
-.nutriap-inicioadmin .p-chart canvas{
+.nutriap-inicioadmin .cima .esquerda .p-chart canvas{
     margin: 0px;
     padding: 0px;
     display: flex;
-    width: 50vw;
+    width: 65rem;
     max-height: 300px;
 }
 
-.nutriap-inicioadmin .direita{
+.nutriap-inicioadmin .cima .direita{
     margin: 10px;
-    width: 38vw;
-    height: 100%;
+    width: 90%;
+    height: 20rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* background-color: violet */
 }
 
-.nutriap-inicioadmin .direita .p-chart{
-    width: 50%;
+.nutriap-inicioadmin .cima .direita .p-chart{
+    width: 20rem;
+    height: 20rem;
 }
 
-.nutriap-inicioadmin .direita .p-chart canvas{
+.nutriap-inicioadmin .cima .direita .p-chart canvas{
     padding: 30px;
 }
 
 .nutriap-inicioadmin .baixo{
+    height: 40vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100vw;
+    width: 100%;
+    /* background-color: yellowgreen; */
 }
 
 .nutriap-inicioadmin .baixo .p-chart{
-    margin: 10px
+    margin: 10px;
+    width: 72vw;
+    
 }
 
 .nutriap-inicioadmin .baixo .p-chart canvas{
-    width: 89vw;
+    min-width: 60vw;
+    max-width: 89vw;
     max-height: 270px
+    
 }
 

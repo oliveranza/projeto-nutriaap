@@ -209,7 +209,7 @@ async function atualizar(e, usuario) {
               <div className="p-field  p-col-12 ">
                 <label htmlFor="datanascimento">Data de Nascimento</label>
                 <Calendar id="datanascimento" value={dataNasc} dateFormat="dd/mm/yy" locale='pt-br' monthNavigator yearNavigator mask="99/99/9999"
-                  yearRange="1920:2021" placeholder={dataNasc} showIcon icon="pi pi-calendar" onChange={e => setData(e.target.value)} required/>
+                  yearRange="1920:2021" placeholder={"Data de Nascimento"} showIcon icon="pi pi-calendar" onChange={e => setData(e.target.value)} required/>
               </div>
 
               <div className="p-field p-col-12 ">
