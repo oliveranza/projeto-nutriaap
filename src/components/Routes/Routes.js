@@ -27,6 +27,7 @@ const Routes = () => (
                 <PrivateRoute path="/listaNutri" component={ListagemNutri} />
                 <PrivateRoute path="/listaAdmin" component={ListagemAdmin} />
                 <PrivateRoute path="/cadastroNutri" component={CadastroNutri} />
+                <PrivateRoute path="/perfilNutri/:id" component={CadastroNutri} />
             </StoreProvider>
 
         </Switch>

@@ -4,7 +4,7 @@
         {
             "nome":"Maria",
             "sobreNome":"silva",
-            "dataNasc": "20/11/2000",
+            "dataNasc": "10/11/2000",
             "genero":"Feminino",
             "crn": "4 58456x",
             "tel": "839508964",
@@ -13,7 +13,7 @@
         {
             "nome":"joao",
             "sobreNome":"silva",
-            "dataNasc": "20/11/2000",
+            "dataNasc": "10/11/2000",
             "genero":"Masculino",
             "crn": "123456x",
             "tel": "83999257955",
@@ -22,7 +22,7 @@
         {
             "nome":"jeca",
             "sobreNome":"silva",
-            "dataNasc": "20/11/2000",
+            "dataNasc": "10/11/2000",
             "genero":"Masculino",
             "crn": "123456x",
             "tel": "83999257955",
@@ -31,7 +31,7 @@
         {
             "nome":"juca",
             "sobreNome":"silva",
-            "dataNasc": "20/11/2000",
+            "dataNasc": "10/11/2000",
             "genero":"Masculino",
             "crn": "123456x",
             "tel": "83999257955",

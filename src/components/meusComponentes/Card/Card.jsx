@@ -3,6 +3,8 @@ import React from 'react'
 import './Card.css'
 import foto from "../../../assets/defaultNutri.png"
 import api from '../../../services/api'
+import { Link } from 'react-router-dom'
+import { format } from 'date-fns'
 
 
 export default function Card(props) {
@@ -11,9 +13,11 @@ export default function Card(props) {
         if(window.confirm(`Tem certeza que deseja excluir o usuário: ${props.nome}?`)){
             await api.delete(`http://localhost:8080/api/nutricionista/${props.id}`)
             .then((response)=>{
+                window.location.reload()
                 console.log(response.data)
                 alert("Excluido com sucesso!")
-                window.location.reload()
+                
+                
             })
             .catch((error) =>{
                 alert("Erro ao excluir este usuário!")
@@ -25,6 +29,8 @@ export default function Card(props) {
     
 
 
+
+
     return (
 
         <div className="nutriapp-card" key={props.id}>
@@ -34,7 +40,7 @@ export default function Card(props) {
 
             <div className="info1">
                 <label className="nome">Nome: <p>{props.nome || "Fulano"}</p></label>
-                <label className="dtNascimento">Data Nasc.: <p>{props.dtNasc ||"11/10/2000"}</p></label>
+                <label className="dtNascimento">Data Nasc.: <p>{format(new Date(props.dtNasc), 'dd/MM/yyyy') ||"12/12/2000"}</p></label>
                 <label className="genero">Gênero: <p>{props.genero ||"Outro"}</p></label>
             </div>
 
@@ -47,16 +53,15 @@ export default function Card(props) {
 
             <div className="botoes">
                 <div className='btGrande'>
-                    <Button id="btDesempenho" label="DESEMPENHO" icon="pi pi-chart-line" iconPos="left" />
-                    <Button id="btEmail" label="E-MAIL" icon="pi pi-envelope" iconPos="left" />
+                    <Button id="btDesempenho" label="DESEMPENHO" icon="pi pi-chart-line" iconPos="left" data-toggle="tooltip" title={`Ver desempenho de ${props.nome}`}/>
+                    <Button id="btEmail" label="E-MAIL" icon="pi pi-envelope" iconPos="left" data-toggle="tooltip" title={`Enviar e-mail para ${props.nome}`} />
                 </div>
 
                 <div className='btPequeno'>
-                    <Button id="btPerfil"  icon="pi pi-user" iconPos="left" />
-                    <Button id="btApagar"  icon="pi pi-user-minus" iconPos="left" onClick={excluir}/>
+                    <Link to={`perfilNutri/${props.id}`}> <Button id="btPerfil"  icon="pi pi-user" iconPos="left" data-toggle="tooltip" title="Editar" /> </Link>
+                    <Button id="btApagar"  icon="pi pi-user-minus" iconPos="left" onClick={excluir} data-toggle="tooltip" title="Excluir"/>
                 </div>
             </div>
-
 
         </div>
     )

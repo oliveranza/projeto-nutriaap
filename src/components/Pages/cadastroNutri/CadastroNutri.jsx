@@ -9,29 +9,65 @@ import { Dropdown } from 'primereact/dropdown';
 import { InputMask } from 'primereact/inputmask';
 import { Button } from 'primereact/button';
 import { MultiSelect } from 'primereact/multiselect';
-import React, { useState } from "react";
-import { useHistory, Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useHistory, Link, useParams } from 'react-router-dom';
 
 import { addLocale } from 'primereact/api';
 import api from "../../../services/api";
 
 
 
-function CadastroNutri() {
-  const history = useHistory();
 
-  const [nome, setNome] = useState(null);
-  const [sobreNome, setSobreNome] = useState(null);
-  const [dataNasc, setData] = useState(null);
-  const [email, setEmail] = useState(null);
+function CadastroNutri() {
+
+  const {id} = useParams()
+  
+  
+  
+  const history = useHistory();
+  
+  
+  useEffect(()=>{
+    if(id!= null){
+      api.get(`http://localhost:8080/api/nutricionista/${id}`)
+      .then(res =>{
+        const userPerfil = res.data
+        console.log(userPerfil)
+        setNome(userPerfil.nome)
+        setSobreNome(userPerfil.sobreNome)
+        setData(new Date(userPerfil.dataNasc))
+        setEmail(userPerfil.email)
+        setCell(userPerfil.cell)
+        setCrn(userPerfil.crn)
+        setGenero({label:userPerfil.genero})
+        setEspecialidade(userPerfil.especialidade)
+
+        let especia = userPerfil.especializacoes.map(esp => {
+          for(let i=0; i<especi.length;i++ ){
+            if(esp === especi[i].name){
+              return (especi[i]);
+            }
+          }
+          
+        })
+        setEspecializacoes(especia) 
+        
+    })}  
+  },[])
+
+
+  const [nome, setNome] = useState("");
+  const [sobreNome, setSobreNome] = useState("");
+  const [dataNasc, setData] = useState("");
+  const [email, setEmail] = useState("");
   const [cell, setCell] = useState(Number);
-  const [crn, setCrn] = useState(null);
-  const [genero, setGenero] = useState(null);
-  const [especialidade, setEspecialidade] = useState(null);
-  const [especializacoes, setEscializacoes] = useState([]);
+  const [crn, setCrn] = useState("");
+  const [genero, setGenero] = useState("");
+  const [especialidade, setEspecialidade] = useState("");
+  const [especializacoes, setEspecializacoes] = useState([]);
   
   const especi = [
-    { name: 'Alergias alimentares', code: 0 },
+    { name: 'Alergias alimentares', code: 0},
     { name: 'Doenças autoimunes', code: 1 },
     { name: 'Doenças cardiovasculares', code: 2 },
     { name: 'Doenças Crônicas Não Transmissíveis', code: 3 },
@@ -81,11 +117,10 @@ function CadastroNutri() {
   });
   
 
-  async function CadastrarNovo(e) {
+  async function Salvar(e) {
     e.preventDefault()
     const espe  = especializacoes.map(especi=>especi.name)
     const gen = genero.label
-
     const usuario = {
       nome: nome,
       sobreNome: sobreNome,
@@ -97,22 +132,54 @@ function CadastroNutri() {
       especialidade:especialidade,
       especializacoes: espe
     }
-      
-    await api.post("http://localhost:8080/api/nutricionista", usuario)
-      .then(response => {
-        alert("Salvo com sucesso!")
-        history.push('/listaNutri')
-        console.log(response)
+
+    let flag = false
+    if(id!=null){
+      flag = atualizar(e,usuario)
+    }else{
+      flag = Novo(e,usuario)
+    }
+
+    if(flag){
+      alert("Operação realizada com sucesso!")
+      history.push('/listaNutri')
+    }else{
+      alert(`oops! ocorreu um erro. tente novamente mais tarde`)
+    }
+    window.location.reload()
+}
+
+async function Novo(e, usuario) {
+  e.preventDefault()
+
+  await api.post("http://localhost:8080/api/nutricionista", usuario)
+    .then(response => {
+      console.log(response)
     })
-      .catch(error=> {
-        alert(`oops! ocorreu um erro. tente novamente mais tarde`)
-        console.log("oops! ocorreu um erro. " + error)
-    })
+    .catch(error=> {
+      console.log("oops! ocorreu um erro. " + error)
+  })
+
 }
 
 
+async function atualizar(e, usuario) {
+  e.preventDefault()
+
+  usuario.id=id
+  
+  await api.put("http://localhost:8080/api/nutricionista", usuario)
+    .then(response => {
+      console.log(response)
+    })
+    .catch(error=> {
+      console.log("oops! ocorreu um erro. " + error)
+  })
+
+}
 
   return (
+    // carregaDados(),
     <div className="nutriapp-cadastronutri">
       <BarraDeMenu tab={1} tipo="admin" />
       <div className="nutriapp-cadastronutri-inicio">
@@ -127,7 +194,7 @@ function CadastroNutri() {
 
 
         <div className="ladoDireito">
-          <form onSubmit={CadastrarNovo}>
+          <form onSubmit={Salvar}>
 
             <div className="p-fluid p-formgrid p-grid">
               <div className="p-field p-col-12 p-md-6">
@@ -142,7 +209,7 @@ function CadastroNutri() {
               <div className="p-field  p-col-12 ">
                 <label htmlFor="datanascimento">Data de Nascimento</label>
                 <Calendar id="datanascimento" value={dataNasc} dateFormat="dd/mm/yy" locale='pt-br' monthNavigator yearNavigator mask="99/99/9999"
-                  yearRange="1920:2021" placeholder="Data de Nascimento" showIcon icon="pi pi-calendar" onChange={e => setData(e.value)} required/>
+                  yearRange="1920:2021" placeholder={dataNasc} showIcon icon="pi pi-calendar" onChange={e => setData(e.target.value)} required/>
               </div>
 
               <div className="p-field p-col-12 ">
@@ -173,7 +240,7 @@ function CadastroNutri() {
 
               <div className="p-field p-col-12">
                 <label className="mmselect">Especializações</label>
-                <MultiSelect showSelectAll={false} value={especializacoes} options={especi} onChange={(e) => setEscializacoes(e.target.value)}
+                <MultiSelect showSelectAll={false} value={especializacoes} options={especi} onChange={(e) => setEspecializacoes(e.target.value)}
                       optionLabel="name" placeholder="Suas especializações" display="chip"/>
 
               </div>
