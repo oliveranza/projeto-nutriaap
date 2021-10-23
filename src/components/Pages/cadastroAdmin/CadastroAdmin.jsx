@@ -1,4 +1,4 @@
-import "./CadastroNutri.css"
+import "./CadastroAdmin.css"
 import 'primeflex/primeflex.css';
 
 import BarraDeMenu from '../../meusComponentes/BarraDeMenu/BarraDeMenu';
@@ -8,7 +8,6 @@ import { Calendar } from 'primereact/calendar';
 import { Dropdown } from 'primereact/dropdown';
 import { InputMask } from 'primereact/inputmask';
 import { Button } from 'primereact/button';
-import { MultiSelect } from 'primereact/multiselect';
 import React, { useEffect, useState } from "react";
 import { useHistory, Link, useParams } from 'react-router-dom';
 
@@ -18,7 +17,7 @@ import api from "../../../services/api";
 
 
 
-function CadastroNutri() {
+function CadastroAdmin() {
 
   //pegar o di da url
   const {id} = useParams()
@@ -29,7 +28,7 @@ function CadastroNutri() {
   //carrega os dados do nutri em caso de update
   useEffect(()=>{
     if(id!= null){
-      api.get(`http://localhost:8080/api/nutricionista/${id}`)
+      api.get(`http://localhost:8080/api/admin/${id}`)
       .then(res =>{
         const userPerfil = res.data
         console.log(userPerfil)
@@ -38,22 +37,10 @@ function CadastroNutri() {
         setData(new Date(userPerfil.dataNasc))
         setEmail(userPerfil.email)
         setCell(userPerfil.cell)
-        setCrn(userPerfil.crn)
         setGenero({label:userPerfil.genero})
-        setEspecialidade(userPerfil.especialidade)
-
-        let especia = userPerfil.especializacoes.map(esp => {
-          for(let i=0; i<especi.length;i++ ){
-            if(esp === especi[i].name){
-              return (especi[i]);
-            }
-          }
-          
-        })
-        setEspecializacoes(especia) 
         
     })}  
-  },[])
+  },[id])
 
   //states
   const [nome, setNome] = useState("");
@@ -61,39 +48,8 @@ function CadastroNutri() {
   const [dataNasc, setData] = useState("");
   const [email, setEmail] = useState("");
   const [cell, setCell] = useState(Number);
-  const [crn, setCrn] = useState("");
   const [genero, setGenero] = useState("");
-  const [especialidade, setEspecialidade] = useState("");
-  const [especializacoes, setEspecializacoes] = useState([]);
   
-  //lista de opção do combobox de especialidades
-  const especi = [
-    { name: 'Alergias alimentares', code: 0},
-    { name: 'Doenças autoimunes', code: 1 },
-    { name: 'Doenças cardiovasculares', code: 2 },
-    { name: 'Doenças Crônicas Não Transmissíveis', code: 3 },
-    { name: 'Ayurveda', code: 4 },
-    { name: 'Fitoterapia', code: 5 },
-    { name: 'Fertilidade', code: 6 },
-    { name: 'Clínica', code: 7 },
-    { name: 'Esportiva', code: 8 },
-    { name: 'Estética', code: 9 },
-    { name: 'Comportamental', code: 10 },
-    { name: 'Funcional', code: 11 },
-    { name: 'Gerontologia', code: 12 },
-    { name: 'Doenças pulmonares', code: 13 },
-    { name: 'Doenças renais', code: 14 },
-    { name: 'Materno-infantil', code: 15 },
-    { name: 'Nutrigenética', code: 16 },
-    { name: 'Oncológica', code: 17 },
-    { name: 'Pediátrica', code: 18 },
-    { name: 'Ortomolecular', code: 19 },
-    { name: 'Saúde da Mulher', code: 20 },
-    { name: 'Vegetariana', code: 21 },
-    { name: 'Saúde intestinal', code: 22 },
-    { name: 'Terapia Intensiva', code: 23 },
-    { name: 'Transtornos alimentares', code: 24 }
-  ];
   
   //lista de opções do combobox genero
   const generos = [
@@ -122,7 +78,6 @@ function CadastroNutri() {
   //metodo de salva, cria novo ou atualiza se for o caso
   async function Salvar(e) {
     e.preventDefault()
-    const espe  = especializacoes.map(especi=>especi.name)
     const gen = genero.label
     const usuario = {
       nome: nome,
@@ -130,10 +85,7 @@ function CadastroNutri() {
       dataNasc: dataNasc,
       email: email,
       cell: cell,
-      crn: crn,
       genero:gen,
-      especialidade:especialidade,
-      especializacoes: espe
     }
 
     let flag = false
@@ -145,7 +97,7 @@ function CadastroNutri() {
 
     if(flag){
       alert("Operação realizada com sucesso!")
-      history.push('/listaNutri')
+      history.push('/listaAdmin')
     }else{
       alert(`oops! ocorreu um erro. tente novamente mais tarde`)
     }
@@ -157,7 +109,7 @@ function CadastroNutri() {
 async function Novo(e, usuario) {
   e.preventDefault()
 
-  await api.post("http://localhost:8080/api/nutricionista", usuario)
+  await api.post("http://localhost:8080/api/admin", usuario)
     .then(response => {
       console.log(response)
     })
@@ -174,7 +126,7 @@ async function atualizar(e, usuario) {
 
   usuario.id=id
   
-  await api.put("http://localhost:8080/api/nutricionista", usuario)
+  await api.put("http://localhost:8080/api/admin", usuario)
     .then(response => {
       console.log(response)
     })
@@ -187,9 +139,9 @@ async function atualizar(e, usuario) {
 
   //renderização da paginas
   return (
-    <div className="nutriapp-cadastronutri">
-      <BarraDeMenu tab={1} tipo="admin" />
-      <div className="nutriapp-cadastronutri-inicio">
+    <div className="nutriapp-cadastroadmin">
+      <BarraDeMenu tab={2} tipo="admin" />
+      <div className="nutriapp-cadastroadmin-inicio">
         <div className="ladoEsquerdo">
           <div className="foto">
             <label className="pi pi-user" id="lbfoto"></label>
@@ -235,26 +187,9 @@ async function atualizar(e, usuario) {
               </div>
 
 
-              <div className="p-field p-col-12">
-                <label htmlFor="especialidade">Especialidade</label>
-                <InputText id="especialidade" value={especialidade} onChange={e => setEspecialidade(e.target.value)} type="text" placeholder="Nutricionista,Medico" required/>
-              </div>
-
-              <div className="p-field p-col-12 ">
-                <label htmlFor="crn">CRN</label>
-                <InputText id="crn" value={crn} onChange={e => setCrn(e.target.value)} type="text" placeholder="1 23456/x" required/>
-              </div>
-
-              <div className="p-field p-col-12">
-                <label className="mmselect">Especializações</label>
-                <MultiSelect showSelectAll={false} value={especializacoes} options={especi} onChange={(e) => setEspecializacoes(e.target.value)}
-                      optionLabel="name" placeholder="Suas especializações" display="chip"/>
-
-              </div>
-
             </div>
             <div className="p-d-flex p-jc-between">
-              <Link to="/listaNutri">
+              <Link to="/listaAdmin">
                 <Button type="button" id="bt2"  label="Voltar" icon="pi pi-arrow-left" iconPos="left" />
               </Link>
                 <Button type="submit" id="bt" label="Salvar" icon="pi pi-save" iconPos="left" autoFocus></Button>
@@ -271,4 +206,4 @@ async function atualizar(e, usuario) {
 
   );
 }
-export default CadastroNutri
+export default CadastroAdmin

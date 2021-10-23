@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 
 import CadastroNutri from "../Pages/cadastroNutri/CadastroNutri";
+import CadastroAdmin from "../Pages/cadastroAdmin/CadastroAdmin";
 import InicioAdmin from "../Pages/inicioAdmin/InicioAdmin";
 import InicioNutri from "../Pages/InicioNutri/InicioNutri";
 import ListagemNutri from "../Pages/listagemNutri/ListagemNutri";
@@ -27,7 +28,9 @@ const Routes = () => (
                 <PrivateRoute path="/listaNutri" component={ListagemNutri} />
                 <PrivateRoute path="/listaAdmin" component={ListagemAdmin} />
                 <PrivateRoute path="/cadastroNutri" component={CadastroNutri} />
+                <PrivateRoute path="/cadastroAdmin" component={CadastroAdmin} />
                 <PrivateRoute path="/perfilNutri/:id" component={CadastroNutri} />
+                <PrivateRoute path="/perfilAdmin/:id" component={CadastroAdmin} />
             </StoreProvider>
 
         </Switch>

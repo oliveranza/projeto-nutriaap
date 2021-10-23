@@ -1,0 +1,81 @@
+.nutriapp-cadastroadmin{
+  width: 100%;
+}
+
+.nutriapp-cadastroadmin input:invalid{
+  border-color: red;
+}
+
+.nutriapp-cadastroadmin input:valid{
+  border-color:limegreen;
+}
+
+.nutriapp-cadastroadmin-inicio{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.nutriapp-cadastroadmin-inicio div{
+  /* margin: 0%; */
+  border-radius: 5px;
+  
+}
+
+.nutriapp-cadastroadmin .ladoEsquerdo{
+  width: 20vw;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.nutriapp-cadastroadmin .ladoDireito{
+  color: #22b2aa;
+  height: 90vh;
+  margin:  1.5rem 2rem 0 2rem;
+  width: 70vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.nutriapp-cadastroadmin .foto{
+  width: 5cm;
+  height: 6cm;
+  border: 2px solid #000;
+  margin: 1rem 0 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.nutriapp-cadastroadmin .foto #lbfoto::before{
+  font-size: 5em;
+  color: #22b2aa;
+}
+
+
+.nutriapp-cadastroadmin #bt{
+  margin-top: 10px;
+  width: 12rem;
+  height: 3rem;
+
+}
+
+.nutriapp-cadastroadmin #bt2{
+  margin-top: 10px;
+  background-color: #555;
+  width: 12rem;
+  height: 3rem;
+}
+
+.nutriapp-cadastroadmin .p-field {
+  margin-bottom: 5px;
+}
+
+.nutriapp-cadastroadmin .p-multiselect-panel .p-multiselect-header {
+  height: 25px!important;
+}
+

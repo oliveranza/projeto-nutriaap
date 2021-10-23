@@ -29,11 +29,11 @@
 .nutriapp-card .info2{
   /* border: 1px solid #000; */
   width: 30vw;
-  margin: 5px;
+  margin: 0 5px;
   display: flex;
   flex-direction: column;
   align-content: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .nutriapp-card .info1 label,

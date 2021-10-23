@@ -8,26 +8,25 @@ import './ListagemAdmin.css'
 
 import BarraDeMenu from '../../meusComponentes/BarraDeMenu/BarraDeMenu';
 import Card from '../../meusComponentes/Card/Card';
-import defaultAdmin from "../../../assets/defaultAdmin.png"
+// import foto1 from "../../../assets/female.png"
 import api from '../../../services/api';
 
 
 
 
 function ListagemAdmin() {
-
+  
+  const [admins, setAdmins] = useState([]);
 
   /** =================================================================================
    *                            conexão com back
    */
 
-  const [nutris,setAdmin] = useState([]);
-
   useEffect(() => {
-    api.get("http://localhost:8080/api/admins")
+    api.get("http://localhost:8080/api/admin/getAll")
       .then((response) => {
         console.log(response.data)
-      setAdmin(response.data);
+        setAdmins(response.data);
       }).catch((err) => {
         console.log("ops! ocorreu um erro" + err)
       })
@@ -39,39 +38,21 @@ function ListagemAdmin() {
  *
  */
 
-   useEffect(()=>{
-     fetch('./administradores.json',{
-       headers:{
-            Accept: "application/json"
-       }
-     }).then(res => res.json())
-      .then(res =>setAdmin(res.data))
-   },[]);
+  //  useEffect(()=>{
+  //    fetch('./administradores.json',{
+  //      headers:{
+  //           Accept: "application/json"
+  //      }
+  //    }).then(res => res.json())
+  //     .then(res => setNutri(res.data))
+  //  },[]);
 
 
-  /* ==================================================================================
-    pssando as informações dos nutris para dentro dos cards (LISTAGEM)
-  */
-  // const fotos = [foto1, foto2, foto3, foto4, foto5]
-
-  let cards = [];
-  for (let i = 0; i < nutris.length; i++) {
-    cards.push(<Card
-      foto={defaultAdmin}
-      nome={nutris[i].nome+" "+nutris[i].sobreNome}
-      dtNasc={nutris[i].dataNasc}
-      genero={nutris[i].genero}
-      crn={nutris[i].crn}
-      tel={nutris[i].cell}
-      email={nutris[i].email}
-    />)
-  }
-/**==================================================================================== */
 
 
   return (
     <div className="nutriapp-ListagemAdmin">
-      <BarraDeMenu tab={2} tipo="admin"/>
+      <BarraDeMenu tab={2} tipo="admin" />
 
       <div className="corpo">
 
@@ -86,12 +67,27 @@ function ListagemAdmin() {
           </div>
 
           <div className='botaocadastro'>
-            <Link to=""><Button id="bt" label="cadastrar Administrador" icon="pi pi-id-card" iconPos="left" /></Link>
+            <Link to="/cadastroAdmin"><Button id="bt" label="cadastrar Administrador(a)" icon="pi pi-id-card" iconPos="left" data-toggle="tooltip" title="Cadastrar um(a) Novo(a)"/></Link>
           </div>
 
         </div>
         <div className="fundobranco">
-          {cards}
+          {//carrega essa mensagem se nao tiver usuários para listar (usando operador ternário)
+          admins.length===0?    
+          <h3>Nenhum Administrador cadastrado.😅 Cadastre agora clicando no botão ao lado ➔  </h3>:
+
+          //do contrario preenche os cards com os usuários e exibe na tela
+          admins.map((admins, i)=> 
+          <Card tipoCard="admin"
+            key={i} 
+            id={admins.id}
+            nome={admins.nome+" "+admins.sobreNome}
+            dtNasc={admins.dataNasc}
+            genero={admins.genero}
+            tel={admins.cell}
+            email={admins.email}/>
+           )}
+          
         </div>
       </div>
     </div>

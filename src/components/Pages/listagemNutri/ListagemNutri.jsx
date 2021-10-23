@@ -48,28 +48,6 @@ function ListagemNutri() {
   //  },[]);
 
 
-  // const fotos = [foto1, foto2, foto3, foto4, foto5]
-  
-  /* ==================================================================================
-    pssando as informações dos nutris para dentro dos cards (LISTAGEM)
-  */
-  // const cards = [];
-  // if(nutris.length===0){
-  //   cards.push(<div>Nenhum profissional de nutrição cadastrado ainda.  😅   Cadastre agora clicando no botão ao lado → </div>)
-  // }
-  // for (let i = 0; i < nutris.length; i++) {
-  //     cards.push(<Card
-  //     // foto={fotos[i]}
-  //     id={nutris[i].id}
-  //     nome={nutris[i].nome+" "+nutris[i].sobreNome}
-  //     dtNasc={nutris[i].dataNasc}
-  //     genero={nutris[i].genero}
-  //     crn={nutris[i].crn}
-  //     tel={nutris[i].cell}
-  //     email={nutris[i].email}
-  //   />)
-  // }
-/**==================================================================================== */
 
 
   return (
@@ -89,15 +67,18 @@ function ListagemNutri() {
           </div>
 
           <div className='botaocadastro'>
-            <Link to="/cadastroNutri"><Button id="bt" label="cadastrar Nutricionista" icon="pi pi-id-card" iconPos="left" /></Link>
+            <Link to="/cadastroNutri"><Button id="bt" label="cadastrar Nutricionista" icon="pi pi-id-card" iconPos="left" data-toggle="tooltip" title="Cadastrar um(a) Novo(a)" /></Link>
           </div>
 
         </div>
         <div className="fundobranco">
-          { nutris.length===0?
+          {//carrega essa mensagem se nao tiver usuários para listar (usando operador ternário)
+          nutris.length===0?    
           <h3>Nenhum profissional de nutrição cadastrado.😅 Cadastre agora clicando no botão ao lado ➔  </h3>:
+
+          //do contrario preenche os cards com os usuários e exibe na tela
           nutris.map((nutri, i)=> 
-          <Card
+          <Card tipoCard="nutri"
             key={i} 
             id={nutri.id}
             nome={nutri.nome+" "+nutri.sobreNome}
