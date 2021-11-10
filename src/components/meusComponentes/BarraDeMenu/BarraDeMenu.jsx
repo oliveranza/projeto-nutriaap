@@ -19,7 +19,7 @@ export default class BarraDeMenu extends Component {
         super(props)
         this.itemsDefault = [
             { label: 'Inicio', icon: 'pi pi-home', url: '/inicioNutri' },
-            { label: 'Pacientes', icon: 'pi pi-user', url: '' },
+            { label: 'Pacientes', icon: 'pi pi-user', url: '/listaPaciente' },
             { label: 'Agenda', icon: 'pi pi-calendar', url: '' },
             { label: 'Chat', icon: 'pi pi-comments', url: '/inicioAdmin' }
         ]
