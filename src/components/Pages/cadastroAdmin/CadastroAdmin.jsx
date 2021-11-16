@@ -8,8 +8,11 @@ import { Calendar } from 'primereact/calendar';
 import { Dropdown } from 'primereact/dropdown';
 import { InputMask } from 'primereact/inputmask';
 import { Button } from 'primereact/button';
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState } from "react";
 import { useHistory, Link, useParams } from 'react-router-dom';
+import { FileUpload } from 'primereact/fileupload';
+
+import foto from "../../../assets/defaultUser.png"
 
 import { addLocale } from 'primereact/api';
 import api from "../../../services/api";
@@ -19,7 +22,7 @@ import api from "../../../services/api";
 
 function CadastroAdmin() {
 
-  //pegar o di da url
+  //pegar o id da url
   const {id} = useParams()
   
   //usa o historico de navegação
@@ -43,12 +46,14 @@ function CadastroAdmin() {
   },[id])
 
   //states
+  const [image, setImage] = useState("");
   const [nome, setNome] = useState("");
   const [sobreNome, setSobreNome] = useState("");
   const [dataNasc, setData] = useState("");
   const [email, setEmail] = useState("");
   const [cell, setCell] = useState(Number);
   const [genero, setGenero] = useState("");
+  
   
   
   //lista de opções do combobox genero
@@ -137,18 +142,23 @@ async function atualizar(e, usuario) {
 }
 
 
+
+
   //renderização da paginas
   return (
     <div className="nutriapp-cadastroadmin">
       <BarraDeMenu tab={2} tipo="admin" />
       <div className="nutriapp-cadastroadmin-inicio">
+
         <div className="ladoEsquerdo">
           <div className="foto">
-            <label className="pi pi-user" id="lbfoto"></label>
+            {image ? <img id="lbFoto" src={URL.createObjectURL(image)} alt="imagem"/> : <img id="lbFoto" src={foto} style={{width:"60%", height:"60%"}} alt="imagemDefault"/>}
           </div>
 
-          <Button id="bt" label="Upload" icon="pi pi-upload" iconPos="left" />
-
+          <div className="divBt1">
+            <FileUpload id="bt1" type="file" mode="basic" auto accept="image/*" name="imagem" maxFileSize={10000000}  customUpload uploadHandler={e => setImage(e.files.pop())} chooseLabel="Escolher" />
+            <Button type="submit" id="bt2" label="Remover" icon="pi pi-minus" iconPos="left" onClick={e => setImage("")}></Button>
+          </div>
         </div>
 
 

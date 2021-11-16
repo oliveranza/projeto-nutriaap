@@ -15,6 +15,7 @@ import Recuperacao from "../Pages/Recupercaosenha/Recuperacao";
 
 import PrivateRoute from "./PrivateRoute"
 import StoreProvider from "../../services/Porvider";
+import Tratamento from "../Pages/tratamento/Tratamento";
 
 
 
@@ -33,9 +34,10 @@ const Routes = () => (
                 <PrivateRoute path="/cadastroNutri" component={CadastroNutri} />
                 <PrivateRoute path="/cadastroAdmin" component={CadastroAdmin} />
                 <PrivateRoute path="/cadastroPaciente" component={CadastroPaciente} />
-                <PrivateRoute path="/perfilNutri/:id" component={CadastroNutri} />
-                <PrivateRoute path="/perfilAdmin/:id" component={CadastroAdmin} />
-                <PrivateRoute path="/perfilPaciente/:id" component={CadastroPaciente} />
+                <PrivateRoute path="/nutri/:id" component={CadastroNutri} />
+                <PrivateRoute path="/admin/:id" component={CadastroAdmin} />
+                <PrivateRoute path="/paciente/:id" exact component={CadastroPaciente} />
+                <PrivateRoute path="/paciente/tratamento/:id" component={Tratamento} />
             </StoreProvider>
 
         </Switch>

@@ -76,8 +76,8 @@ function Login() {
                 <div className="Email">
                     <span className="p-float-label p-input-icon-left p-input-icon-right" >
                         <i className="pi pi-user" id="userIcon" />
-                        <i />
-                        <InputText id="campoemail" value={email} onChange={e => setEmail(e.target.value)} />
+                        <i/>
+                        <InputText id="campoemail" type="text" value={email} onChange={e => setEmail(e.target.value)}  />
                         <label htmlFor="campoemail" >E-mail</label>
                     </span>
                 </div>
@@ -103,7 +103,7 @@ function Login() {
                 </div>
 
                 <div className="Botao">
-                    <Button id="bt" label="Entrar" icon="pi pi-sign-in" type="submit" onClick={onSubmitHandler}  iconPos="left" />
+                    <Button id="bt" label="Entrar" icon="pi pi-sign-in" type="submit" onClick={onSubmitHandler}  iconPos="left"  />
                 </div>
 
             </div>

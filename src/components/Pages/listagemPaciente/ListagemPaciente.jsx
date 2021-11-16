@@ -84,7 +84,7 @@ function ListagemPaciente() {
             nome={paciente.nome+" "+paciente.sobreNome}
             dtNasc={paciente.dataNasc}
             genero={paciente.genero}
-            residencia={paciente.cidade+", "+paciente.estado}
+            status={paciente.status}
             tel={paciente.cell}
             email={paciente.email}/>
            )}
