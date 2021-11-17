@@ -8,7 +8,8 @@ import "./MenuTratamento.css"
 
 export default function MenuTratamento(props){
 
-    const tab = props.tab || 1;
+    const aba = props.aba || 1;
+    const selectedStyle = {backgroundColor:"white",color:"#22b2aa"};
 
     return(
         <>
@@ -21,14 +22,14 @@ export default function MenuTratamento(props){
                 </div>
 
                 <div className="botoes">
-                    <Button name="tratamento"style={tab===1? {backgroundColor:"white",color:"#22b2aa"}: ""}>Resumo</Button>
-                    <Button name="outra coisa">Anamnese</Button>
-                    <Button name="antropemetrica">Avaliação Antropemetrico</Button>
-                    <Button name="exames">Exames</Button>
-                    <Button name="gastoEnergetico">Gasto Energetico</Button>
-                    <Button name="planoAlimentar">Plano Alimentar</Button>
-                    <Button name="recordatorioAlimentar">Recordatorio Alimentar</Button>
-                    <Button name="suplementacao">Suplementação</Button>
+                    <Button name="tratamento" style={aba===1? selectedStyle: {}}>Resumo</Button>
+                    <Button name="outra coisa"  style={aba===2? selectedStyle: {}}>Anamnese</Button>
+                    <Button name="antropemetrica" style={aba===3? selectedStyle: {}}>Avaliação Antropemetrico</Button>
+                    <Button name="exames" style={aba===4? selectedStyle: {}}>Exames</Button>
+                    <Button name="gastoEnergetico" style={aba===5? selectedStyle: {}}>Gasto Energetico</Button>
+                    <Button name="planoAlimentar" style={aba===6? selectedStyle: {}}>Plano Alimentar</Button>
+                    <Button name="recordatorioAlimentar" style={aba===7? selectedStyle: {}}>Recordatorio Alimentar</Button>
+                    <Button name="suplementacao" style={aba===8? selectedStyle: {}}>Suplementação</Button>
                 </div>
             </div>
         </>

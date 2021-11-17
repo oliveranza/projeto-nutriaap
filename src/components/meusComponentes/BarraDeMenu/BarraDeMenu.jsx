@@ -58,12 +58,15 @@ export default class BarraDeMenu extends Component {
         return (
             this.selectItems(),
             <div className="nutriapp-menu" >
-                <h1 style={{ "color": "white" }}>NUTRIAPP</h1>
-                <TabMenu model={this.state.items} activeIndex={this.state.tab} onTabChange={e => this.selectTab(e.index)} id="centermenu" />
-                <div id="endmenu">
-                    <i className="pi pi-bell" />
-                    <Link to="/login"><Button label="Logout" icon="pi pi-sign-out"  style={{ "backgroundColor": "#22b2aa", "borderColor": "transparent" }} /></Link>
-                </div>
+                
+                    
+                    <h1 style={{ "color": "white" }}>NUTRIAPP</h1>
+                    <TabMenu model={this.state.items} activeIndex={this.state.tab} onTabChange={e => this.selectTab(e.index)} id="centermenu" />
+                    <div id="endmenu">
+                        <i className="pi pi-bell" />
+                        <Link to="/login"><Button label="Logout" icon="pi pi-sign-out"  style={{ "backgroundColor": "#22b2aa", "borderColor": "transparent" }} /></Link>
+                    </div>
+
             </div>
 
 

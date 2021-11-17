@@ -1,18 +1,13 @@
-
-
 .menuTratamento{
     display: flex;
     flex-direction: column;
     padding: 1.5% 1%;
     align-items: flex-start;
     width: 20rem;
-}
-
-.menuTratamento{
+    border-radius: 5px;
+    max-height: 100%;
+    box-shadow: 0 1px 5px;
     background-color: var(--surface-d);
-    border: solid 2px;
-    height: 100%
-
 }
 
 /*div do text*/
@@ -20,13 +15,11 @@
     padding: 5px 7%;
 }
 
-.menuTratamento
- label{
+.menuTratamento  label{
     color: #22b2ab;
     font-weight: 500;
 }
-.menuTratamento
- p{
+.menuTratamento  p{
     text-align: justify;
     margin-bottom: 5%;
 }

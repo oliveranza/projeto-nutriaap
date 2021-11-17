@@ -1,18 +1,19 @@
-
 .nutriapp-menu {
     display: flex;
-    padding: 0 14%;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    padding: 0 14rem;
+    width: 100vw;
     background-color:var(--primary-color);
 }
 
+/* icon sino */
 .nutriapp-menu i{
     color: white !important;;
     
 }
 
+/* logo */
 .nutriapp-menu h1{
     min-width: 170px;
     max-width: 12%;
@@ -25,7 +26,7 @@
     background-color: #22b2aa;
     justify-self: flex-start;
     overflow: unset;
-    position: relative;
+    /* position: relative; */
 }
 .nutriapp-menu #endmenu{
     min-width: 20%;

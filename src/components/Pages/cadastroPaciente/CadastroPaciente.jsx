@@ -50,7 +50,7 @@ function CadastroPaciente() {
         setStatus(userPerfil.status)
        
     })}  
-  },[])
+  },[id])
 
   //states
   const [image, setImage] = useState("");

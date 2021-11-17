@@ -1,6 +1,10 @@
 .nutriapp-ListagemPaciente{
   width: 100%;
 }
+.nutriapp-ListagemPaciente .corpo #bt,
+.nutriapp-ListagemPaciente .corpo input{
+  box-shadow: 0 1px 5px -2px black;
+}
 
 .nutriapp-ListagemPaciente .corpo{
   background-color: var(--surface-d);
@@ -30,4 +34,5 @@
   background-color: rgb(255, 255, 255);
   width: 75.5%;
   border-radius: 5px;
+  box-shadow: 0 1px 7px -2px;
 }

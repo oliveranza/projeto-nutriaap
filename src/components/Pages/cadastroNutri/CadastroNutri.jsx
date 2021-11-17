@@ -26,35 +26,6 @@ function CadastroNutri() {
   //usa o historico de navegação
   const history = useHistory();
   
-  //carrega os dados do nutri em caso de update
-  useEffect(()=>{
-    if(id!= null){
-      api.get(`http://localhost:8080/api/nutricionista/${id}`)
-      .then(res =>{
-        const userPerfil = res.data
-        console.log(userPerfil)
-        setNome(userPerfil.nome)
-        setSobreNome(userPerfil.sobreNome)
-        setData(new Date(userPerfil.dataNasc))
-        setEmail(userPerfil.email)
-        setCell(userPerfil.cell)
-        setCrn(userPerfil.crn)
-        setGenero({label:userPerfil.genero})
-        setEspecialidade(userPerfil.especialidade)
-
-        let especia = userPerfil.especializacoes.map(esp => {
-          for(let i=0; i<especi.length;i++ ){
-            if(esp === especi[i].name){
-              return (especi[i]);
-            }
-          }
-          
-        })
-        setEspecializacoes(especia) 
-        
-    })}  
-  },[])
-
   //states
   const [nome, setNome] = useState("");
   const [sobreNome, setSobreNome] = useState("");
@@ -67,7 +38,7 @@ function CadastroNutri() {
   const [especializacoes, setEspecializacoes] = useState([]);
   
   //lista de opção do combobox de especialidades
-  const especi = [
+  const [especi] = useState([
     { name: 'Alergias alimentares', code: 0},
     { name: 'Doenças autoimunes', code: 1 },
     { name: 'Doenças cardiovasculares', code: 2 },
@@ -93,7 +64,42 @@ function CadastroNutri() {
     { name: 'Saúde intestinal', code: 22 },
     { name: 'Terapia Intensiva', code: 23 },
     { name: 'Transtornos alimentares', code: 24 }
-  ];
+  ]);
+
+  //carrega os dados do nutri em caso de update
+  useEffect(()=>{
+    if(id!= null){
+      api.get(`http://localhost:8080/api/nutricionista/${id}`)
+      .then(res =>{
+        const userPerfil = res.data
+        console.log(userPerfil)
+        setNome(userPerfil.nome)
+        setSobreNome(userPerfil.sobreNome)
+        setData(new Date(userPerfil.dataNasc))
+        setEmail(userPerfil.email)
+        setCell(userPerfil.cell)
+        setCrn(userPerfil.crn)
+        setGenero({label:userPerfil.genero})
+        setEspecialidade(userPerfil.especialidade)
+
+        let especia = []
+        
+        userPerfil.especializacoes.map(esp => {
+          
+          for(let i=0; i<especi.length;i++ ){
+            if(esp === especi[i].name){
+              especia.push(especi[i]);
+            }
+          }
+          return especia;
+          
+        })
+        setEspecializacoes(especia) 
+        
+    })}  
+  },[id,especi])
+
+ 
   
   //lista de opções do combobox genero
   const generos = [
@@ -133,7 +139,8 @@ function CadastroNutri() {
       crn: crn,
       genero:gen,
       especialidade:especialidade,
-      especializacoes: espe
+      especializacoes: espe,
+      senha: "12346578"
     }
 
     let flag = false
