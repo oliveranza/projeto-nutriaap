@@ -51,6 +51,31 @@
   align-items: center;
 
 }
+
+.nutriapp-cadastronutri .foto img{
+  width: 4.9cm;
+  height: 5.9cm;
+}
+
+.nutriapp-cadastronutri .ladoEsquerdo .divBt1{
+  width: 11.7em;
+  height: 5.5rem;
+}
+
+.nutriapp-cadastronutri .ladoEsquerdo .divBt1 .p-fileupload-choose{
+  width:100%;
+}
+
+.nutriapp-cadastronutri .ladoEsquerdo .divBt1 #bt2{
+  width: 100%;
+  height: 38px;
+  background-color: rgb(202, 41, 41);
+}
+
+.nutriapp-cadastronutri .ladoEsquerdo .divBt1 #bt2:hover{
+  background-color: red;
+}
+
 .nutriapp-cadastronutri .foto #lbfoto::before{
   font-size: 5em;
   color: #22b2aa;

@@ -1,4 +1,4 @@
-.nutriapp-cadastropaciente{
+.nutriapp-cadastropaciente {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -6,40 +6,37 @@
   justify-content: center;
 }
 
-.nutriapp-cadastropaciente input:invalid{
+.nutriapp-cadastropaciente input:invalid {
   border-color: red;
 }
 
-.nutriapp-cadastropaciente input:valid{
-  border-color:limegreen;
+.nutriapp-cadastropaciente input:valid {
+  border-color: limegreen;
 }
 
-.nutriapp-cadastropaciente-inicio{
+.nutriapp-cadastropaciente-inicio {
   display: flex;
   flex-direction: row;
   align-items: center;
   max-width: 75%;
 }
 
-.nutriapp-cadastropaciente-inicio div{
+.nutriapp-cadastropaciente-inicio div {
   /* margin: 0%; */
   border-radius: 5px;
-  
 }
 
-.nutriapp-cadastropaciente .ladoEsquerdo .outrosBts{
+.nutriapp-cadastropaciente .ladoEsquerdo .outrosBts {
   margin-top: 3.6em;
   width: 11.7em;
   height: 6.5rem;
 }
-.nutriapp-cadastropaciente .ladoEsquerdo .outrosBts Button{
+.nutriapp-cadastropaciente .ladoEsquerdo .outrosBts Button {
   margin-top: 10px;
   width: 100%;
 }
 
-
-
-.nutriapp-cadastropaciente .ladoEsquerdo{
+.nutriapp-cadastropaciente .ladoEsquerdo {
   width: 20vw;
   height: 85vh;
   display: flex;
@@ -47,16 +44,16 @@
   justify-content: flex-start;
   align-items: flex-end;
 }
-.nutriapp-cadastropaciente .ladoDireito{
+.nutriapp-cadastropaciente .ladoDireito {
   color: #22b2aa;
   height: 90vh;
-  margin:  1.5rem 2rem 0 2rem;
+  margin: 1.5rem 2rem 0 2rem;
   width: 70vw;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
-.nutriapp-cadastropaciente .foto{
+.nutriapp-cadastropaciente .foto {
   width: 5cm;
   height: 6cm;
   border: 2px solid #000;
@@ -64,47 +61,44 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
-.nutriapp-cadastropaciente .foto img{
+.nutriapp-cadastropaciente .foto img {
   width: 4.9cm;
   height: 5.9cm;
 }
 
-.nutriapp-cadastropaciente .ladoEsquerdo .divBt1{
+.nutriapp-cadastropaciente .ladoEsquerdo .divBt1 {
   width: 11.7em;
   height: 5.5rem;
 }
 
-.nutriapp-cadastropaciente .ladoEsquerdo .divBt1 .p-fileupload-choose{
-  width:100%;
+.nutriapp-cadastropaciente .ladoEsquerdo .divBt1 .p-fileupload-choose {
+  width: 100%;
 }
 
-.nutriapp-cadastropaciente .ladoEsquerdo .divBt1 #bt2{
+.nutriapp-cadastropaciente .ladoEsquerdo .divBt1 #bt2 {
   width: 100%;
   height: 38px;
-  background-color: rgb(202, 41, 41);
+  background-color: rgb(252, 48, 58);
 }
 
-.nutriapp-cadastropaciente .ladoEsquerdo .divBt1 #bt2:hover{
+.nutriapp-cadastropaciente .ladoEsquerdo .divBt1 #bt2:hover {
   background-color: red;
 }
 
-.nutriapp-cadastropaciente .foto #lbfoto::before{
+.nutriapp-cadastropaciente .foto #lbfoto::before {
   font-size: 5em;
   color: #22b2aa;
 }
 
-
-.nutriapp-cadastropaciente #bt{
+.nutriapp-cadastropaciente #bt {
   margin-top: 10px;
   width: 12rem;
   height: 3rem;
-
 }
 
-.nutriapp-cadastropaciente #bt2{
+.nutriapp-cadastropaciente #bt2 {
   margin-top: 10px;
   background-color: #555;
   width: 12rem;
@@ -116,6 +110,5 @@
 }
 
 .nutriapp-cadastropaciente .p-multiselect-panel .p-multiselect-header {
-  height: 25px!important;
+  height: 25px !important;
 }
-
