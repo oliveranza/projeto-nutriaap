@@ -1,0 +1,53 @@
+.menuTratamento{
+    display: flex;
+    flex-direction: column;
+    padding: 1.5% 1% 0 1%;
+    align-items: flex-start;
+    width: 20rem;
+    border-radius: 5px;
+    height: 85vh;
+    box-shadow: 0 1px 5px;
+    background-color: var(--surface-d);
+}
+/* texto data de cadastro */
+.menuTratamento .dtCadastro{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 100%;
+    width: 100%;
+    padding: 0 25px;
+}
+.menuTratamento .dtCadastro p{
+    color:var(--primary-color);
+    font-size: 12px;
+    font-weight: 500;
+}
+/*div do text superior*/
+.menuTratamento .texto{
+    padding: 5px 7%;
+}
+/* labels do texto superior */
+.menuTratamento  label{
+    color: var(--primary-color);
+    font-weight: 500;
+}
+.menuTratamento  p{
+    text-align: justify;
+    margin-bottom: 5%;
+}
+
+.menuTratamento .botoes{
+    height:25em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.menuTratamento .botoes Button{
+    width: 16em;
+    margin-top: 6px;
+    justify-content: center;
+}
