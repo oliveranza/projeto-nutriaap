@@ -125,14 +125,14 @@ function Login() {
           </span>
         </div>
 
-        <div className="DivChave">
+        {/* <div className="DivChave">
           <label htmlFor="chave">Funcionário</label>
           <InputSwitch
             id="chave"
             checked={valor}
             onChange={(e) => setState(!valor)}
           />
-        </div>
+        </div> */}
         <div className="esqueciSenha">
           <Link to="/recuperacao">Esqueci a senha</Link>
         </div>

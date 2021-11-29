@@ -7,10 +7,10 @@
 }
 
 .nutriapp-ListagemPaciente .corpo{
-  background-color: var(--surface-d);
+  /* background-color: var(--surface-d); */
   min-height: 100vh;
   height: 100%;
-  padding: 2rem;
+  padding: 1.4% 2rem;
   flex-direction: column;
   display: flex;
   justify-content: flex-start;
@@ -31,7 +31,7 @@
 }
 
 .nutriapp-ListagemPaciente .fundobranco{
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255,0.8);
   width: 75.5%;
   border-radius: 5px;
   box-shadow: 0 1px 7px -2px;

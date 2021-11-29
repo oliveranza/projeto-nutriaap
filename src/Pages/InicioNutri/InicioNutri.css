@@ -1,11 +1,13 @@
 .nutriapp-inicioNutri .InicioBody{
-    min-height: 95vh;
-    margin: 0 14%;
+    height: 90vh;
+    margin: 10px 14%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    /* background-color: violet; */
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    box-shadow: 1px 1px 4px;
 }
 
 .nutriapp-inicioNutri .LadoEsquerdo{
@@ -15,6 +17,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    padding: 15px;
 }
 .nutriapp-inicioNutri .LadoEsquerdo h3{
     margin-bottom: 1rem;
@@ -86,7 +89,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 3px solid #22b2aa;
+    /* border: 3px solid #22b2aa; */
 }
 
 .nutriapp-inicioNutri .divPizza .p-chart {
@@ -98,12 +101,12 @@
 
 .nutriapp-inicioNutri .divLinhas{
     width: 20vw;
-    height: 250px;
+    height: 210px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 3px solid #22b2aa;
+    /* border: 3px solid #22b2aa; */
 }
 
 .nutriapp-inicioNutri .divLinhas .p-chart{

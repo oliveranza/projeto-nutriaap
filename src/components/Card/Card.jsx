@@ -81,7 +81,7 @@ export default function Card(props) {
       let response = await api.delete(`api/${endpoint}/${props.id}`);
       console.log(response.data);
       toast.current.show({
-        severity: "error",
+        severity: "success",
         summary: "Excluido",
         detail: `${props.nome} foi excluido.`,
         life: 2000,

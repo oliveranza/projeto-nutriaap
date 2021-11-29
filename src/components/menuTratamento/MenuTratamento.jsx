@@ -12,7 +12,7 @@ export default function MenuTratamento(props) {
   
   const { id } = useParams();
   const aba = props.aba || 1;
-  const selectedStyle = { backgroundColor: "white", color: "#22b2aa" };
+  const selectedStyle = { backgroundColor: "white", color: "#22b2aa", };
   const [paciente, setPaciente] = useState({});
   const [dataNascimento, setDataNascimento]= useState()
   const [dataUltimaConulta, setDataUltimaConsulta]= useState()
@@ -48,7 +48,7 @@ export default function MenuTratamento(props) {
         <div className="texto">
           <label className="paciente">Paciente</label>
           <Link to={`/paciente/${paciente.id}`}>
-            <p className="nomePaciente">{paciente.nome}</p>
+            <p className="nomePaciente">{paciente.nome +" "+ paciente.sobreNome}</p>
           </Link>
           <label className="paciente">Detalhes</label>
           <p className="nomePaciente">
@@ -74,29 +74,29 @@ export default function MenuTratamento(props) {
             ></Button>
           </Link>
 
-          {/* <Link to={`/paciente/tratamento/antropometrica/${id}`}> */}
+          <Link to={`/paciente/tratamento/antropometrica/${id}`}>
           <Button
-            name="antropemetrica"
+            name="antropometrica"
             style={aba === 3 ? selectedStyle : {}}
-            label="Avaliação Antropemetrico"
+            label="Avaliação Antropométrico"
           ></Button>
-          {/* </Link> */}
+          </Link>
 
-          {/* <Link to={`/paciente/tratamento/exames/${id}`}> */}
+          <Link to={`/paciente/tratamento/exames/${id}`}>
           <Button
             name="exames"
             style={aba === 4 ? selectedStyle : {}}
             label="Exames"
           ></Button>
-          {/* </Link> */}
+          </Link>
 
-          {/* <Link to={`/paciente/tratamento/gastoenergetico/${id}`}> */}
+          <Link to={`/paciente/tratamento/gastoEnergetico/${id}`}>
           <Button
             name="gastoEnergetico"
             style={aba === 5 ? selectedStyle : {}}
-            label="Gasto Energetico"
+            label="Gasto Energético"
           ></Button>
-          {/* </Link> */}
+          </Link>
 
           {/* <Link to={`/paciente/tratamento/planoalimentar/${id}`}> */}
           <Button
@@ -110,17 +110,17 @@ export default function MenuTratamento(props) {
           <Button
             name="recordatorioAlimentar"
             style={aba === 7 ? selectedStyle : {}}
-            label="Recordatorio Alimentar"
+            label="Recordatório Alimentar"
           ></Button>
           {/* </Link> */}
 
-          {/* <Link to={`/paciente/tratamento/suplementacao/${id}`}> */}
+          <Link to={`/paciente/tratamento/suplementacao/${id}`}>
           <Button
             name="suplementacao"
             style={aba === 8 ? selectedStyle : {}}
             label="Suplementação"
           ></Button>
-          {/* </Link> */}
+          </Link>
         </div>
         <div className="dtCadastro">
             <p>Cadastrado desde {dataCadastro}</p>

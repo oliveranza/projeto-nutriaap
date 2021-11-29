@@ -7,21 +7,22 @@ import { addLocale } from "primereact/api";
 import { pt } from "../../../locale/pt.json";
 import { Button } from "primereact/button";
 
-import "./Anamnese.css";
+import "./Exames.css";
 
-export default function Anamnese() {
+export default function Exmes() {
   function salvar() {}
 
   const [titulo, setTitulo] = useState();
   const [data, setData] = useState();
-  const [descricao, setDescricao] = useState();
+  const [observacoes, setObservacoes] = useState();
+  const [exames, setExames] = useState();
 
   addLocale("pt-br", pt);
 
   return (
     <>
-      <Tratamento abaMenu={2}>
-        <div className="Anamnese">
+      <Tratamento abaMenu={4}>
+        <div className="Exames">
           <form className="formulario" onSubmit={salvar}>
             <div className="p-fluid p-formgrid p-grid">
               <div className="p-field p-col-12 p-md-9">
@@ -29,7 +30,7 @@ export default function Anamnese() {
                 <InputText
                   id="titulo"
                   type="text"
-                  placeholder="Digite o título desta avaliação"
+                  placeholder="Digite o título desta solicitação"
                   value={titulo}
                   onChange={(e) => setTitulo(e.target.value)}
                   required
@@ -58,17 +59,31 @@ export default function Anamnese() {
               </div>
 
               <div className="p-field p-col-12 p-md-12">
-                <label htmlFor="descricao">Descirção</label>
+                <label htmlFor="descricao">Exames</label>
                 <InputTextarea
                   id="descricao"
                   type="text"
-                  placeholder="Descreva a avaliação"
-                  value={descricao}
-                  onChange={(e) => setDescricao(e.target.value)}
+                  placeholder="Digite os exames a serem solicitados ao paciente"
+                  value={exames}
+                  onChange={(e) => setExames(e.target.value)}
                   autoResize="false"
                   required="Deve ter uma descriação"
                 />
               </div>
+
+              <div className="p-field p-col-12 p-md-12">
+                <label htmlFor="descricao">Observações</label>
+                <InputTextarea
+                  id="descricao"
+                  type="text"
+                  placeholder="Espaço reservado para observações"
+                  value={observacoes}
+                  onChange={(e) => setObservacoes(e.target.value)}
+                  autoResize="false"
+                  required
+                />
+              </div>
+
               <div className="botoes">
                 <Button
                   type="submit"

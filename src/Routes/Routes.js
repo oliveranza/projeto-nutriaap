@@ -17,6 +17,10 @@ import PrivateRoute from "./PrivateRoute"
 import StoreProvider from "../services/Porvider";
 import Tratamento from "../Pages/tratamento/resumoTratamento/ResumoTratamento";
 import Anamnese from "../Pages/tratamento/anamnese/Anamnese";
+import Antropometrica from "../Pages/tratamento/antropometrica/Antropometrica";
+import Exames from "../Pages/tratamento/exames/Exames";
+import GastoEnergetico from "../Pages/tratamento/gastoEnergetico/GastoEnergetico";
+import Suplementacao from "../Pages/tratamento/suplementacao/Suplementacao";
 
 
 
@@ -40,6 +44,10 @@ const Routes = () => (
                 <PrivateRoute path="/paciente/:id" exact component={CadastroPaciente} />
                 <PrivateRoute path="/paciente/tratamento/:id" exact component={Tratamento} />
                 <PrivateRoute path="/paciente/tratamento/anamnese/:id" component={Anamnese} />
+                <PrivateRoute path="/paciente/tratamento/antropometrica/:id" component={Antropometrica} />
+                <PrivateRoute path="/paciente/tratamento/exames/:id" component={Exames} />
+                <PrivateRoute path="/paciente/tratamento/gastoEnergetico/:id" component={GastoEnergetico} />
+                <PrivateRoute path="/paciente/tratamento/suplementacao/:id" component={Suplementacao} />
             </StoreProvider>
 
         </Switch>

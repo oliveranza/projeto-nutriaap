@@ -1,14 +1,19 @@
 .nutriap-inicioadmin .inicioBody {
-  min-height: 90vh;
-  margin: 0 14%;
+  height: 91vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  /* background-color: tomato; */
+  margin: 10px 14%;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px;
+  background-color: rgb(255, 255, 255,0.85);
+
 }
 
 .nutriap-inicioadmin .cima {
+  padding: 10px;
   width: 100%;
   height: 30vh;
   display: flex;
@@ -61,7 +66,7 @@
   padding: 30px;
 }
 
-.nutriap-inicioadmin .baixo {
+.nutriap-inicioadmin .baixo { 
   height: 40vh;
   display: flex;
   flex-direction: column;
@@ -73,7 +78,7 @@
 
 .nutriap-inicioadmin .baixo .p-chart {
   margin: 10px;
-  width: 72vw;
+  width: 68vw;
 }
 
 .nutriap-inicioadmin .baixo .p-chart canvas {

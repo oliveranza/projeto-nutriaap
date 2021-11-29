@@ -1,0 +1,34 @@
+.tabela .botoes{
+    display: flex;
+    justify-content: space-around;
+}
+.p-datatable.p-datatable-striped .p-datatable-tbody > tr.p-row-odd {
+    background-color: #84f7f123!important;
+}
+.tabela .botoes button{
+    color: var(--primary-color);
+    background-color: unset;
+    height: 22px;
+    width: 22px;
+    border: unset;
+    border-radius: 15%;
+}
+.tabela .botoes button:hover{
+    background-color:#883cae;
+    color: white;
+}
+/* 
+.tabela .p-toast{
+    width: 290px;
+    div geral
+}
+
+.tabela .p-toast-message{
+    div da mensagem
+
+}
+
+.tabela .p-toast-message-content{
+    height: fit-content;
+    corpo da mensagem
+} */

@@ -1,0 +1,55 @@
+.suplementacao {
+  background-color: rgb(240, 240, 240, 0.8);
+  min-height: 85vh;
+  height: fit-content;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0px 1px 5px;
+  margin: 1px;
+  /* background-color: yellowgreen; */
+}
+.suplementacao label {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+.suplementacao form textarea{
+  height: 7.5em!important;
+}
+.suplementacao .suplementos,
+.suplementacao .fitoterapicos{
+  display: flex;
+  width: 100%;
+  flex-direction: row;  
+  flex-wrap: wrap;
+  justify-content:space-around;
+  align-items: center;
+  margin: 0 6px 6px 6px;
+  /* background-color: red; */
+}
+.suplementacao .suplementos #lbSup,
+.suplementacao .fitoterapicos #lbFit{
+  width: 100%;
+  margin-bottom: 6px;
+}
+.suplementacao .suplementos .suplementosChips,
+.suplementacao .fitoterapicos .fitoterapicosChips {
+  width: 94%;
+  margin-right: 0;
+  /* background-color: aqua; */
+}
+.suplementacao .suplementos .suplementosMulti ,
+.suplementacao .fitoterapicos .fitoterapicosMulti {
+  width: 41px;
+  margin-left: 0;
+  /* background-color: gold; */
+}
+
+.suplementacao .botoes {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px;
+}
+.suplementacao .botoes button {
+  width: 120px;
+}

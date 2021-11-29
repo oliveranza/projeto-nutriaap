@@ -5,6 +5,7 @@ import BarraDeMenu from '../../components/BarraDeMenu/BarraDeMenu';
 import TabelaComTabs from '../../components/minhaTabela/TabelaComTabs';
 import GraficoPizza from '../../components/graficoPizza/GraficoPizza';
 import GraficoLinhas from '../../components/graficoLinhas/GraficoLinhas';
+import { Link } from 'react-router-dom';
 
 
 export default function InicioNutri() {
@@ -22,7 +23,7 @@ export default function InicioNutri() {
 
                 <div className="LadoDireito">
                     <div className="DivBotoes">
-                        <Button id="btE" label={<p>Cadastrar<br />Paciente</p>} icon="pi pi-user-plus" iconPos="top"></Button>
+                        <Link to="/cadastroPaciente" ><Button id="btE" label={<p>Cadastrar<br />Paciente</p>} icon="pi pi-user-plus" iconPos="top"></Button></Link>
                         <Button id="btD" label={<p>Marcar<br />Consulta</p>} icon="pi pi-plus" iconPos="top"></Button>
                     </div>
                     <div className="divPizza">

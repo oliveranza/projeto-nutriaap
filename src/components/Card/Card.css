@@ -7,7 +7,7 @@
   align-content: center;
   justify-content: space-around;
   width:98%;
-  height: 16vh;
+  height: fit-content;
   margin: 1% 1%;
   box-shadow: 0 1px 7px -2px;
 }
@@ -19,7 +19,7 @@
 }
 .nutriapp-card .divFoto img{
     width: 7.5rem;
-    height: 100%;
+    height: 7.5rem;
     /* border: 1px solid #000; */
     text-align: center;
     align-content: center;
@@ -52,8 +52,8 @@
   margin: 0 5px;
   display: flex;
   flex-direction: column;
-  align-content: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   /* border: 1px solid #000; */
 }
 
@@ -78,12 +78,12 @@
 
 .nutriapp-card .botoes{
   /* border: 1px solid #000; */
-  width: 20%;
+  width: 15rem;
   margin: 8px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
 
 }
 
@@ -100,10 +100,10 @@
 .nutriapp-card #btApagar{
   background-color: var(--surface-d);
   color:red;
-  /* border: 1px solid rgb(252, 48, 58); */
   border-radius: 4px;
 }
 .nutriapp-card #btApagar:hover{
   background-color:red;
-  color: var(--surface-d)
+  color: var(--surface-d);
+  border: 1px solid var(--surface-d)
 }

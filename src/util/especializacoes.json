@@ -1,0 +1,29 @@
+{
+  "especializ": [
+    { "name": "Alergias alimentares" },
+    { "name": "Doenças autoimunes" },
+    { "name": "Doenças cardiovasculares" },
+    { "name": "Doenças Crônicas Não Transmissíveis" },
+    { "name": "Ayurveda" },
+    { "name": "Fitoterapia" },
+    { "name": "Fertilidade" },
+    { "name": "Clínica" },
+    { "name": "Esportiva" },
+    { "name": "Estética" },
+    { "name": "Comportamental" },
+    { "name": "Funcional" },
+    { "name": "Gerontologia" },
+    { "name": "Doenças pulmonares" },
+    { "name": "Doenças renais" },
+    { "name": "Materno-infantil" },
+    { "name": "Nutrigenética" },
+    { "name": "Oncológica" },
+    { "name": "Pediátrica" },
+    { "name": "Ortomolecular" },
+    { "name": "Saúde da Mulher" },
+    { "name": "Vegetariana" },
+    { "name": "Saúde intestinal" },
+    { "name": "Terapia Intensiva" },
+    { "name": "Transtornos alimentares" }
+  ]
+}

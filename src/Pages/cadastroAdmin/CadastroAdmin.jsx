@@ -149,6 +149,7 @@ function CadastroAdmin() {
       <Toast ref={toast} />
       <BarraDeMenu tab={2} tipo="admin" />
       <div className="nutriapp-cadastroadmin-inicio">
+        <div className="corpo">
         <div className="ladoEsquerdo">
           <div className="foto">
             {image ? (
@@ -277,7 +278,7 @@ function CadastroAdmin() {
               <Link to="/listaAdmin">
                 <Button
                   type="button"
-                  id="bt2"
+                  id="btVoltar"
                   label="Voltar"
                   icon="pi pi-arrow-left"
                   iconPos="left"
@@ -285,7 +286,7 @@ function CadastroAdmin() {
               </Link>
               <Button
                 type="submit"
-                id="bt"
+                id="btSalvar"
                 label="Salvar"
                 icon="pi pi-save"
                 iconPos="left"
@@ -293,6 +294,7 @@ function CadastroAdmin() {
               ></Button>
             </div>
           </form>
+          </div>
         </div>
       </div>
     </div>

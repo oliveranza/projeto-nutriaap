@@ -20,15 +20,31 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(255, 255, 255);
   /* background-color: var(--surface-d); */
   /* color: #fff; */
+  
+    background-image: url("./assets/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.p-button{
+.p-button {
   background: var(--primary-color);
   border: var(--primary-color);
 }
+.p-button:hover {
+  background-color: white;
+  background: white;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+
+}
+/* .p-button:enabled:hover{
+  background-color: white;
+  background: white;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+} */
 
 i.pi{
   color: var(--primary-color);
