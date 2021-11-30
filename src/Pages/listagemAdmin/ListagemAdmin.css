@@ -3,7 +3,6 @@
 }
 
 .nutriapp-ListagemAdmin .corpo{
-  min-height: 100vh;
   height: 100%;
   padding: 1.4% 2rem;
   flex-direction: column;

@@ -20,7 +20,9 @@ import Anamnese from "../Pages/tratamento/anamnese/Anamnese";
 import Antropometrica from "../Pages/tratamento/antropometrica/Antropometrica";
 import Exames from "../Pages/tratamento/exames/Exames";
 import GastoEnergetico from "../Pages/tratamento/gastoEnergetico/GastoEnergetico";
+import PlanoAlimentar from "../Pages/tratamento/planoAlimentar/PlanoAlimentar";
 import Suplementacao from "../Pages/tratamento/suplementacao/Suplementacao";
+import RecordatorioAlimentar from "../Pages/tratamento/recordatorioAlimentar/RecordatorioAlimentar";
 
 
 
@@ -47,6 +49,8 @@ const Routes = () => (
                 <PrivateRoute path="/paciente/tratamento/antropometrica/:id" component={Antropometrica} />
                 <PrivateRoute path="/paciente/tratamento/exames/:id" component={Exames} />
                 <PrivateRoute path="/paciente/tratamento/gastoEnergetico/:id" component={GastoEnergetico} />
+                <PrivateRoute path="/paciente/tratamento/planoAlimentar/:id" component={PlanoAlimentar} />
+                <PrivateRoute path="/paciente/tratamento/recordatorioAlimentar/:id" component={RecordatorioAlimentar} />
                 <PrivateRoute path="/paciente/tratamento/suplementacao/:id" component={Suplementacao} />
             </StoreProvider>
 

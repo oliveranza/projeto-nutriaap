@@ -123,7 +123,7 @@ export default function Antropometrica() {
                     value={pesoIdeal}
                     onChange={(e) => setPesoIdeal(e.target.value)}
                     required
-                    readOnly="true"
+                    readOnly={true}
                     size="3.00"
                     step="0.005"
                     min="0"

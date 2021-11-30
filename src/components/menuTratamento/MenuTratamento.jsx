@@ -98,21 +98,21 @@ export default function MenuTratamento(props) {
           ></Button>
           </Link>
 
-          {/* <Link to={`/paciente/tratamento/planoalimentar/${id}`}> */}
+          <Link to={`/paciente/tratamento/planoalimentar/${id}`}>
           <Button
             name="planoAlimentar"
             style={aba === 6 ? selectedStyle : {}}
             label="Plano Alimentar"
           ></Button>
-          {/* </Link> */}
+          </Link>
 
-          {/* <Link to={`/paciente/tratamento/recordatorio/${id}`}> */}
+          <Link to={`/paciente/tratamento/recordatorioAlimentar/${id}`}>
           <Button
             name="recordatorioAlimentar"
             style={aba === 7 ? selectedStyle : {}}
             label="Recordatório Alimentar"
           ></Button>
-          {/* </Link> */}
+          </Link>
 
           <Link to={`/paciente/tratamento/suplementacao/${id}`}>
           <Button

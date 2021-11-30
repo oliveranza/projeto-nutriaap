@@ -14,9 +14,29 @@
     border-radius: 15%;
 }
 .tabela .botoes button:hover{
-    background-color:#883cae;
-    color: white;
+    background-color: var(--primary-color);
+    color: rgb(255, 255, 255);
 }
+
+
+/*tabelas */
+.tabela .p-datatable{
+    border-radius: 5px;
+}
+
+/* celulas do corpo e cabeçalho da tabela*/
+.tabela .p-datatable .p-datatable-wrapper table th,
+.tabela .p-datatable .p-datatable-wrapper table td{
+    height: 2em;
+    padding: 0.5% 1%;
+}
+
+/* cor do cabeçalho */
+.tabela .p-datatable-thead .p-sortable-disabled{
+    background-color:var(--surface-d);
+    color: var(--primary-color);
+}
+
 /* 
 .tabela .p-toast{
     width: 290px;

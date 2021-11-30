@@ -11,27 +11,12 @@
     margin-bottom: 2%;
 }
 
-.resumo-tratamento .corpo .ladoDireito .tabela h4{
-    color: var(--primary-color);
-    margin:0.5% 0;
-    
+/* tabelas */
+.resumo-tratamento .corpo .ladoDireito .tabela .p-datatable{
+    box-shadow: 1px 1px 6px;
 }
 
-/*tabelas */
-.resumo-tratamento .corpo .ladoDireito .p-datatable{
-    box-shadow: 0 1px 5px;
-    border-radius: 5px;
-}
-
-/* celulas do corpo e cabeçalho da tabela*/
-.resumo-tratamento .corpo .ladoDireito .p-datatable .p-datatable-wrapper table th,
-.resumo-tratamento .corpo .ladoDireito .p-datatable .p-datatable-wrapper table td{
-    height: 2em;
-    padding: 0.5% 1%;
-}
-
-/* cor do cabeçalho */
-.resumo-tratamento .corpo .ladoDireito .tabela .p-datatable-thead .p-sortable-disabled{
-    background-color:var(--surface-d);
+.resumo-tratamento .corpo .ladoDireito .tabela label{
+    font-weight: bold;
     color: var(--primary-color);
 }

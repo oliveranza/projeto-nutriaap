@@ -2,7 +2,7 @@ import './InicioNutri.css';
 
 import { Button } from 'primereact/button';
 import BarraDeMenu from '../../components/BarraDeMenu/BarraDeMenu';
-import TabelaComTabs from '../../components/minhaTabela/TabelaComTabs';
+import TabelaComTabs from '../../components/minhaTabelaComTabs/TabelaComTabs';
 import GraficoPizza from '../../components/graficoPizza/GraficoPizza';
 import GraficoLinhas from '../../components/graficoLinhas/GraficoLinhas';
 import { Link } from 'react-router-dom';
