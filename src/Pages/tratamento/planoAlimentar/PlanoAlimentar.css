@@ -1,6 +1,7 @@
 .planoAlimentar {
   background-color: rgb(240, 240, 240, 0.8);
-  height: 85vh;
+  min-height: 85vh;
+  height: fit-content;
   border-radius: 5px;
   padding: 10px;
   box-shadow: 0px 1px 5px;
@@ -13,37 +14,44 @@
   font-weight: 500;
 }
 
-.planoAlimentar .p-selectbutton .p-button{
-  background-color:rgb(24, 133, 127);
+.planoAlimentar .p-selectbutton .p-button {
+  background-color: rgb(24, 133, 127);
   transition: 50ms;
 }
-.planoAlimentar .p-selectbutton .p-button:not(.p-disabled):not(.p-highlight):hover{
-  background:rgb(41, 233, 223);
-  
+.planoAlimentar .p-selectbutton .p-button:not(.p-disabled):not(.p-highlight):hover {
+  background: rgb(41, 233, 223);
 }
-.planoAlimentar .p-selectbutton .p-button.p-highlight{
+.planoAlimentar .p-selectbutton .p-button.p-highlight {
   background-color: rgb(40, 201, 193);
   box-shadow: 1px 0px 4px 1px rgb(35, 255, 200);
   font-weight: bold;
 }
-.planoAlimentar .p-selectbutton .p-button.p-highlight:hover{
-  background:rgb(41, 233, 223);
+.planoAlimentar .p-selectbutton .p-button.p-highlight:hover {
+  background: rgb(41, 233, 223);
 }
 
 .planoAlimentar #btAdd {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-size: 20px;
-    height: 190%;
-    border: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 20px;
+  font-weight: 500;
+  height: 190%;
+  border: unset;
+  box-shadow: 1px 1px 4px black;
 }
-.planoAlimentar #btAdd :hover{
-    border: unset;
+.planoAlimentar #divBt button:hover {
+  background-color: rgb(38, 189, 181);
+  border: unset;
 }
-.planoAlimentar #btAdd :nth-child(2){
-    flex: unset;
+.planoAlimentar #divBt button:active {
+  box-shadow: inset 0.5px 0.5px 4px black;
+  background-color: rgb(24, 133, 127);
+}
+
+.planoAlimentar #btAdd :nth-child(2) {
+  flex: unset;
 }
 
 .planoAlimentar .botoes {

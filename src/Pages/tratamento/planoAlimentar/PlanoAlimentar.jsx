@@ -1,17 +1,17 @@
 import { Calendar } from "primereact/calendar";
 import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Tratamento from "../../../components/tratamento/Tratamento";
 import { addLocale } from "primereact/api";
 import { pt } from "../../../locale/pt.json";
 import { Button } from "primereact/button";
 import { SelectButton } from "primereact/selectbutton";
-// import { MyTable} from "../../../components/myTable/MyTable"
 
 import "./PlanoAlimentar.css";
 import { Dropdown } from "primereact/dropdown";
 import MyTable from "../../../components/myTable/MyTable";
+import { Toast } from "primereact/toast";
 
 export default function PlanoAlimentar() {
   const [titulo, setTitulo] = useState();
@@ -19,9 +19,14 @@ export default function PlanoAlimentar() {
   const [dias, setDias] = useState([]);
   const [hora, setHora] = useState();
   const [refeicao, setRefeicao] = useState();
-  const [alimento, setAlimento] = useState();
-  const [tabela, setTabela] = useState();
+  const [alimento, setAlimento] = useState("");
+  const [tabela, setTabela] = useState([]);
   const [observacao, setObservacao] = useState();
+  
+  const toast = useRef()
+  const opcoesHoras = opc();
+  const colunas = ["Hora", "Refeição", "Alimentos"];
+  const width = ["10%", "20%", "60%"];
 
   addLocale("pt-br", pt);
 
@@ -35,17 +40,16 @@ export default function PlanoAlimentar() {
     { label: "Sabado" },
   ];
 
-  const opcoesHoras = opc();
 
   function opc() {
     let t = [];
     for (let i = 0; i <= 9; i++) {
-      t.push({ label: "0" + i + ":00", key:i });
-      t.push({ label: "0" + i + ":30",key:i });
+      t.push({ label: "0" + i + ":00", key: i });
+      t.push({ label: "0" + i + ":30", key: i });
     }
     for (let i = 10; i <= 23; i++) {
-      t.push({ label: +i + ":00",key:i });
-      t.push({ label: +i + ":30",key:i });
+      t.push({ label: +i + ":00", key: i });
+      t.push({ label: +i + ":30", key: i });
     }
     return t;
   }
@@ -61,17 +65,47 @@ export default function PlanoAlimentar() {
     { label: "Refeição intermitente" },
   ];
 
-  const colunas = ["Hora", "Refeição", "Alimentos"];
-  const width = ["10%", "20%", "70%"];
 
-  function add(){
+  function del(e) {
 
+  }
+  
+  function add() {
+    let verifica = true;
+    hora == undefined ? (verifica = false) : "";
+    refeicao == undefined ? (verifica = false) : "";
+    alimento === "" ? (verifica = false) : "";
+    if (verifica === true) {
+      const item = {
+        Hora: hora.label,
+        Refeição: refeicao.label,
+        Alimentos: alimento,
+      };
+      setTabela([...tabela, item]);
+      setHora()
+      setRefeicao()
+      setAlimento("")
+      toast.current.show({
+        severity:"success",
+        summary:"Adicionado",
+        detail:"Refeição adicionada",
+        time: 3000,
+      })
+    } else {
+      toast.current.show({
+        severity:"info",
+        summary:"Atenção",
+        detail:"Para adicionar uma refeição, primeiro preencha todos os campos",
+        time: 7000,
+      })
+    }
   }
 
   function salvar() {}
 
   return (
-    <>
+    <> 
+      <Toast ref={toast}/>
       <Tratamento abaMenu={6}>
         <div className="planoAlimentar">
           <form className="formulario" onSubmit={salvar}>
@@ -81,7 +115,7 @@ export default function PlanoAlimentar() {
                 <InputText
                   id="titulo"
                   type="text"
-                  placeholder="Digite o título desta avaliação"
+                  placeholder="Digite um título para este plano alimentar"
                   value={titulo}
                   onChange={(e) => setTitulo(e.target.value)}
                   required
@@ -131,7 +165,6 @@ export default function PlanoAlimentar() {
                   options={opcoesHoras}
                   placeholder="Hora"
                   onChange={(e) => setHora(e.target.value)}
-                  required
                 />
               </div>
               <div className="p-field p-col-12 p-md-6">
@@ -142,17 +175,17 @@ export default function PlanoAlimentar() {
                   options={opcoesRefeicao}
                   placeholder="Selecione a refeicao"
                   onChange={(e) => setRefeicao(e.target.value)}
-                  required
                 />
               </div>
 
               <div className="p-field p-col-12 p-md-2" id="divBt">
                 <Button
-                  type="submit"
+                  type="button"
                   id="btAdd"
                   label="Adicionar Refeição"
                   icon="pi pi-plus"
                   iconPos="top"
+                  onClick={(e) => add(e)}
                   autoFocus
                 ></Button>
               </div>
@@ -165,19 +198,17 @@ export default function PlanoAlimentar() {
                   placeholder="Digite os alimentos desta refeição"
                   value={alimento}
                   onChange={(e) => setAlimento(e.target.value)}
-                  required
                   minLength="2"
-                  maxLength="25"
                 />
               </div>
-              
 
               <div className="p-field p-col-12 p-md-12">
                 <MyTable
-                  label="Tabela"
-                  dados={tabela}
+                  label="Refeições"
+                  value={tabela}
                   colunas={colunas}
                   colWidth={width}
+                  setValue={setTabela}
                 />
               </div>
 
@@ -192,7 +223,7 @@ export default function PlanoAlimentar() {
                   autoResize="false"
                 />
               </div>
-              
+
               <div className="botoes">
                 <Button
                   type="submit"

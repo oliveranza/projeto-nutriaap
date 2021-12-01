@@ -1,6 +1,7 @@
 .recordatorioAlimentar {
   background-color: rgb(240, 240, 240, 0.8);
-  height: 85vh;
+  min-height: 85vh;
+  height: fit-content;
   border-radius: 5px;
   padding: 10px;
   box-shadow: 0px 1px 5px;
@@ -12,37 +13,46 @@
   color: var(--primary-color);
   font-weight: 500;
 }
-.recordatorioAlimentar .p-selectbutton .p-button{
-  background-color:rgb(24, 133, 127);
+
+.recordatorioAlimentar .p-selectbutton .p-button {
+  background-color: rgb(80, 24, 133);
   transition: 50ms;
 }
-.recordatorioAlimentar .p-selectbutton .p-button:not(.p-disabled):not(.p-highlight):hover{
-  background:rgb(41, 233, 223);
-  
+.recordatorioAlimentar .p-selectbutton .p-button:not(.p-disabled):not(.p-highlight):hover {
+  background: rgb(131, 41, 233);
 }
-.recordatorioAlimentar .p-selectbutton .p-button.p-highlight{
-  background-color: rgb(40, 201, 193);
-  box-shadow: 1px 0px 4px 1px rgb(35, 255, 200);
+.recordatorioAlimentar .p-selectbutton .p-button.p-highlight {
+  background-color: rgb(115, 40, 201);
+  box-shadow: 1px 0px 4px 1px rgb(204, 35, 255);
   font-weight: bold;
 }
-.recordatorioAlimentar .p-selectbutton .p-button.p-highlight:hover{
-  background:rgb(41, 233, 223);
+.recordatorioAlimentar .p-selectbutton .p-button.p-highlight:hover {
+  background: rgb(131, 41, 233);
 }
 
 .recordatorioAlimentar #btAdd {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-size: 20px;
-    height: 190%;
-    border: unset;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 20px;
+  font-weight: 500;
+  height: 190%;
+  border: unset;
+  background-color: rgb(93, 35, 170);
+  box-shadow: 1px 1px 4px black;
 }
-.recordatorioAlimentar #btAdd :hover{
-    border: unset;
+.recordatorioAlimentar #divBt button:hover {
+  background-color: rgb(115, 40, 201);
+  border: unset;
 }
-.recordatorioAlimentar #btAdd :nth-child(2){
-    flex: unset;
+.recordatorioAlimentar #divBt button:active {
+  box-shadow: inset 0.5px 0.5px 4px black;
+  background-color: rgb(80, 24, 133);
+
+}
+.recordatorioAlimentar #btAdd :nth-child(2) {
+  flex: unset;
 }
 
 .recordatorioAlimentar .botoes {

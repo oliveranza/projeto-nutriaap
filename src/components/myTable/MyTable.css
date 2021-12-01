@@ -1,40 +1,60 @@
-.tabela .botoes{
-    display: flex;
-    justify-content: space-around;
+.tabela .botoes {
+  display: flex;
+  justify-content: space-around;
 }
 .p-datatable.p-datatable-striped .p-datatable-tbody > tr.p-row-odd {
-    background-color: #84f7f123!important;
+  background-color: #84f7f123 !important;
 }
-.tabela .botoes button{
-    color: var(--primary-color);
-    background-color: unset;
-    height: 22px;
-    width: 22px;
-    border: unset;
-    border-radius: 15%;
+.tabela .botoes button {
+  color: var(--primary-color);
+  background-color: unset;
+  height: 22px;
+  width: 22px;
+  border: unset;
+  border-radius: 15%;
 }
-.tabela .botoes button:hover{
-    background-color: var(--primary-color);
-    color: rgb(255, 255, 255);
+.tabela .botoes button:hover {
+  background-color: var(--primary-color);
+  color: rgb(255, 255, 255);
 }
-
 
 /*tabelas */
-.tabela .p-datatable{
-    border-radius: 5px;
+.tabela .p-datatable {
+  border-radius: 5px;
 }
 
 /* celulas do corpo e cabeçalho da tabela*/
 .tabela .p-datatable .p-datatable-wrapper table th,
-.tabela .p-datatable .p-datatable-wrapper table td{
-    height: 2em;
-    padding: 0.5% 1%;
+.tabela .p-datatable .p-datatable-wrapper table td {
+  max-height: 1% !important;
+  /* height: fit-content!important; */
+  padding: 0 1% !important;
+  /* background-color: aqua; */
 }
 
 /* cor do cabeçalho */
-.tabela .p-datatable-thead .p-sortable-disabled{
-    background-color:var(--surface-d);
+.tabela .p-datatable-thead .p-sortable-disabled {
+  background-color: var(--surface-d);
+  color: var(--primary-color);
+}
+.botoesTabela {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.botoesTabela button{
+    width: 21px;
+    height: 21px;
     color: var(--primary-color);
+    border: unset;
+    background-color: unset;
+}
+.botoesTabela button:hover{
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 3px;
+    font-weight: 500;
+
 }
 
 /* 

@@ -23,6 +23,7 @@ import GastoEnergetico from "../Pages/tratamento/gastoEnergetico/GastoEnergetico
 import PlanoAlimentar from "../Pages/tratamento/planoAlimentar/PlanoAlimentar";
 import Suplementacao from "../Pages/tratamento/suplementacao/Suplementacao";
 import RecordatorioAlimentar from "../Pages/tratamento/recordatorioAlimentar/RecordatorioAlimentar";
+import Agenda from "../Pages/agenda/Agenda";
 
 
 
@@ -38,6 +39,7 @@ const Routes = () => (
                 <PrivateRoute path="/listaNutri" component={ListagemNutri} />
                 <PrivateRoute path="/listaAdmin" component={ListagemAdmin} />
                 <PrivateRoute path="/listaPaciente" component={ListagemPaciente} />
+                <PrivateRoute path="/agenda" component={Agenda} />
                 <PrivateRoute path="/cadastroNutri" component={CadastroNutri} />
                 <PrivateRoute path="/cadastroAdmin" component={CadastroAdmin} />
                 <PrivateRoute path="/cadastroPaciente" component={CadastroPaciente} />
@@ -45,7 +47,8 @@ const Routes = () => (
                 <PrivateRoute path="/admin/:id" component={CadastroAdmin} />
                 <PrivateRoute path="/paciente/:id" exact component={CadastroPaciente} />
                 <PrivateRoute path="/paciente/tratamento/:id" exact component={Tratamento} />
-                <PrivateRoute path="/paciente/tratamento/anamnese/:id" component={Anamnese} />
+                <PrivateRoute path="/paciente/tratamento/anamnese/:id" exact component={Anamnese} />
+                <PrivateRoute path="/paciente/tratamento/anamnese/:id/edit/:idAvaliacao" component={Anamnese} />
                 <PrivateRoute path="/paciente/tratamento/antropometrica/:id" component={Antropometrica} />
                 <PrivateRoute path="/paciente/tratamento/exames/:id" component={Exames} />
                 <PrivateRoute path="/paciente/tratamento/gastoEnergetico/:id" component={GastoEnergetico} />

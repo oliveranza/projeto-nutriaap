@@ -1,7 +1,7 @@
 import { Calendar } from "primereact/calendar";
 import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Tratamento from "../../../components/tratamento/Tratamento";
 import { addLocale } from "primereact/api";
 import { pt } from "../../../locale/pt.json";
@@ -12,6 +12,7 @@ import { SelectButton } from "primereact/selectbutton";
 import "./RecordatorioAlimentar.css";
 import { Dropdown } from "primereact/dropdown";
 import MyTable from "../../../components/myTable/MyTable";
+import { Toast } from "primereact/toast";
 
 export default function RecordatorioAlimentar() {
   const [titulo, setTitulo] = useState();
@@ -20,8 +21,12 @@ export default function RecordatorioAlimentar() {
   const [hora, setHora] = useState();
   const [refeicao, setRefeicao] = useState();
   const [alimento, setAlimento] = useState();
-  const [tabela, setTabela] = useState();
+  const [tabela, setTabela] = useState([]);
   const [observacao, setObservacao] = useState();
+
+  const toast = useRef()
+  const colunas = ["Hora", "Refeição", "Alimentos"];
+  const width = ["10%", "20%", "60%"];
 
   addLocale("pt-br", pt);
 
@@ -61,17 +66,42 @@ export default function RecordatorioAlimentar() {
     { label: "Refeição intermitente" },
   ];
 
-  const colunas = ["Hora", "Refeição", "Alimentos"];
-  const width = ["10%", "20%", "70%"];
-
-  function add(){
-
+  function add() {
+    let verifica = true;
+    hora == undefined ? (verifica = false) : "";
+    refeicao == undefined ? (verifica = false) : "";
+    alimento === "" ? (verifica = false) : "";
+    if (verifica === true) {
+      const item = {
+        Hora: hora.label,
+        Refeição: refeicao.label,
+        Alimentos: alimento,
+      };
+      setTabela([...tabela, item]);
+      setHora()
+      setRefeicao()
+      setAlimento("")
+      toast.current.show({
+        severity:"success",
+        summary:"Adicionado",
+        detail:"Refeição adicionada",
+        time: 3000,
+      })
+    } else {
+      toast.current.show({
+        severity:"info",
+        summary:"Atenção",
+        detail:"Para adicionar uma refeição, primeiro preencha todos os campos",
+        time: 7000,
+      })
+    }
   }
 
   function salvar() {}
 
   return (
     <>
+    <Toast ref={toast}/>
       <Tratamento abaMenu={7}>
         <div className="recordatorioAlimentar">
           <form className="formulario" onSubmit={salvar}>
@@ -81,7 +111,7 @@ export default function RecordatorioAlimentar() {
                 <InputText
                   id="titulo"
                   type="text"
-                  placeholder="Digite o título desta avaliação"
+                  placeholder="Digite um título para este recordatório alimentar"
                   value={titulo}
                   onChange={(e) => setTitulo(e.target.value)}
                   required
@@ -149,11 +179,12 @@ export default function RecordatorioAlimentar() {
 
               <div className="p-field p-col-12 p-md-2" id="divBt">
                 <Button
-                  type="submit"
+                  type="button"
                   id="btAdd"
                   label="Adicionar Refeição"
                   icon="pi pi-plus"
                   iconPos="top"
+                  onClick={add}
                   autoFocus
                 ></Button>
               </div>
@@ -175,8 +206,8 @@ export default function RecordatorioAlimentar() {
 
               <div className="p-field p-col-12 p-md-12">
                 <MyTable
-                  label="Tabela"
-                  dados={tabela}
+                  label="Refeições"
+                  value={tabela}
                   colunas={colunas}
                   colWidth={width}
                 />

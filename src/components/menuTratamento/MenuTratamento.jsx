@@ -22,7 +22,7 @@ export default function MenuTratamento(props) {
     api.get(`api/paciente/${id}`)
       .then((res) => {
         const pac = res.data;
-        setPaciente(pac);
+        setPaciente(pac)
         const d1 = converterData(pac.dataNasc)
         setDataNascimento(d1);
         const d2 = converterData(pac.dataUltimaConsulta)
