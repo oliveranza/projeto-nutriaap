@@ -12,6 +12,7 @@ import "./PlanoAlimentar.css";
 import { Dropdown } from "primereact/dropdown";
 import MyTable from "../../../components/myTable/MyTable";
 import { Toast } from "primereact/toast";
+import { useHistory, useParams } from "react-router";
 
 export default function PlanoAlimentar() {
   const [titulo, setTitulo] = useState();
@@ -23,6 +24,8 @@ export default function PlanoAlimentar() {
   const [tabela, setTabela] = useState([]);
   const [observacao, setObservacao] = useState();
   
+  const { id } = useParams()
+  const history = useHistory()
   const toast = useRef()
   const opcoesHoras = opc();
   const colunas = ["Hora", "Refeição", "Alimentos"];
@@ -66,8 +69,17 @@ export default function PlanoAlimentar() {
   ];
 
 
-  function del(e) {
-
+  function del(refei, i) {
+    const nova = tabela.map(item =>{
+      if(item===refei){
+        return
+      }else{
+        return item
+      }
+    })
+    
+    setTabela(nova);
+    // history.push(`paciente/tratamento/planoAlimentar/${id}`)
   }
   
   function add() {
@@ -209,6 +221,8 @@ export default function PlanoAlimentar() {
                   colunas={colunas}
                   colWidth={width}
                   setValue={setTabela}
+                  remove={true}
+                  handleRemove={del}
                 />
               </div>
 

@@ -24,7 +24,7 @@ export default function RecordatorioAlimentar() {
   const [tabela, setTabela] = useState([]);
   const [observacao, setObservacao] = useState();
 
-  const toast = useRef()
+  const toast = useRef();
   const colunas = ["Hora", "Refeição", "Alimentos"];
   const width = ["10%", "20%", "60%"];
 
@@ -45,12 +45,12 @@ export default function RecordatorioAlimentar() {
   function opc() {
     let t = [];
     for (let i = 0; i <= 9; i++) {
-      t.push({ label: "0" + i + ":00", key:i });
-      t.push({ label: "0" + i + ":30",key:i });
+      t.push({ label: "0" + i + ":00", key: i });
+      t.push({ label: "0" + i + ":30", key: i });
     }
     for (let i = 10; i <= 23; i++) {
-      t.push({ label: +i + ":00",key:i });
-      t.push({ label: +i + ":30",key:i });
+      t.push({ label: +i + ":00", key: i });
+      t.push({ label: +i + ":30", key: i });
     }
     return t;
   }
@@ -66,6 +66,17 @@ export default function RecordatorioAlimentar() {
     { label: "Refeição intermitente" },
   ];
 
+  function del(refei, i) {
+    const nova = tabela.map((item) => {
+      if (item === refei) {
+        return;
+      } else {
+        return item;
+      }
+    });
+    setTabela(nova);
+  }
+
   function add() {
     let verifica = true;
     hora == undefined ? (verifica = false) : "";
@@ -78,22 +89,23 @@ export default function RecordatorioAlimentar() {
         Alimentos: alimento,
       };
       setTabela([...tabela, item]);
-      setHora()
-      setRefeicao()
-      setAlimento("")
+      setHora();
+      setRefeicao();
+      setAlimento("");
       toast.current.show({
-        severity:"success",
-        summary:"Adicionado",
-        detail:"Refeição adicionada",
+        severity: "success",
+        summary: "Adicionado",
+        detail: "Refeição adicionada",
         time: 3000,
-      })
+      });
     } else {
       toast.current.show({
-        severity:"info",
-        summary:"Atenção",
-        detail:"Para adicionar uma refeição, primeiro preencha todos os campos",
+        severity: "info",
+        summary: "Atenção",
+        detail:
+          "Para adicionar uma refeição, primeiro preencha todos os campos",
         time: 7000,
-      })
+      });
     }
   }
 
@@ -101,7 +113,7 @@ export default function RecordatorioAlimentar() {
 
   return (
     <>
-    <Toast ref={toast}/>
+      <Toast ref={toast} />
       <Tratamento abaMenu={7}>
         <div className="recordatorioAlimentar">
           <form className="formulario" onSubmit={salvar}>
@@ -140,7 +152,7 @@ export default function RecordatorioAlimentar() {
                 <label htmlFor="dias">Dias da semana</label>
                 <SelectButton
                   className="dias"
-                  style={{background:"red"}}
+                  style={{ background: "red" }}
                   value={dias}
                   options={opcoesDias}
                   onChange={(e) => setDias(e.target.value)}
@@ -202,7 +214,6 @@ export default function RecordatorioAlimentar() {
                   maxLength="25"
                 />
               </div>
-              
 
               <div className="p-field p-col-12 p-md-12">
                 <MyTable
@@ -210,6 +221,8 @@ export default function RecordatorioAlimentar() {
                   value={tabela}
                   colunas={colunas}
                   colWidth={width}
+                  remove={true}
+                  handleRemove={del}
                 />
               </div>
 
@@ -224,7 +237,7 @@ export default function RecordatorioAlimentar() {
                   autoResize="false"
                 />
               </div>
-              
+
               <div className="botoes">
                 <Button
                   type="submit"

@@ -31,7 +31,8 @@ export default function ResumoTratamento() {
           {
             id: a.id,
             titulo: a.titulo,
-            data:a.data = (format(new Date(a.data),"dd/MM/yyyy"))
+            data:a.data = (format(new Date(a.data),"dd/MM/yyyy")),
+            tipo: a.tipo,
           }
         )
       })
@@ -43,7 +44,7 @@ export default function ResumoTratamento() {
     <div className="resumo-tratamento">
       <Tratamento abaMenu={1} >
         <div className="resumo">
-          <MyTable label="Avaliações de Anamnese" value={anamense} colunas={colunas} colWidth={width} edit={true} idPaciente={id}/>
+          <MyTable label="Avaliações de Anamnese" value={anamense} colunas={colunas} colWidth={width} edit={true} delete={true} idPaciente={id}/>
           <MyTable label="Avaliações Antropométrica" colunas={colunas} colWidth={width} edit={true}idPaciente={id}/>
           <MyTable label="Exames" colunas={colunas} colWidth={width} edit={true}idPaciente={id}/>
           <MyTable label="Gasto Energetico" colunas={colunas} colWidth={width} edit={true}idPaciente={id}/>

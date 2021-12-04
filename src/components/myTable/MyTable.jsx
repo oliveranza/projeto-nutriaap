@@ -15,12 +15,12 @@ function MyTable(props) {
   const toast = useRef(null);
   const history = useHistory();
 
-  function confirmar(event, bt, titulo) {
+  function confirmar(event, idAvalia, titulo) {
     confirmPopup({
       target: event.currentTarget,
       message: `Tem certeza que quer excluir ${titulo}?`,
       icon: "pi pi-exclamation-triangle",
-      accept: () => excluir(bt.id),
+      accept: () => excluir(idAvalia),
       reject: () =>
         toast.current.show({
           severity: "info",
@@ -28,7 +28,6 @@ function MyTable(props) {
           life: 2000,
         }),
     });
-    // console.log("excluido");
   }
   async function excluir(idAva) {
     try {
@@ -54,21 +53,17 @@ function MyTable(props) {
   }
 
 
-  function editar(idAva) {
-    history.push(`anamnese/${props.idPaciente}/edit/${idAva}`)
-    // return toast.current.show({
-    //   severity: "info",
-    //   summary: "provisorio",
-    //   detail: "Aqui vai a função editar",
-    //   life: 5000,
-    // });
+  function editar(idAva, tipo) {
+    history.push(`${tipo}/${props.idPaciente}/edit/${idAva}`)
   }
 
   function botoes(value){
+    const item = value
     return(
       <div className="botoesTabela">
-       {props.edit?<button name="edit" id={value.id} onClick={e => editar(e.target.id)} className="pi pi-pencil"/>:null}
-        <button name="delete" id={value.id} onClick={(e) => confirmar(e,e.target,value.titulo)} className="pi pi-trash"/>
+       {props.edit?<button name="edit"  onClick={e => editar(item.id, item.tipo)} className="pi pi-pencil"/>:null}
+       {props.delete?<button name="delete" onClick={(e) => confirmar(e,item.id,item.titulo)} className="pi pi-trash"/>:null}
+       {props.remove?<button type="button" name="remove" id={i-1} onClick={(e) => props.handleRemove(item, e.target.id )} className="pi pi-times"  />:null}
       </div>
     )
   };
@@ -85,18 +80,13 @@ function MyTable(props) {
         stripedRows
         dataKey="id"
         emptyMessage="Nenhum Registro"
-        // selectionMode="single"
-        // selection={""}
-        // onSelectionChange={"" /*e => setSelectedProduct3(e.value)*/}
-        // onRowSelect={""}
-        // onRowUnselect={""}
       >
         {props.colunas.map((col, i) => {
           return (
             <Column key={i} field={col} header={col[0].toUpperCase()+col.substr(1)} style={{ width: props.colWidth[i]}}></Column>
           );
         })}
-        <Column body={() => botoes(props.value[i++])} style={{ width: '10%' }}></Column>
+        <Column header="Ações" body={() => botoes(props.value[i++])} style={{ width: '10%' }}></Column>
       </DataTable>
     </div>
   )
