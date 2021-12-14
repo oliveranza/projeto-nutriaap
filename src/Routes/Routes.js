@@ -49,12 +49,16 @@ const Routes = () => (
                 <PrivateRoute path="/paciente/tratamento/:id" exact component={Tratamento} />
                 <PrivateRoute path="/paciente/tratamento/anamnese/:id" exact component={Anamnese} />
                 <PrivateRoute path="/paciente/tratamento/anamnese/:id/edit/:idAvaliacao" component={Anamnese} />
-                <PrivateRoute path="/paciente/tratamento/antropometrica/:id" component={Antropometrica} />
-                <PrivateRoute path="/paciente/tratamento/exames/:id" component={Exames} />
-                <PrivateRoute path="/paciente/tratamento/gastoEnergetico/:id" component={GastoEnergetico} />
+                <PrivateRoute path="/paciente/tratamento/antropometrica/:id" exact component={Antropometrica} />
+                <PrivateRoute path="/paciente/tratamento/antropometrica/:id/edit/:idAvaliacao" component={Antropometrica} />
+                <PrivateRoute path="/paciente/tratamento/exame/:id" exact component={Exames} />
+                <PrivateRoute path="/paciente/tratamento/exame/:id/edit/:idAvaliacao" component={Exames} />
+                <PrivateRoute path="/paciente/tratamento/gastoEnergetico/:id" exact component={GastoEnergetico} />
+                <PrivateRoute path="/paciente/tratamento/gastoEnergetico/:id/edit/:idAvaliacao" component={GastoEnergetico} />
                 <PrivateRoute path="/paciente/tratamento/planoAlimentar/:id" component={PlanoAlimentar} />
                 <PrivateRoute path="/paciente/tratamento/recordatorioAlimentar/:id" component={RecordatorioAlimentar} />
-                <PrivateRoute path="/paciente/tratamento/suplementacao/:id" component={Suplementacao} />
+                <PrivateRoute path="/paciente/tratamento/suplementacao/:id" exact component={Suplementacao} />
+                <PrivateRoute path="/paciente/tratamento/suplementacao/:id/edit/:idAvaliacao" component={Suplementacao} />
             </StoreProvider>
 
         </Switch>

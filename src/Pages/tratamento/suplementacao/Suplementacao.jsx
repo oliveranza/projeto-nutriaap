@@ -1,42 +1,129 @@
 import { Calendar } from "primereact/calendar";
 import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Tratamento from "../../../components/tratamento/Tratamento";
 import { addLocale } from "primereact/api";
 import { pt } from "../../../locale/pt.json";
 import { Button } from "primereact/button";
 import { MultiSelect } from "primereact/multiselect";
 import { Chips } from "primereact/chips";
+import { Toast } from "primereact/toast";
+
 
 import { suple } from "../../../util/suplementos.json";
 import { fitoterap } from "../../../util/fitoterapicos.json";
 import "./Suplementacao.css";
+import { useHistory, useParams } from "react-router-dom";
+import api from "../../../services/api";
 
 export default function Suplementacao() {
-  function salvar() {}
+  const history = useHistory();
+  const { id, idAvaliacao } = useParams();
+  const toast = useRef();
 
-  const [titulo, setTitulo] = useState();
-  const [data, setData] = useState();
-  const [descricao, setDescricao] = useState();
+  const [titulo, setTitulo] = useState("");
+  const [data, setData] = useState(new Date());
+  const [descricao, setDescricao] = useState("");
   const [suplementos, setSuplementos] = useState([]);
   const [suplementos2, setSuplementos2] = useState([]);
   const [fitoterapicos, setFitoterapicos] = useState([]);
   const [fitoterapicos2, setFitoterapicos2] = useState([]);
-  const [posologia, setPosologia] = useState();
+  const [posologia, setPosologia] = useState("");
+
+  useEffect(() => {
+    if (idAvaliacao) {
+      api.get(`/api/tratamento/${id}/${idAvaliacao}`).then((res) => {
+        const avali = res.data;
+        const dt = new Date(avali.data);
+        const suple = avali.suplementos.map(ele =>{
+          return {name:ele}
+        })
+        const fito = avali.fitoterapicos.map(ele =>{
+          return {name:ele}
+        })
+        setTitulo(avali.titulo);
+        setData(dt);
+        setDescricao(avali.descricao);
+        setSuplementos(suple);
+        setFitoterapicos(fito);
+        setSuplementos2(avali.suplementos);
+        setFitoterapicos2(avali.fitoterapicos);
+        setPosologia(avali.posologia)
+      });
+    }
+  }, []);
+
+  async function salvar(e) {
+    e.preventDefault();
+    const suple = suplementos.map(ele =>{
+      return ele.name
+    })
+    const fito = fitoterapicos.map(ele =>{
+      return ele.name
+    })
+    const ava = {
+      tipo: "suplementacao",
+      titulo: titulo,
+      data: data,
+      descricao: descricao,
+      suplementos: suple,
+      fitoterapicos: fito,
+      posologia: posologia,
+    };
+    if (idAvaliacao) {
+      atualizar(ava);
+    } else {
+      novo(ava);
+    }
+  }
+
+  async function novo(ava) {
+    const res = await api.post(`api/tratamento/suplementacao/${id}`, ava);
+    if (res.status === 201) {
+      toast.current.show({
+        severity: "success",
+        summary: "Sucesso!",
+        detail: "Avaliação cadastrada com sucesso",
+        time: 2000,
+      });
+      setTimeout(() => {
+        history.push(`/paciente/tratamento/${id}`);
+      }, 1000);
+    } else {
+      toast.current.show({
+        severity: "error",
+        summary: "erro!",
+        detail: "Erro no cadastro",
+        time: 7000,
+      });
+    }
+  }
+
+  async function atualizar(ava) {
+    ava.id = idAvaliacao;
+    const res = await api.put(`api/tratamento/suplementacao/${id}`, ava);
+    if (res.status === 201) {
+      toast.current.show({
+        severity: "success",
+        summary: "Sucesso!",
+        detail: "Avaliação Atualizada com sucesso",
+        time: 2000,
+      });
+      setTimeout(() => {
+        history.push(`/paciente/tratamento/${id}`);
+      }, 1500);
+    } else {
+      toast.current.show({
+        severity: "error",
+        summary: "erro!",
+        detail: "ops, ocorreu alguam erro na atualização",
+        time: 7000,
+      });
+    }
+  }
 
   addLocale("pt-br", pt);
-
-  const protocolos = [
-    { label: "EER/IOM - 2005" },
-    { label: "FAO/OMS - 1985" },
-    { label: "FAO/OMS - 2001" },
-    { label: "Harris & Benedict - 1919" },
-    { label: "Henry & Rees - 1991" },
-    { label: "Katch-McArdle - 1996" },
-    { label: "Mifflin-St Jeor - 1990" },
-    { label: "Schofield - 1985" },
-  ];
 
   function mudarSuple(e) {
     setSuplementos(e);
@@ -64,13 +151,14 @@ export default function Suplementacao() {
     setFitoterapicos(b);
   }
 
-  const template = () => {
-    return [{ name: "" }];
-  };
+  // const template = () => {
+  //   return [{ name: "" }];
+  // };
 
   return (
     <>
       <Tratamento abaMenu={8}>
+      <Toast ref={toast} />
         <div className="suplementacao">
           <form className="formulario" onSubmit={salvar}>
             <div className="p-fluid p-formgrid p-grid">
@@ -113,7 +201,7 @@ export default function Suplementacao() {
                   placeholder="Digite a descrição desta solicitados"
                   value={descricao}
                   onChange={(e) => setDescricao(e.target.value)}
-                  required="Deve ter uma descriação"
+                  required
                 />
               </div>
 
@@ -166,7 +254,6 @@ export default function Suplementacao() {
                   value={posologia}
                   onChange={(e) => setPosologia(e.target.value)}
                   autoResize="false"
-                  required="Deve ter uma descriação"
                 />
               </div>
               <div className="botoes">

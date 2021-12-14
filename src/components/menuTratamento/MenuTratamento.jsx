@@ -82,7 +82,7 @@ export default function MenuTratamento(props) {
           ></Button>
           </Link>
 
-          <Link to={`/paciente/tratamento/exames/${id}`}>
+          <Link to={`/paciente/tratamento/exame/${id}`}>
           <Button
             name="exames"
             style={aba === 4 ? selectedStyle : {}}

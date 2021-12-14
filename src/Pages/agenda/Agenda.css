@@ -1,0 +1,110 @@
+.nutriapp-agenda .corpo {
+  margin: 10px 14%;
+}
+
+/* div do titulo onde aparece a data */
+.nutriapp-agenda .corpo .fc-header-toolbar .fc-toolbar-chunk:nth-child(2) {
+  /* background: rgba(255, 255, 255, 0.8); */
+  background: rgba(255, 99, 71, 0.68);
+  width: 50%;
+  justify-content: center;
+  display: flex;
+  text-transform: capitalize;
+  border-radius: 10px;
+}
+
+/* texto do titulo */
+.nutriapp-agenda .corpo .fc-toolbar-title {
+  /* color: #22a2ab; */
+  text-shadow: 1px 1px 2px rgb(255, 255, 255);
+}
+
+/* grupo de botoes superiores */
+.nutriapp-agenda .corpo .fc-button-group button {
+  background: rgba(255, 255, 255, 0.8) !important;
+  color: var(--primary-color) !important;
+  font-weight: 500;
+  border-color: rgba(34, 178, 171, 0.75) !important;
+}
+
+/* outro botoes (os que nao ficam agrupados) */
+.nutriapp-agenda .corpo .fc-toolbar-chunk button {
+  color: #22a2ab !important;
+  font-weight: 600;
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  border-color: #22a2ab !important;
+}
+/* cabeçalho */
+.nutriapp-agenda .corpo th {
+  border-radius: 6px;
+  border-color: rgba(0, 0, 0, 0.438) !important;
+  background: rgba(255, 255, 255, 0.445) !important;
+  box-shadow: 0px 0px 5px rgba(37, 37, 37, 0.658);
+  background-color: rgb(255, 99, 71) !important;
+  text-shadow: 1px 1px 2px rgb(255, 255, 255);
+  text-transform: capitalize;
+}
+
+/* component geral fullcalendar */
+.nutriapp-agenda .corpo .fc {
+  height: 91vh !important;
+}
+
+/* div do numero do dia - flex-direction column faz o numero ficar na esquerda*/
+.nutriapp-agenda .corpo .fc .fc-daygrid-day-top {
+  flex-direction: column;
+  font-weight: bold;
+  color: tomato;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: black;
+}
+
+/* div do fundo da tabela */
+.nutriapp-agenda .corpo .fc.fc-theme-standard .fc-view-harness .fc-view {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+}
+
+/* tabela */
+.nutriapp-agenda .corpo table {
+  box-shadow: 1px 1px 4px;
+  padding: 3px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+/* celula da tablea*/
+.nutriapp-agenda .corpo tr {
+  background-color: rgba(34, 178, 171, 0.288);
+}
+
+/* numeros dos dias e linha de grade */
+.nutriapp-agenda .corpo .fc.fc-theme-standard .fc-view-harness td {
+  color: black;
+  font-weight: 600;
+  border-color: rgba(38, 48, 48, 0.767);
+}
+
+/*fundo do evento */
+.nutriapp-agenda .corpo .fc-v-event {
+  background-color: rgba(255, 255, 255, 0.699);
+  border-color: blueviolet;
+}
+
+/* letra do evento */
+.nutriapp-agenda .corpo .fc-event-main {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+/* cor do dia HOJE */
+.nutriapp-agenda .corpo table .fc-day-today {
+  background-color: rgba(236, 236, 236, 0.753);
+  /* border-color: rgb(236, 134, 17) !important; */
+}
+
+/* celula selecionada */
+.nutriapp-agenda .corpo table .fc-highlight {
+  /* background-color: rgba(101, 17, 236, 0.384); */
+  background-color: rgba(255, 99, 71, 0.404);
+}

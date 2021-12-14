@@ -1,26 +1,115 @@
 import { Calendar } from "primereact/calendar";
 import { InputText } from "primereact/inputtext";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Tratamento from "../../../components/tratamento/Tratamento";
 import { addLocale } from "primereact/api";
 import { pt } from "../../../locale/pt.json";
 import { Button } from "primereact/button";
+import { Dropdown } from "primereact/dropdown";
+import { Toast } from "primereact/toast";
 
 import "./GastoEnergetico.css";
-import {injurias} from "../../../util/injurias.json";
-import { Dropdown } from "primereact/dropdown";
+import api from "../../../services/api";
+
+import { injurias } from "../../../util/injurias.json";
+import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function GastoEnergetico() {
-  function salvar() {}
+
+  const history = useHistory();
+  const { id, idAvaliacao } = useParams();
+  const toast = useRef();
 
   const [titulo, setTitulo] = useState();
   const [data, setData] = useState();
+  const [peso, setPeso] = useState();
+  const [altura, setAltura] = useState();
   const [protocolo, setProtocolo] = useState();
   const [grau, setGrau] = useState();
   const [injuria, setInjuria] = useState();
-  const [altura, setAltura] = useState();
-  const [peso, setPeso] = useState();
   
+  useEffect(() => {
+    if (idAvaliacao) {
+      api.get(`/api/tratamento/${id}/${idAvaliacao}`).then((res) => {
+        const avali = res.data;
+        const dt = new Date(avali.data);
+        setTitulo(avali.titulo);
+        setData(dt);
+        setPeso(avali.peso);
+        setAltura(avali.altura);
+        setProtocolo({label: avali.protocolo});
+        setGrau(avali.nivelDeAtividade);
+        setInjuria({label: avali.injuria})
+      });
+    }
+  }, []);
+
+  async function salvar(e) {
+    e.preventDefault();
+    const inj = injuria.label
+    const prot = protocolo.label
+    const ava = {
+      tipo: "gastoEnergetico",
+      titulo: titulo,
+      data:data,
+      peso: peso,
+      altura: altura,
+      protocolo: prot,
+      nivelDeAtividade: grau,
+      injuria:inj,
+    };
+    if (idAvaliacao) {
+      atualizar(ava);
+    } else {
+      novo(ava);
+    }
+  }
+
+  async function novo(ava) {
+    const res = await api.post(`api/tratamento/gastoEnergetico/${id}`, ava);
+    if (res.status === 201) {
+      toast.current.show({
+        severity: "success",
+        summary: "Sucesso!",
+        detail: "Avaliação cadastrada com sucesso",
+        time: 2000,
+      });
+      setTimeout(() => {
+        history.push(`/paciente/tratamento/${id}`);
+      }, 1000);
+    } else {
+      toast.current.show({
+        severity: "error",
+        summary: "erro!",
+        detail: "Erro no cadastro",
+        time: 7000,
+      });
+    }
+  }
+
+  async function atualizar(ava) {
+    ava.id = idAvaliacao;
+    const res = await api.put(`api/tratamento/gastoEnergetico/${id}`, ava);
+    if (res.status === 201) {
+      toast.current.show({
+        severity: "success",
+        summary: "Sucesso!",
+        detail: "Avaliação Atualizada com sucesso",
+        time: 2000,
+      });
+      setTimeout(() => {
+        history.push(`/paciente/tratamento/${id}`);
+      }, 1500);
+    } else {
+      toast.current.show({
+        severity: "error",
+        summary: "erro!",
+        detail: "ops, ocorreu alguam erro na atualização",
+        time: 7000,
+      });
+    }
+  }
+
   addLocale("pt-br", pt);
 
   const protocolos = [
@@ -47,6 +136,7 @@ export default function GastoEnergetico() {
   return (
     <>
       <Tratamento abaMenu={5}>
+      <Toast ref={toast} />
         <div className="gastoEnergetico">
           <form className="formulario" onSubmit={salvar}>
             <div className="p-fluid p-formgrid p-grid">
@@ -61,7 +151,7 @@ export default function GastoEnergetico() {
                   onChange={(e) => setTitulo(e.target.value)}
                   required
                   minLength="2"
-                  maxLength="25"
+                  maxLength="200"
                 />
               </div>
 

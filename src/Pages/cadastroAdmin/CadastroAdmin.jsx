@@ -13,7 +13,7 @@ import { Button } from "primereact/button";
 import { addLocale } from "primereact/api";
 import { FileUpload } from "primereact/fileupload";
 import { Toast } from "primereact/toast";
-import { format } from "date-fns";
+
 
 import { pt } from "../../locale/pt.json"
 import foto from "../../assets/defaultUser.png";
