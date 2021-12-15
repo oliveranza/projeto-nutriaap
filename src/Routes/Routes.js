@@ -55,8 +55,10 @@ const Routes = () => (
                 <PrivateRoute path="/paciente/tratamento/exame/:id/edit/:idAvaliacao" component={Exames} />
                 <PrivateRoute path="/paciente/tratamento/gastoEnergetico/:id" exact component={GastoEnergetico} />
                 <PrivateRoute path="/paciente/tratamento/gastoEnergetico/:id/edit/:idAvaliacao" component={GastoEnergetico} />
-                <PrivateRoute path="/paciente/tratamento/planoAlimentar/:id" component={PlanoAlimentar} />
-                <PrivateRoute path="/paciente/tratamento/recordatorioAlimentar/:id" component={RecordatorioAlimentar} />
+                <PrivateRoute path="/paciente/tratamento/planoAlimentar/:id" exact component={PlanoAlimentar} />
+                <PrivateRoute path="/paciente/tratamento/planoAlimentar/:id/edit/:idAvaliacao" component={PlanoAlimentar} />
+                <PrivateRoute path="/paciente/tratamento/recordatorioAlimentar/:id" exact component={RecordatorioAlimentar} />
+                <PrivateRoute path="/paciente/tratamento/recordatorioAlimentar/:id/edit/:idAvaliacao" component={RecordatorioAlimentar} />
                 <PrivateRoute path="/paciente/tratamento/suplementacao/:id" exact component={Suplementacao} />
                 <PrivateRoute path="/paciente/tratamento/suplementacao/:id/edit/:idAvaliacao" component={Suplementacao} />
             </StoreProvider>

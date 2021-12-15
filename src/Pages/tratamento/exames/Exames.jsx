@@ -18,10 +18,10 @@ export default function Exmes() {
   const { id, idAvaliacao } = useParams();
   const toast = useRef();
 
-  const [titulo, setTitulo] = useState();
-  const [data, setData] = useState();
-  const [exames, setExames] = useState();
-  const [observacoes, setObservacoes] = useState();
+  const [titulo, setTitulo] = useState("");
+  const [data, setData] = useState(new Date());
+  const [exames, setExames] = useState("");
+  const [observacoes, setObservacoes] = useState("");
 
   useEffect(() => {
     if (idAvaliacao) {

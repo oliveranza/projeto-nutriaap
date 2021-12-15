@@ -1,35 +1,127 @@
-import { Calendar } from "primereact/calendar";
-import { InputText } from "primereact/inputtext";
-import { InputTextarea } from "primereact/inputtextarea";
-import { useRef, useState } from "react";
-import Tratamento from "../../../components/tratamento/Tratamento";
-import { addLocale } from "primereact/api";
-import { pt } from "../../../locale/pt.json";
-import { Button } from "primereact/button";
-import { SelectButton } from "primereact/selectbutton";
-
-import "./PlanoAlimentar.css";
-import { Dropdown } from "primereact/dropdown";
-import MyTable from "../../../components/myTable/MyTable";
-import { Toast } from "primereact/toast";
+import { useRef, useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router";
+import { InputTextarea } from "primereact/inputtextarea";
+import { SelectButton } from "primereact/selectbutton";
+import { addLocale } from "primereact/api";
+import { InputText } from "primereact/inputtext";
+import { Calendar } from "primereact/calendar";
+import { Dropdown } from "primereact/dropdown";
+import { Button } from "primereact/button";
+import { Toast } from "primereact/toast";
+
+import Tratamento from "../../../components/tratamento/Tratamento";
+import MyTable from "../../../components/myTable/MyTable";
+import { pt } from "../../../locale/pt.json";
+import api from "../../../services/api";
+import "./PlanoAlimentar.css";
+
+
+
 
 export default function PlanoAlimentar() {
-  const [titulo, setTitulo] = useState();
-  const [data, setData] = useState();
+
+  const [titulo, setTitulo] = useState("");
+  const [data, setData] = useState(new Date());
   const [dias, setDias] = useState([]);
   const [hora, setHora] = useState();
   const [refeicao, setRefeicao] = useState();
   const [alimento, setAlimento] = useState("");
-  const [tabela, setTabela] = useState([]);
+  const [refeicoes, setRefeicoes] = useState([]);
   const [observacao, setObservacao] = useState();
   
-  const { id } = useParams()
+  const { id, idAvaliacao } = useParams()
   const history = useHistory()
   const toast = useRef()
   const opcoesHoras = opc();
-  const colunas = ["Hora", "Refeição", "Alimentos"];
+  const colunas = ["horario", "refeicao", "alimentos"];
   const width = ["10%", "20%", "60%"];
+
+  useEffect(() => {
+    if (idAvaliacao) {
+      api.get(`/api/tratamento/${id}/${idAvaliacao}`).then((res) => {
+        const avali = res.data;
+        const dt = new Date(avali.data);
+        const dias1 = avali.dias.split(", ")
+        let dias2 = []
+        for (let i = 0; i < dias1.length-1; i++) {
+                   dias2.push({label:dias1[i]})
+        }
+        setTitulo(avali.titulo);
+        setData(dt);
+        setDias(dias2)
+        setRefeicoes(avali.refeicao)
+        setObservacao(avali.observacoes);
+      });
+    }
+  }, []);
+
+  async function salvar(e) {
+    e.preventDefault();
+    let diass = ""
+    dias.forEach(ele =>{
+      diass += ele.label+", "
+    })
+    console.log(diass);
+    console.log(refeicoes);
+    const ava = {
+      tipo: "planoAlimentar",
+      titulo: titulo,
+      data: data,
+      dias: diass,
+      refeicao: refeicoes,
+      observacoes: observacao,
+    };
+    if (idAvaliacao) {
+      atualizar(ava);
+    } else {
+      novo(ava);
+    }
+  }
+
+  async function novo(ava) {
+    const res = await api.post(`api/tratamento/planoAlimentar/${id}`, ava);
+    if (res.status === 201) {
+      toast.current.show({
+        severity: "success",
+        summary: "Sucesso!",
+        detail: "Avaliação cadastrada com sucesso",
+        time: 2000,
+      });
+      setTimeout(() => {
+        history.push(`/paciente/tratamento/${id}`);
+      }, 1000);
+    } else {
+      toast.current.show({
+        severity: "error",
+        summary: "erro!",
+        detail: "Erro no cadastro",
+        time: 7000,
+      });
+    }
+  }
+
+  async function atualizar(ava) {
+    ava.id = idAvaliacao;
+    const res = await api.put(`api/tratamento/planoAlimentar/${id}`, ava);
+    if (res.status === 201) {
+      toast.current.show({
+        severity: "success",
+        summary: "Sucesso!",
+        detail: "Avaliação Atualizada com sucesso",
+        time: 2000,
+      });
+      setTimeout(() => {
+        history.push(`/paciente/tratamento/${id}`);
+      }, 1500);
+    } else {
+      toast.current.show({
+        severity: "error",
+        summary: "erro!",
+        detail: "ops, ocorreu alguam erro na atualização",
+        time: 7000,
+      });
+    }
+  }
 
   addLocale("pt-br", pt);
 
@@ -69,17 +161,9 @@ export default function PlanoAlimentar() {
   ];
 
 
-  function del(refei, i) {
-    const nova = tabela.map(item =>{
-      if(item===refei){
-        return
-      }else{
-        return item
-      }
-    })
-    
-    setTabela(nova);
-    // history.push(`paciente/tratamento/planoAlimentar/${id}`)
+  function del(refei) {
+    const nova = refeicoes.filter(ref =>ref.alimentos !==refei.alimentos);
+    setRefeicoes(nova)
   }
   
   function add() {
@@ -89,11 +173,11 @@ export default function PlanoAlimentar() {
     alimento === "" ? (verifica = false) : "";
     if (verifica === true) {
       const item = {
-        Hora: hora.label,
-        Refeição: refeicao.label,
-        Alimentos: alimento,
+        horario: hora.label,
+        refeicao: refeicao.label,
+        alimentos: alimento,
       };
-      setTabela([...tabela, item]);
+      setRefeicoes([...refeicoes, item]);
       setHora()
       setRefeicao()
       setAlimento("")
@@ -103,6 +187,7 @@ export default function PlanoAlimentar() {
         detail:"Refeição adicionada",
         time: 3000,
       })
+      console.log(refeicoes);
     } else {
       toast.current.show({
         severity:"info",
@@ -113,7 +198,7 @@ export default function PlanoAlimentar() {
     }
   }
 
-  function salvar() {}
+  
 
   return (
     <> 
@@ -132,7 +217,7 @@ export default function PlanoAlimentar() {
                   onChange={(e) => setTitulo(e.target.value)}
                   required
                   minLength="2"
-                  maxLength="25"
+                  maxLength="200"
                 />
               </div>
 
@@ -166,6 +251,7 @@ export default function PlanoAlimentar() {
                     showDelay: 700,
                     hideDelay: 200,
                   }}
+                  required
                 ></SelectButton>
               </div>
 
@@ -190,7 +276,7 @@ export default function PlanoAlimentar() {
                 />
               </div>
 
-              <div className="p-field p-col-12 p-md-2" id="divBt">
+              <div className="p-col-12 p-md-2" id="divBt">
                 <Button
                   type="button"
                   id="btAdd"
@@ -217,12 +303,14 @@ export default function PlanoAlimentar() {
               <div className="p-field p-col-12 p-md-12">
                 <MyTable
                   label="Refeições"
-                  value={tabela}
+                  value={refeicoes}
                   colunas={colunas}
                   colWidth={width}
-                  setValue={setTabela}
+                  setValue={setRefeicoes}
                   remove={true}
                   handleRemove={del}
+                  sort="horario"
+                  ordem={1}
                 />
               </div>
 
@@ -245,7 +333,6 @@ export default function PlanoAlimentar() {
                   label="Salvar"
                   icon="pi pi-save"
                   iconPos="left"
-                  autoFocus
                 ></Button>
               </div>
             </div>

@@ -57,13 +57,13 @@ function MyTable(props) {
     history.push(`${tipo}/${props.idPaciente}/edit/${idAva}`)
   }
 
-  function botoes(value){
-    const item = value
+  function botoes(rowdata){
+    
     return(
       <div className="botoesTabela">
-       {props.edit?<button name="edit"  onClick={e => editar(item.id, item.tipo)} className="pi pi-pencil"/>:null}
-       {props.delete?<button name="delete" onClick={(e) => confirmar(e,item.id,item.titulo)} className="pi pi-trash"/>:null}
-       {props.remove?<button type="button" name="remove" id={i-1} onClick={(e) => props.handleRemove(item, e.target.id )} className="pi pi-times"  />:null}
+       {props.edit?<button name="edit"  onClick={e => editar(rowdata.id, rowdata.tipo)} className="pi pi-pencil"/>:null}
+       {props.delete?<button name="delete" onClick={(e) => confirmar(e,rowdata.id,rowdata.titulo)} className="pi pi-trash"/>:null}
+       {props.remove?<button type="button" name="remove" onClick={() => props.handleRemove(rowdata)} className="pi pi-times"  />:null}
       </div>
     )
   };
@@ -78,15 +78,17 @@ function MyTable(props) {
         size="small"
         showGridlines
         stripedRows
-        dataKey="id"
+        // dataKey="id"
         emptyMessage="Nenhum Registro"
+        sortField={[props.sort]}
+        sortOrder={props.ordem}
       >
         {props.colunas.map((col, i) => {
           return (
-            <Column key={i} field={col} header={col[0].toUpperCase()+col.substr(1)} style={{ width: props.colWidth[i]}}></Column>
+            <Column key={i} field={col} header={`${col[0].toUpperCase()}${col.substr(1).replace(/cao/,"ção")}`} style={{ width: props.colWidth[i]}}></Column>
           );
         })}
-        <Column header="Ações" body={() => botoes(props.value[i++])} style={{ width: '10%' }}></Column>
+        <Column header="Ações" body={botoes} style={{ width: '10%' }}></Column>
       </DataTable>
     </div>
   )
