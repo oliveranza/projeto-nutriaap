@@ -1,11 +1,12 @@
-import React, { useState, useContext, useRef } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
+import { SelectButton } from "primereact/selectbutton";
 import { InputText } from "primereact/inputtext";
-import { InputSwitch } from "primereact/inputswitch";
 import { Button } from "primereact/button";
 import { Link } from "react-router-dom";
 import { Toast } from "primereact/toast";
+import api from "../../services/api";
 
 import StoreContext from "../../services/Context";
 
@@ -17,10 +18,20 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [valor, setState] = useState(false);
   const [eye, setEye] = useState("pi pi-eye");
   const [visible, setVisible] = useState("password");
+  const [nivel, setNivel] = useState(Number);
   const { token1, setToken } = useContext(StoreContext);
+
+  const niveis = [
+    // { name: "Paciente", value: 1 },
+    { name: "Nutricionista", value: 2 },
+    { name: "Administrador", value: 3 },
+  ];
+
+  useEffect(()=>{
+    setToken(null)
+  },[])
 
   function visivel() {
     if (eye === "pi pi-eye") {
@@ -32,10 +43,8 @@ function Login() {
     }
   }
 
-  function fazerLogin(email1, senha1) {
-    if (email1 === "admin" && senha1 === "admin") {
-      return { token: "1234" };
-    } else if (email1 === "") {
+  async function fazerLogin(email1, senha1) {
+    if (email1 === "") {
       toast.current.show({
         severity: "warn",
         summary: "Atenção!",
@@ -51,27 +60,65 @@ function Login() {
         life: 5000,
       });
       return { error: "Senha invalidos" };
-    } else {
+    }
+    else if (nivel === 0 || nivel === null) {
       toast.current.show({
-        severity: "error",
-        summary: "Erro",
-        detail: "E-mail e/ou senha inválidos",
+        severity: "warn",
+        summary: "Atenção!",
+        detail: "Selecione o tipo de acesso",
         life: 5000,
       });
-      return { error: "Email e/ou senha invalidos" };
+      return { error: "Tipo de acesso não selecionado" };
+    }
+    const userlogin = { userName: email1, password: senha1, nivelDeAcesso: nivel};
+    try {
+      const res = await api.post("api/login", userlogin);
+      return { token: "1234" };
+    } catch (error) {
+      return error.toString();
     }
   }
 
-  function onSubmitHandler(event) {
-    const { token } = fazerLogin(email, senha);
-    if (token) {
-      setToken(token);
-      console.log(token1);
+  async function onSubmitHandler(event) {
+    const resul = await fazerLogin(email, senha);
+    if (resul.token) {
+      setToken(resul.token);
       setTimeout(() => {
-        return history.push("/inicioAdmin");
+        if (nivel === 1 ){
+          {
+            toast.current.show({
+              severity: "success",
+              summary: "Sucesso",
+              detail: "Login feito com usuário paciente",
+              life: 5000,
+            });
+          }
+        } else if (nivel === 2) {
+          return history.push("/inicioNutri");
+        } else if (nivel === 3) {
+          return history.push("/inicioAdmin");
+        }
       }, 600);
-    } else {
-      setSenha("");
+    } 
+    else if (resul === "Error: Network Error"){
+      {
+        toast.current.show({
+          severity: "error",
+          summary: "Erro",
+          detail: "O servidor parece estar offline, tente novamente mais tarde",
+          life: 5000,
+        });
+      }
+    }
+    else {
+      {
+        toast.current.show({
+          severity: "error",
+          summary: "Erro",
+          detail: "E-mail e/ou senha inválidos",
+          life: 5000,
+        });
+      }
     }
   }
   function keyHandler(e) {
@@ -79,7 +126,6 @@ function Login() {
   }
 
   return (
-    // setToken(null),
     <div className="nutriapp-login">
       <Toast ref={toast} />
       <div className="CardVertical">
@@ -98,6 +144,7 @@ function Login() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
             <label htmlFor="campoemail">E-mail</label>
           </span>
@@ -125,17 +172,20 @@ function Login() {
           </span>
         </div>
 
-        {/* <div className="DivChave">
-          <label htmlFor="chave">Funcionário</label>
-          <InputSwitch
-            id="chave"
-            checked={valor}
-            onChange={(e) => setState(!valor)}
-          />
-        </div> */}
         <div className="esqueciSenha">
           <Link to="/recuperacao">Esqueci a senha</Link>
         </div>
+
+        <div className="niveis">
+          <label>Entrar como:</label>
+          <SelectButton
+            value={nivel}
+            options={niveis}
+            optionLabel="name"
+            onChange={(e) => setNivel(e.value)}
+          />
+        </div>
+
 
         <div className="Botao">
           <Button

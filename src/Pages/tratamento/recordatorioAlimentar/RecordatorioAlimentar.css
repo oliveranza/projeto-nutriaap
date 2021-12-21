@@ -45,7 +45,7 @@
 .recordatorioAlimentar .p-selectbutton .p-button:focus {
   box-shadow: 0 0 0 0.2rem rgb(252, 213, 84) !important;
 }
-.recordatorioAlimentar .p-selectbutton .p-button:enabled:active, .p-button:not(button):not(a):not(.p-disabled):active {
+.recordatorioAlimentar .p-selectbutton .p-button:enabled:active, .recordatorioAlimentar .p-button:not(button):not(a):not(.p-disabled):active {
   background: tomato !important;
   border: 1px solid tomato;
 }

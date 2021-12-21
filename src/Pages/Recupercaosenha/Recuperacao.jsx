@@ -18,9 +18,7 @@ function Recuperacao() {
         </div>
         <div>
           <p>
-            Digite seu endereço de e-mail e depois click no botão "Enviar" para
-            que possamos lhe enviar um e-mail com as instruções para redefinição
-            de senha.
+            Digite seu endereço de e-mail usado para fazer login, depois clique no botão "<strong>Enviar</strong>". Em seguida nós lhe enviaremos um e-mail com uma nova senha de acesso ao sistema.
           </p>
         </div>
 
@@ -33,7 +31,6 @@ function Recuperacao() {
         </div>
 
         <div className="p-d-flex p-jc-between" id="botoes">
-          <div className="p-mr-2">
             <Link to="/login">
               <Button
                 id="btcancelar"
@@ -42,12 +39,9 @@ function Recuperacao() {
                 iconPos="left"
               />
             </Link>
-          </div>
-          <div className="p-mr-2">
             <Link to="/login">
               <Button label="Enviar" icon="pi pi-send" iconPos="left" />
             </Link>
-          </div>
         </div>
       </div>
     </div>

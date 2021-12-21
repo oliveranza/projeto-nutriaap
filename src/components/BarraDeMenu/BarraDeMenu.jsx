@@ -8,12 +8,6 @@ import './BarraDeMenu.css'
 
 export default class BarraDeMenu extends Component {
 
-    // const menu = [
-    //     { label: 'Início', icon: 'pi pi-home', url: '/inicioAdmin'},
-    //     { label: 'Profissionais de Nutrição', icon: 'pi pi-id-card', url: '/listaNutri',  },
-    //     { label: 'Administradores', icon: 'pi pi-users', url: '' },
-    //     { label: 'Relatórios', icon: 'pi pi-chart-line', url: '/inicioNutri' },
-    // ]
     
     constructor(props) {
         super(props)
@@ -21,16 +15,17 @@ export default class BarraDeMenu extends Component {
             { label: 'Inicio', icon: 'pi pi-home', url: '/inicioNutri' },
             { label: 'Pacientes', icon: 'pi pi-user', url: '/listaPaciente' },
             { label: 'Agenda', icon: 'pi pi-calendar', url: '/agenda' },
-            { label: 'Chat', icon: 'pi pi-comments', url: '/inicioAdmin' }
+            // { label: 'Chat', icon: 'pi pi-comments', url: '/inicioAdmin' }
         ]
 
         this.itemsAdmin = [
                 { label: 'Início', icon: 'pi pi-home', url: '/inicioAdmin'},
                 { label: 'Profissionais de Nutrição', icon: 'pi pi-id-card', url: '/listaNutri',  },
                 { label: 'Administradores', icon: 'pi pi-users', url: '/listaAdmin' },
-                { label: 'Relatórios', icon: 'pi pi-chart-line', url: '/inicioNutri' },
+                // { label: 'Relatórios', icon: 'pi pi-chart-line', url: '/inicioNutri' },
             ]
-        
+            
+
         this.state = {
             items: this.selectItems() || this.itemsDefault,
             tab: this.props.tab || 0,
@@ -52,7 +47,7 @@ export default class BarraDeMenu extends Component {
     selectTab(e) {
         this.setState({ tab: e })
     };
-    
+
 
     render() {
         return (
