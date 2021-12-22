@@ -15,12 +15,10 @@ import { format } from "date-fns";
 export default function Card(props) {
   const [foto, setFoto] = useState(fotoAdmin);
   const [endpoint, setEndpoint] = useState("");
-  const [dtn, setDtn] = useState();
+  // const [dtn, setDtn] = useState();
   const toast = useRef(null);
 
   useEffect(() => {
-    // const dt = ConverterData(props.dataNasc)
-    // setDtn(dt)
     switch (props.tipoCard) {
       case "nutri":
         setFoto(fotoNutri);
@@ -41,15 +39,10 @@ export default function Card(props) {
 
   function ConverterData(data) {
     const dt = new Date(data);
-    alert("dt - " + dt);
     const dt1 = dt.toISOString();
-    alert("dt1 - " + dt1);
     const dt2 = dt1.slice(0, 10);
-    alert("dt2 - " + dt2);
     const dt3 = dt2.split("-", 3);
-    alert("dt3 - " + dt3);
     const dt4 = format(new Date(dt3[0], dt3[1] - 1, dt3[2]), "dd/MM/yyyy");
-    alert("dt4 - " + dt4);
     return dt4;
   }
 

@@ -1,68 +1,90 @@
 .nutriapp-menu {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 0 14%;
-    width: 100vw;
-    max-width: 100vw;
-    height: 41px;
-    /* background-color:#22b2abb4 ; */
-    background-color:rgba(34, 178, 171, 0.75);
-    border-radius: 6px;
-    box-shadow: 1px 1px 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0 14%;
+  width: 100vw;
+  max-width: 100vw;
+  height: 41px;
+  /* background-color:#22b2abb4 ; */
+  background-color: rgba(34, 178, 171, 0.75);
+  border-radius: 6px;
+  box-shadow: 1px 1px 4px;
 }
 
 /* icon sino */
-.nutriapp-menu i{
-    color: white !important;;
-    
+.nutriapp-menu i {
+  color: white !important;
+}
+.nutriapp-menu Button {
+  background-color: transparent;
 }
 
 /* logo */
-.nutriapp-menu h1{
-    min-width: 170px;
-    max-width: 12%;
+.nutriapp-menu h1 {
+  min-width: 170px;
+  max-width: 12%;
+  color: tomato!important;
+  text-shadow: 1px 1px 4px black;
+  text-align: center;
 }
 
-.nutriapp-menu #centermenu{
-    margin: 0;
-    padding: 0px 10px;
-    width: 75%;
-    /* background-color: rgb(34, 178, 171); */
-    justify-self: flex-start;
-    overflow: unset;
-    /* position: relative; */
+.nutriapp-menu #centermenu {
+  margin: 0px;
+  padding: 0px 10px;
+  width: 75%;
+  justify-self: flex-start;
+  overflow: unset;
+  /* background-color: rgb(34, 178, 171); */
 }
-.nutriapp-menu #endmenu{
-    min-width: 20%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+.nutriapp-menu #endmenu {
+  min-width: 20%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+div#popup_menu{
+    background-color: rgba(34, 180, 173, 0.75);
+    width: fit-content;
+    min-width: 8%;
+    padding: 2px;
 }
 
-.nutriapp-menu #centermenu .p-tabmenu-nav{
-    border: 0;
+div#popup_menu span{
+    color:white;
 }
 
-  /* tab selecionada*/
+div#popup_menu a:hover{
+    border-radius: 5px;
+    background-color: tomato;
+}
+
+.nutriapp-menu #centermenu .p-tabmenu-nav {
+  border: 0px;
+}
+
+/* tab selecionada*/
 .nutriapp-menu .p-tabmenu .p-tabmenu-nav .p-tabmenuitem.p-highlight .p-menuitem-link {
-    background:rgba(255, 255, 255);
-    color: rgba(34, 178, 171);
+  /* background: rgba(255, 255, 255); */
+  background: rgba(255, 99, 71)!important;
+  /* color: rgba(34, 178, 171); */
+  color: white;
 }
-.nutriapp-menu .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link:hover{
-    /* font-weight: bold; */
-    transition: 500ms;
-    color: rgb(34, 178, 171)!important;
+.nutriapp-menu .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link:hover {
+  /* font-weight: bold; */
+  background-color: tomato!important;
+  transition: 300ms;
+  color: white!important;
+  /* color: rgb(34, 178, 171) !important; */
 }
 
 /* tabs nao selecionadas*/
 .nutriapp-menu .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
-    background: rgba(34, 178, 171, 0);
-    border: transparent;
-    color: rgb(255, 255, 255);
+  background: rgba(34, 178, 171, 0);
+  border: transparent;
+  color: rgb(255, 255, 255);
 }
-
 
 /* 
 @media screen and (max-width: 960px) {

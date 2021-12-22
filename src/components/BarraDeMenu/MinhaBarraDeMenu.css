@@ -1,0 +1,15 @@
+.minhaBarraDeMenu {
+    height: 100%;
+    width: 100%;
+    /* background-color: black; */
+    padding: 0.3px 0.3px;
+    
+}
+
+.minhaBarraDeMenu .p-button{
+    background-color: transparent;
+    height: 100%;
+    width: fit-content;
+    margin: 0 0.5px;
+    border-radius: 2px;
+}

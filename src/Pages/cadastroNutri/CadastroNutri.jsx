@@ -305,7 +305,6 @@ function CadastroNutri() {
                     onChange={(e) => setEspecialidade(e.target.value)}
                     type="text"
                     placeholder="Nutricionista,Medico"
-                    autoResize
                     required
                   />
                 </div>
