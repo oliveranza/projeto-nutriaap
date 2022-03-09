@@ -70,7 +70,7 @@ function Login() {
       return { error: "Tipo de acesso não selecionado" };
     }
     if (email1 === "qualylife2021@gmail.com" && senha1 === "admin") {
-      return { token: "1234" };
+      return { token: "1234", nv: nivel};
     } else {
       const userlogin = {
         userName: email1,
@@ -79,7 +79,7 @@ function Login() {
       };
       try {
         const res = await api.post("api/login", userlogin);
-        return { token: "1234" };
+        return { token: "1234", nv: res.data.nivelDeAcesso };
       } catch (error) {
         return error.toString();
       }
@@ -90,20 +90,22 @@ function Login() {
     const resul = await fazerLogin(email, senha);
     if (resul.token) {
       setToken(resul.token);
-      setTimeout(() => {
-        if (nivel === 1) {
-          toast.current.show({
-            severity: "success",
-            summary: "Sucesso",
-            detail: "Login feito com usuário paciente",
-            life: 5000,
-          });
-        } else if (nivel === 2) {
+
+      if (nivel === 1) {
+        toast.current.show({
+          severity: "success",
+          summary: "Sucesso",
+          detail: "Login feito com usuário paciente",
+          life: 5000,
+        });
+      } else if (nivel === 2) {
+        if (resul.nv === 2)
           return history.push("/inicioNutri");
-        } else if (nivel === 3) {
+      } else if (nivel === 3) {
+        if (resul.nv === 3)
           return history.push("/inicioAdmin");
-        }
-      }, 600);
+      }
+
     } else if (resul === "Error: Network Error") {
       toast.current.show({
         severity: "error",
@@ -116,8 +118,8 @@ function Login() {
         toast.current.show({
           severity: "error",
           summary: "Erro",
-          detail: "E-mail e/ou senha inválidos",
-          life: 5000,
+          detail: `Não foi possível acessar. Verifique se o e-mail, a senha e o tipo de usuário estão corretos.`,
+          life: 7000,
         });
       }
     }

@@ -19,6 +19,7 @@ import { addLocale } from "primereact/api";
 import { pt } from "../../locale/pt.json";
 import foto from "../../assets/defaultUser.png";
 import api from "../../services/api";
+import { format } from "date-fns";
 
 function CadastroNutri() {
   //pegar o di da url
@@ -98,7 +99,6 @@ function CadastroNutri() {
       genero: gen,
       especialidade: especialidade,
       especializacoes: espe,
-      senha: "12346578",
     };
 
     let resposta;
@@ -139,6 +139,7 @@ function CadastroNutri() {
   //metodo que cria um novo usuario
   async function Novo(e, usuario) {
     e.preventDefault();
+    usuario.senha = format(dataNasc, "ddMMyyyy")
     try {
       let response = await api.post("api/nutricionista", usuario);
       console.log(response);
@@ -152,6 +153,7 @@ function CadastroNutri() {
   async function atualizar(e, usuario) {
     e.preventDefault();
     usuario.id = id;
+    usuario.senha = format(dataNasc, "ddMMyyyy")
 
     try {
       let response = await api.put("api/nutricionista", usuario);

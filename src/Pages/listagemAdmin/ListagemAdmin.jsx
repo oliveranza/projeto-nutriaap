@@ -67,7 +67,7 @@ function ListagemAdmin() {
           </div>
 
           <div className='botaocadastro'>
-            <Link to="/cadastroAdmin"><Button id="bt" label="cadastrar Administrador(a)" icon="pi pi-id-card" iconPos="left" data-toggle="tooltip" title="Cadastrar um(a) Novo(a)"/></Link>
+            <Link to="/cadastroAdmin"><Button id="bt" label="Cadastrar Administrador(a)" icon="pi pi-id-card" iconPos="left" data-toggle="tooltip" title="Cadastrar um(a) Novo(a)"/></Link>
           </div>
 
         </div>

@@ -18,10 +18,10 @@ export default function (props) {
           value={props.value}
           onChange={(e) => props.setValue(e.target.value)}
           required
-          size="3"
+          // size="300"
           step="0.01"
           min="0"
-          max="3"
+          max="300"
           tooltip="Digite o valor em centímetros (cm)"
           tooltipOptions={{
             showDelay: 500,

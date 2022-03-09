@@ -50,7 +50,7 @@ function ListagemPaciente() {
             <Link to="/cadastroPaciente">
               <Button
                 id="bt"
-                label="cadastrar Paciente"
+                label="Cadastrar Paciente"
                 icon="pi pi-id-card"
                 iconPos="left"
                 data-toggle="tooltip"

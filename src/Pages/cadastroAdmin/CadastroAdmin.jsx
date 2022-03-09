@@ -18,6 +18,7 @@ import { Toast } from "primereact/toast";
 import { pt } from "../../locale/pt.json"
 import foto from "../../assets/defaultUser.png";
 import api from "../../services/api";
+import { format } from "date-fns";
 
 function CadastroAdmin() {
   //pegar o id da url
@@ -72,7 +73,6 @@ function CadastroAdmin() {
   async function Salvar(e) {
     e.preventDefault();
     const gen = genero.label;
-    // const dt = format(dataNasc,"dd/MM/yyyy")
 
     const usuario = {
       nome: nome,
@@ -82,7 +82,8 @@ function CadastroAdmin() {
       email: email,
       cell: cell,
       genero: gen,
-      senha: "12345678",
+      // senha: "12345678",
+      
     };
 
     let resposta;
@@ -121,6 +122,7 @@ function CadastroAdmin() {
   //metodo que cria um novo usuario
   async function Novo(e, usuario) {
     e.preventDefault();
+    usuario.senha = format(dataNasc, "ddMMyyyy")
     try {
       let response = await api.post("api/admin", usuario);
       console.log(response);
